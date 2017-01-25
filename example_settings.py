@@ -98,7 +98,7 @@ DRAFT_ENTITY_TYPES = [
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default_draftjs': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'enableHorizontalRule': True,
             'enableLineBreak': False,
@@ -109,7 +109,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'format_only': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'inlineStyles': [
                 DRAFT_INLINE_STYLE_BOLD,
@@ -119,7 +119,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'format_and_link': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'entityTypes': [DRAFT_ENTITY_TYPE_LINK],
             'blockTypes': [
@@ -133,7 +133,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'simple': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'enableHorizontalRule': True,
             'enableLineBreak': False,
@@ -161,7 +161,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'complex_link': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'entityTypes': [DRAFT_ENTITY_TYPE_IMAGE],
             'blockTypes': [
@@ -179,7 +179,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'legal_notice': {
-        'WIDGET': 'wagtailaddons.drafteditor.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
         'OPTIONS': {
             'entityTypes': [
                 DRAFT_ENTITY_TYPE_LINK,
@@ -203,12 +203,12 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
 }
 
 DRAFT_EXPORTER_ENTITY_DECORATORS = {
-    ENTITY_TYPES.LINK: 'wagtailaddons.drafteditor.decorators.Link',
-    ENTITY_TYPES.DOCUMENT: 'wagtailaddons.drafteditor.decorators.Document',
-    ENTITY_TYPES.IMAGE: 'wagtailaddons.drafteditor.decorators.Image',
-    ENTITY_TYPES.EMBED: 'wagtailaddons.drafteditor.decorators.Embed',
-    ENTITY_TYPES.HORIZONTAL_RULE: 'wagtailaddons.drafteditor.decorators.HR',
-    LOCATION_ENTITY_ID: 'wagtailaddons.drafteditor.decorators.Model',
+    ENTITY_TYPES.LINK: 'wagtaildraftail.decorators.Link',
+    ENTITY_TYPES.DOCUMENT: 'wagtaildraftail.decorators.Document',
+    ENTITY_TYPES.IMAGE: 'wagtaildraftail.decorators.Image',
+    ENTITY_TYPES.EMBED: 'wagtaildraftail.decorators.Embed',
+    ENTITY_TYPES.HORIZONTAL_RULE: 'wagtaildraftail.decorators.HR',
+    LOCATION_ENTITY_ID: 'wagtaildraftail.decorators.Model',
 }
 
 DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
