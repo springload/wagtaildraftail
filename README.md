@@ -7,7 +7,7 @@
 ## Installation
 
 1. Download this repository and put the `wagtaildraftail` folder in your project.
-2. Install the `wagtaildraftail` dependencies.
+2. Install the `wagtaildraftail` dependencies, and use **Python 3**.
 3. Install `wagtaildraftail` as an app in your Django settings.
 4. Create a new admin JS bundle, importing the `initDraftailEditor` function, and exposing it as a global variable.
 5. Register the admin JS bundle in the `insert_global_admin_js` hook.
