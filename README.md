@@ -4,7 +4,53 @@
 
 **This is pre-alpha software. It is made available publicly for review purposes only, and is not expected to work out of the box.**
 
+## Installation
+
+1. Download this repository and put the `wagtaildraftail` folder in your project.
+2. Install the `wagtaildraftail` dependencies.
+3. Install `wagtaildraftail` as an app in your Django settings.
+4. Create a new admin JS bundle, importing the `initDraftailEditor` function, and exposing it as a global variable.
+5. Register the admin JS bundle in the `insert_global_admin_js` hook.
+
+```python
+INSTALLED_APPS = (
+    # [...]
+    'wagtaildraftail',
+    # [...]
+)
+```
+
+```sh
+pip install draftjs-exporter==0.6.2
+# Note: Draft.js also requires ES6 polyfills to support browsers that do not have native implementations.
+npm install --save draftail draft-js@^0.9.x draftjs-utils@^0.3.2 immutable@^3.x.x react@^15.x.x react-dom@^15.x.x
+```
+
+```js
+import { initDraftailEditor } from 'wagtaildraftail/client/drafteditor';
+global.initDraftailEditor = initDraftailEditor;
+```
+
+```python
+@hooks.register('insert_global_admin_js')
+def global_admin_js():
+    js_files = [
+        'js/common.js',
+        'js/wagtailadmin.js',
+    ]
+    js_includes = format_html_join(
+        '\n',
+        '<script src="{0}{1}"></script>',
+        ((settings.STATIC_URL, filename) for filename in js_files)
+    )
+    return js_includes
+```
+
 ## Usage
+
+The following documentation will detail how this is code is meant to be used.
+
+For configuration, please refer to the [`example_settings.py`](example_settings.py) file for copy/pastable examples.
 
 ### With Pages
 
