@@ -1,6 +1,8 @@
 # wagtaildraftail
 
-Draft.js editor for Wagtail. Built upon [draftail](https://github.com/springload/draftail) and [draftjs_exporter](https://github.com/springload/draftjs_exporter).
+> Draft.js editor for Wagtail, built upon [draftail](https://github.com/springload/draftail) and [draftjs_exporter](https://github.com/springload/draftjs_exporter).
+
+**This is pre-alpha software. It is made available publicly for review purposes only, and is not expected to work out of the box.**
 
 ## Usage
 
