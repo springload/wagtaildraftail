@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -42,7 +41,7 @@ export const initDraftailEditor = (fieldName, options = {}) => {
     if (options.entityTypes) {
         // eslint-disable-next-line no-param-reassign
         options.entityTypes = options.entityTypes.map((entity) => {
-            return _.assign(entity, {
+            return Object.assign(entity, {
                 control: controls[entity.type],
                 strategy: strategies[entity.type],
                 component: decorators[entity.type],
