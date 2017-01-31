@@ -1,6 +1,6 @@
 from django import forms
 
-from wagtailaddons.drafteditor import validators
+import validators
 
 
 class SerializedJSONField(forms.CharField):

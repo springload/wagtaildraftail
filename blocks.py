@@ -5,8 +5,8 @@ from django.utils.functional import cached_property
 
 from wagtail.wagtailcore.blocks import FieldBlock
 
-from wagtailaddons.drafteditor import forms
-from wagtailaddons.drafteditor.filters import draft_text
+import forms
+from filters import draft_text
 
 
 class DraftailTextBlock(FieldBlock):

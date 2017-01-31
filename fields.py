@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtailaddons.drafteditor import validators
+import validators
 
 
 class DraftailTextField(models.TextField):
