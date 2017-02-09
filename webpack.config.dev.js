@@ -7,7 +7,7 @@ module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
     // devtool: 'inline-source-map',
     entry: {
-        draftail: './client/drafteditor.js',
+        wagtaildraftail: './client/wagtaildraftail.js',
     },
     output: {
         path: path.join(__dirname, 'dist'),
