@@ -6,9 +6,9 @@
 
 ## Installation
 
-1. Download this repository and put the `wagtaildraftail` folder in your project.
-2. Install the `wagtaildraftail` dependencies
-3. Install `wagtaildraftail` as an app in your Django settings.
+1. Download this repository and use `pip install /path/to/wagtaildraftail`
+2. Install `wagtaildraftail` as an app in your Django settings.
+3. Add necessary settings to your Django settings (see `wagtaildraftail/example_settings.py`).
 
 ```python
 INSTALLED_APPS = (
@@ -16,13 +16,6 @@ INSTALLED_APPS = (
     'wagtaildraftail',
     # [...]
 )
-```
-
-```sh
-pip install draftjs-exporter==0.6.2
-# Note: Draft.js also requires ES6 polyfills to support browsers that do not have native implementations.
-# TODO Compiled output is also available, in the git repo for now.
-# npm install --save draftail draft-js@^0.10.0 react@^15.x.x react-dom@^15.x.x
 ```
 
 ```js

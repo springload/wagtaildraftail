@@ -24,9 +24,11 @@
     "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
     "css-loader": "^0.26.1",
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
+    "sass-module-importer": "^1.4.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0"
   },
