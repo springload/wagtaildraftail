@@ -36,22 +36,18 @@ pip install draftjs-exporter==0.6.2
 To use the pre-compiled integration:
 
 ```python
-@hooks.register('insert_global_admin_js')
-def global_admin_js():
-    js_files = [
-        'wagtaildraftail/static/wagtaildraftail.js',
-    ]
-    js_includes = format_html_join(
-        '\n',
-        '<script src="{0}{1}"></script>',
-        ((settings.STATIC_URL, filename) for filename in js_files)
-    )
-    return js_includes
-```
+import format_html from django.utils.html
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
-```python
-# TODO You will also need some CSS, available in:
-# 'wagtaildraftail/static/wagtaildraftail.css'
+@hooks.register('insert_editor_js')
+def global_admin_js():
+    return format_html('<script src="{0}"></script>',
+                       static('wagtaildraftail/wagtaildraftail.js'))
+
+@hooks.register('insert_editor_css')
+def global_admin_css():
+    return format_html('<link rel="styles" href="{0}" />',
+                       static('wagtaildraftail/wagtaildraftail.css'))
 ```
 
 ## Usage

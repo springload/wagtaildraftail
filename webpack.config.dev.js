@@ -10,7 +10,7 @@ module.exports = {
         wagtaildraftail: './client/wagtaildraftail.js',
     },
     output: {
-        path: path.join(__dirname, 'static'),
+        path: path.join(__dirname, 'static', 'wagtaildraftail'),
         filename: '[name].bundle.js',
     },
     plugins: [
