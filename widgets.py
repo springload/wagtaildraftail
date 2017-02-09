@@ -20,7 +20,7 @@ class JsonTextArea(WidgetWithScript, forms.HiddenInput):
     def __init__(self, attrs=None, options=None):
         self.options = self.intercept_image_formats(options or {})
 
-        super().__init__(attrs)
+        super(JsonTextArea, self).__init__(attrs)
 
     def intercept_image_formats(self, options):
         """
