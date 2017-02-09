@@ -39,7 +39,7 @@ To use the pre-compiled integration:
 @hooks.register('insert_global_admin_js')
 def global_admin_js():
     js_files = [
-        'wagtaildraftail/dist/wagtaildraftail.js',
+        'wagtaildraftail/static/wagtaildraftail.js',
     ]
     js_includes = format_html_join(
         '\n',
@@ -51,7 +51,7 @@ def global_admin_js():
 
 ```python
 # TODO You will also need some CSS, available in:
-# 'wagtaildraftail/dist/wagtaildraftail.css'
+# 'wagtaildraftail/static/wagtaildraftail.css'
 ```
 
 ## Usage
