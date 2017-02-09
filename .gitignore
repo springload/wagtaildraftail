@@ -34,6 +34,7 @@ media/*
 .idea
 .coverage
 coverage_html_report/
+npm-debug.log*
 
 # node
 node_modules/
