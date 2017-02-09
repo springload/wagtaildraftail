@@ -1,0 +1,24 @@
+{
+  "name": "wagtaildraftail",
+  "version": "1.0.0",
+  "description": "> Draft.js editor for Wagtail, built upon [draftail](https://github.com/springload/draftail) and [draftjs_exporter](https://github.com/springload/draftjs_exporter).",
+  "main": "index.js",
+  "scripts": {
+    "css": "node-sass client/drafteditor.scss client/drafteditor.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/springload/wagtaildraftail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/springload/wagtaildraftail/issues"
+  },
+  "homepage": "https://github.com/springload/wagtaildraftail#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.0"
+  }
+}
