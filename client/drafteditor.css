@@ -1,0 +1,67 @@
+@import url(../node_modules/draftail/dist/draftail.css);
+/**
+ * Modal styles for link chooser.
+ * TODO Move to another file.
+ */
+.Modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.Modal-content {
+  background: #fff;
+  max-width: 500px; }
+
+.Modal-header {
+  padding: 1em; }
+
+.Modal-header-tab {
+  padding-bottom: 0; }
+
+.Modal-body {
+  padding: 1em; }
+
+.Modal-actions {
+  padding-top: 1rem; }
+
+/**
+ * Styles of content within the Draftail rich text editor.
+ */
+.intro-text {
+  font-size: 1.175em;
+  margin: 1rem 0; }
+
+.small-text {
+  font-size: .875em; }
+
+.legals {
+  opacity: .75;
+  font-size: .875em; }
+
+/* Give each block element eg. paragraph some spacing so we don't end up
+with empty paragraphs in code when user double enters because they think
+there are no paragraphs */
+div[data-block="true"] {
+  margin: .75rem 0; }
+
+.DraftEditor-editorContainer h2 {
+  text-transform: none; }
+
+.DraftEditor-editorContainer h3,
+.DraftEditor-editorContainer h4,
+.DraftEditor-editorContainer h5,
+.DraftEditor-editorContainer h6 {
+  font-weight: bold; }
+
+.object.collapsible .DraftEditor-editorContainer h2:before, .object.collapsible .DraftEditor-editorContainer h2 label:before {
+  content: none !important; }
+
+.editor__toolbar {
+  background-color: #fff; }
