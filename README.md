@@ -43,11 +43,6 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 def global_admin_js():
     return format_html('<script src="{0}"></script>',
                        static('wagtaildraftail/wagtaildraftail.js'))
-
-@hooks.register('insert_editor_css')
-def global_admin_css():
-    return format_html('<link rel="styles" href="{0}" />',
-                       static('wagtaildraftail/wagtaildraftail.css'))
 ```
 
 ## Usage
