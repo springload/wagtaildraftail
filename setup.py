@@ -14,6 +14,6 @@ setup(
     url='https://github.com/springload/wagtaildraftail',
     packages=find_packages(),
     install_requires=[
-        'draftjs-exporter>=0.6.2',
+        'draftjs-exporter==0.6.2',
     ]
 )
