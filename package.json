@@ -1,41 +1,39 @@
 {
   "name": "wagtaildraftail",
-  "version": "1.0.0",
-  "description": "> Draft.js editor for Wagtail, built upon [draftail](https://github.com/springload/draftail) and [draftjs_exporter](https://github.com/springload/draftjs_exporter).",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack --config webpack.config.dev.js --watch",
-    "build": "webpack --config webpack.config.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0",
+  "description": "Draft.js editor for Wagtail, built upon Draftail",
+  "main": "setup.py",
+  "keywords": [],
+  "author": "Springload",
+  "license": "MIT",
+  "homepage": "https://github.com/springload/wagtaildraftail#readme",
+  "bugs": {
+    "url": "https://github.com/springload/wagtaildraftail/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/springload/wagtaildraftail.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/springload/wagtaildraftail/issues"
+  "dependencies": {
+    "draft-js": "^0.10.0",
+    "draftail": "0.5.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
-  "homepage": "https://github.com/springload/wagtaildraftail#readme",
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
     "css-loader": "^0.26.1",
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
-    "sass-module-importer": "^1.4.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   },
-  "dependencies": {
-    "draft-js": "^0.10.0",
-    "draftail": "^0.5.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+  "scripts": {
+    "start": "webpack --config wagtaildraftail/client/webpack.config.dev.js --watch",
+    "build": "webpack --config wagtaildraftail/client/webpack.config.dev.js",
+    "dist": "webpack --config wagtaildraftail/client/webpack.config.prod.js"
   }
 }

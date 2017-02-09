@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import WagtailModalSource from './WagtailModalSource';
 
 const $ = global.jQuery;
@@ -11,7 +9,7 @@ class WagtailImageSource extends WagtailModalSource {
     }
 
     parseData(imageData) {
-        this.onConfirmAtomicBlock(_.assign({}, imageData, {
+        this.onConfirmAtomicBlock(Object.assign({}, imageData, {
             src: imageData.preview.url,
         }));
     }

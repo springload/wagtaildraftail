@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import WagtailModalSource from './WagtailModalSource';
 
 const $ = global.jQuery;
@@ -61,7 +59,7 @@ class WagtailLinkSource extends WagtailModalSource {
 
     // Plaster over more Wagtail internals.
     parseData(pageData) {
-        const data = _.assign({}, pageData);
+        const data = Object.assign({}, pageData);
 
         if (data.id) {
             data.linkType = 'page';
