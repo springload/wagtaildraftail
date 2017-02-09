@@ -30,6 +30,14 @@ module.exports = {
                     path.join(__dirname, 'client'),
                 ],
             },
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass'],
+                include: [
+                    path.join(__dirname, 'client'),
+                    path.join(__dirname, 'node_modules'),
+                ]
+            }
         ],
     },
 };

@@ -94,6 +94,8 @@
 
 	var _Location2 = _interopRequireDefault(_Location);
 
+	__webpack_require__(337);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var controls = {};
@@ -59253,6 +59255,354 @@
 	};
 
 	exports.default = Location;
+
+/***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(338);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(340)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/lib/loader.js!./wagtaildraftail.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/lib/loader.js!./wagtaildraftail.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(339)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Draft v0.10.0\n *\n * Copyright (c) 2013-present, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n */\n.DraftEditor-editorContainer, .DraftEditor-root, .public-DraftEditor-content {\n  height: inherit;\n  text-align: initial; }\n\n.public-DraftEditor-content[contenteditable=true] {\n  -webkit-user-modify: read-write-plaintext-only; }\n\n.DraftEditor-root {\n  position: relative; }\n\n.DraftEditor-editorContainer {\n  background-color: rgba(255, 255, 255, 0);\n  border-left: .1px solid transparent;\n  position: relative;\n  z-index: 1; }\n\n.public-DraftEditor-block {\n  position: relative; }\n\n.DraftEditor-alignLeft .public-DraftStyleDefault-block {\n  text-align: left; }\n\n.DraftEditor-alignLeft .public-DraftEditorPlaceholder-root {\n  left: 0;\n  text-align: left; }\n\n.DraftEditor-alignCenter .public-DraftStyleDefault-block {\n  text-align: center; }\n\n.DraftEditor-alignCenter .public-DraftEditorPlaceholder-root {\n  margin: 0 auto;\n  text-align: center;\n  width: 100%; }\n\n.DraftEditor-alignRight .public-DraftStyleDefault-block {\n  text-align: right; }\n\n.DraftEditor-alignRight .public-DraftEditorPlaceholder-root {\n  right: 0;\n  text-align: right; }\n\n.public-DraftEditorPlaceholder-root {\n  color: #9197a3;\n  position: absolute;\n  z-index: 0; }\n\n.public-DraftEditorPlaceholder-hasFocus {\n  color: #bdc1c9; }\n\n.DraftEditorPlaceholder-hidden {\n  display: none; }\n\n.public-DraftStyleDefault-block {\n  position: relative;\n  white-space: pre-wrap; }\n\n.public-DraftStyleDefault-ltr {\n  direction: ltr;\n  text-align: left; }\n\n.public-DraftStyleDefault-rtl {\n  direction: rtl;\n  text-align: right; }\n\n.public-DraftStyleDefault-listLTR {\n  direction: ltr; }\n\n.public-DraftStyleDefault-listRTL {\n  direction: rtl; }\n\n.public-DraftStyleDefault-ol, .public-DraftStyleDefault-ul {\n  margin: 16px 0;\n  padding: 0; }\n\n.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {\n  margin-left: 1.5em; }\n\n.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {\n  margin-right: 1.5em; }\n\n.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listLTR {\n  margin-left: 3em; }\n\n.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listRTL {\n  margin-right: 3em; }\n\n.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listLTR {\n  margin-left: 4.5em; }\n\n.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listRTL {\n  margin-right: 4.5em; }\n\n.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listLTR {\n  margin-left: 6em; }\n\n.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listRTL {\n  margin-right: 6em; }\n\n.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listLTR {\n  margin-left: 7.5em; }\n\n.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listRTL {\n  margin-right: 7.5em; }\n\n.public-DraftStyleDefault-unorderedListItem {\n  list-style-type: square;\n  position: relative; }\n\n.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth0 {\n  list-style-type: disc; }\n\n.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth1 {\n  list-style-type: circle; }\n\n.public-DraftStyleDefault-orderedListItem {\n  list-style-type: none;\n  position: relative; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listLTR:before {\n  left: -36px;\n  position: absolute;\n  text-align: right;\n  width: 30px; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listRTL:before {\n  position: absolute;\n  right: -36px;\n  text-align: left;\n  width: 30px; }\n\n.public-DraftStyleDefault-orderedListItem:before {\n  content: counter(ol0) \". \";\n  counter-increment: ol0; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth1:before {\n  content: counter(ol1) \". \";\n  counter-increment: ol1; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth2:before {\n  content: counter(ol2) \". \";\n  counter-increment: ol2; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth3:before {\n  content: counter(ol3) \". \";\n  counter-increment: ol3; }\n\n.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth4:before {\n  content: counter(ol4) \". \";\n  counter-increment: ol4; }\n\n.public-DraftStyleDefault-depth0.public-DraftStyleDefault-reset {\n  counter-reset: ol0; }\n\n.public-DraftStyleDefault-depth1.public-DraftStyleDefault-reset {\n  counter-reset: ol1; }\n\n.public-DraftStyleDefault-depth2.public-DraftStyleDefault-reset {\n  counter-reset: ol2; }\n\n.public-DraftStyleDefault-depth3.public-DraftStyleDefault-reset {\n  counter-reset: ol3; }\n\n.public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {\n  counter-reset: ol4; }\n\n.editor__toolbar {\n  border: solid 1px #eee;\n  border-radius: 3px;\n  padding: 0.5rem;\n  margin-bottom: 1rem; }\n\n.editor--readonly .editor__toolbar {\n  opacity: .5;\n  pointer-events: none; }\n\n.RichEditor-styleButton {\n  padding: 0.25rem 0.5rem;\n  background: #eee;\n  display: inline-block;\n  border-radius: 0;\n  margin-right: 4px;\n  margin-right: 0.25rem;\n  color: inherit;\n  border: 0;\n  cursor: pointer; }\n\n.RichEditor-styleButton:hover {\n  color: inherit; }\n\n.RichEditor-activeButton {\n  background: #666;\n  color: #ffffff; }\n\n.RichEditor-activeButton:hover {\n  color: #ffffff; }\n\n.RichEditor-tooltip__button {\n  appearance: none;\n  background: #808080;\n  color: #ffffff;\n  padding: 0.25rem 0.5rem;\n  border: 0;\n  border-radius: 1px; }\n\n.RichEditor-tooltip__button + .RichEditor-tooltip__button {\n  margin-left: 0.25rem; }\n\n.RichEditor-link {\n  background: #eef8ff;\n  border-bottom: 1px dotted #43b1b0;\n  cursor: pointer; }\n\n.RichEditor-link .icon {\n  color: #43b1b0; }\n\n.public-DraftEditor-content {\n  font-size: 15px;\n  line-height: 1.5;\n  font-family: sans-serif; }\n\n.RichEditor-media {\n  outline: 1px dotted #dadada;\n  position: relative; }\n\n.RichEditor-media:hover,\n.RichEditor-media--open {\n  outline: 1px dotted #43b1b0; }\n\n.RichEditor-media:hover .RichEditor-media-container,\n.RichEditor-media--open .RichEditor-media-container {\n  cursor: pointer; }\n\n.RichEditor-grid {\n  margin-left: -2rem; }\n\n.RichEditor-grid:after {\n  display: table;\n  content: '';\n  clear: both; }\n\n.RichEditor-col {\n  width: 50%;\n  float: left;\n  padding-left: 2rem;\n  box-sizing: border-box; }\n\n.RichEditor-media--open {\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); }\n\n.RichEditor-media img {\n  max-width: 100%; }\n\n.RichEditor-media-icon {\n  position: absolute;\n  top: 0.5rem;\n  left: 0.5rem;\n  background: rgba(255, 255, 255, 0.9);\n  line-height: 1;\n  padding-left: 0.25rem;\n  padding-bottom: .125rem;\n  pointer-events: none; }\n\n.RichEditor-media-preview {\n  max-width: 260px;\n  display: inline-block;\n  user-select: none; }\n\n.RichEditor-media-options {\n  background: #f3f3f3;\n  border-top: solid 1px #e2e2e2;\n  font-size: 13px;\n  font-family: Open Sans, sans-serif;\n  padding: 1rem; }\n\n.RichEditor-media-options h3,\n.RichEditor-media-options h4 {\n  margin-top: 0; }\n\n.RichEditor-media-options label {\n  width: auto;\n  padding: 0;\n  display: inline-block;\n  float: none;\n  margin-right: 1rem;\n  cursor: pointer; }\n\n.RichEditor-media-options input[type=radio]:before,\n.RichEditor-media-options input[type=radio]:after {\n  display: none; }\n\n.RichEditor-media-options input[type=radio] {\n  margin-right: 8px; }\n\n.RichEditor-media-options input[type=text] {\n  font-size: 14px; }\n\n.RichEditor-tooltip {\n  position: absolute;\n  padding: 0.375rem 0.5rem;\n  margin-top: 0.5rem;\n  background-color: #333;\n  color: #ffffff;\n  z-index: 1; }\n\n.RichEditor-tooltip:before {\n  content: '';\n  position: absolute;\n  bottom: 100%;\n  left: 1rem;\n  border: solid transparent 5px;\n  border-bottom-color: #000; }\n\n.RichEditor-tooltip__text,\n.RichEditor-tooltip__link {\n  color: #ddd;\n  margin-right: 0.5rem;\n  display: inline-block; }\n\n.RichEditor-tooltip__link:last-child {\n  margin-right: 0; }\n\n.RichEditor-tooltip__link:hover {\n  color: #ffffff; }\n\n.u-block {\n  display: block !important; }\n\n.u-inline-block {\n  display: inline-block !important; }\n\n/**\n * Modal styles for link chooser.\n * TODO Move to another file.\n */\n.Modal {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.Modal-content {\n  background: #fff;\n  max-width: 500px; }\n\n.Modal-header {\n  padding: 1em; }\n\n.Modal-header-tab {\n  padding-bottom: 0; }\n\n.Modal-body {\n  padding: 1em; }\n\n.Modal-actions {\n  padding-top: 1rem; }\n\n/**\n * Styles of content within the Draftail rich text editor.\n */\n.intro-text {\n  font-size: 1.175em;\n  margin: 1rem 0; }\n\n.small-text {\n  font-size: .875em; }\n\n.legals {\n  opacity: .75;\n  font-size: .875em; }\n\n/* Give each block element eg. paragraph some spacing so we don't end up\nwith empty paragraphs in code when user double enters because they think\nthere are no paragraphs */\ndiv[data-block=\"true\"] {\n  margin: .75rem 0; }\n\n.DraftEditor-editorContainer h2 {\n  text-transform: none; }\n\n.DraftEditor-editorContainer h3,\n.DraftEditor-editorContainer h4,\n.DraftEditor-editorContainer h5,\n.DraftEditor-editorContainer h6 {\n  font-weight: bold; }\n\n.object.collapsible .DraftEditor-editorContainer h2:before, .object.collapsible .DraftEditor-editorContainer h2 label:before {\n  content: none !important; }\n\n.editor__toolbar {\n  background-color: #fff; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 339 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
 
 /***/ }
 /******/ ]);
