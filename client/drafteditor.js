@@ -6,7 +6,7 @@ import DraftailEditor, { ENTITY_TYPE } from 'draftail';
 import WagtailLinkSource from './sources/WagtailLinkSource';
 import WagtailImageSource from './sources/WagtailImageSource';
 import WagtailDocumentSource from './sources/WagtailDocumentSource';
-import GenericModelSource from './sources/GenericModelSource';
+// import GenericModelSource from './sources/GenericModelSource';
 import WagtailEmbedSource from './sources/WagtailEmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
@@ -18,18 +18,18 @@ controls[ENTITY_TYPE.IMAGE] = WagtailImageSource;
 controls[ENTITY_TYPE.EMBED] = WagtailEmbedSource;
 controls[ENTITY_TYPE.LINK] = WagtailLinkSource;
 controls[ENTITY_TYPE.DOCUMENT] = WagtailDocumentSource;
-controls.LOCATION = GenericModelSource;
+// controls.LOCATION = GenericModelSource;
 
 const strategies = {};
 strategies[ENTITY_TYPE.LINK] = findLinkEntities;
 strategies[ENTITY_TYPE.DOCUMENT] = findDocumentEntities;
-strategies.LOCATION = findLocationEntities;
+// strategies.LOCATION = findLocationEntities;
 
 const decorators = {};
 decorators[ENTITY_TYPE.LINK] = Link;
 decorators[ENTITY_TYPE.DOCUMENT] = Document;
 
-export const initDraftailEditor = (fieldName, options = {}) => {
+const initDraftailEditor = (fieldName, options = {}) => {
     const field = document.querySelector(`[name="${fieldName}"]`);
     const editorWrapper = document.createElement('div');
     field.parentNode.appendChild(editorWrapper);
@@ -60,3 +60,7 @@ export const initDraftailEditor = (fieldName, options = {}) => {
 
     ReactDOM.render(editor, editorWrapper);
 };
+
+window.initDraftailEditor = initDraftailEditor;
+
+export default initDraftailEditor;
