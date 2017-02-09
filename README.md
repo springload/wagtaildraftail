@@ -23,7 +23,8 @@ INSTALLED_APPS = (
 ```sh
 pip install draftjs-exporter==0.6.2
 # Note: Draft.js also requires ES6 polyfills to support browsers that do not have native implementations.
-npm install --save draftail react@^15.x.x react-dom@^15.x.x
+# TODO Compiled output is also available, in the git repo for now.
+# npm install --save draftail draft-js@^0.10.0 react@^15.x.x react-dom@^15.x.x
 ```
 
 ```js
