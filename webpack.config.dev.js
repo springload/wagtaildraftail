@@ -7,10 +7,10 @@ module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
     // devtool: 'inline-source-map',
     entry: {
-        wagtaildraftail: './client/wagtaildraftail.js',
+        wagtaildraftail: './wagtaildraftail/client/wagtaildraftail.js',
     },
     output: {
-        path: path.join(__dirname, 'static'),
+        path: path.join(__dirname, 'wagtaildraftail', 'static', 'wagtaildraftail'),
         filename: '[name].bundle.js',
     },
     plugins: [
@@ -27,8 +27,15 @@ module.exports = {
                 test: /\.js$/,
                 loaders: ['babel'],
                 include: [
-                    path.join(__dirname, 'client'),
+                    path.join(__dirname, 'wagtaildraftail', 'client'),
                 ],
+            },
+            {
+                test: /\.s[ac]ss$/,
+                loaders: ['style', 'css', 'sass'],
+                include: [
+                    path.join(__dirname, 'wagtaildraftail', 'client'),
+                ]
             },
         ],
     },

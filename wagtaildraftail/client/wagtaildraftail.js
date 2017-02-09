@@ -13,6 +13,8 @@ import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
 import Location, { findLocationEntities } from './entities/Location';
 
+import './wagtaildraftail.scss'
+
 const controls = {};
 controls[ENTITY_TYPE.IMAGE] = WagtailImageSource;
 controls[ENTITY_TYPE.EMBED] = WagtailEmbedSource;
