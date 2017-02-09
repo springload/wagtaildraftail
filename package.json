@@ -4,7 +4,7 @@
   "description": "> Draft.js editor for Wagtail, built upon [draftail](https://github.com/springload/draftail) and [draftjs_exporter](https://github.com/springload/draftjs_exporter).",
   "main": "index.js",
   "scripts": {
-    "css": "node-sass client/wagtaildraftail.scss dist/wagtaildraftail.scss",
+    "css": "node-sass client/wagtaildraftail.scss dist/wagtaildraftail.css",
     "js": "webpack --config webpack.config.dev.js",
     "build": "npm run css -s && npm run js -s",
     "test": "echo \"Error: no test specified\" && exit 1"
