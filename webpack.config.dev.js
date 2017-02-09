@@ -28,7 +28,6 @@ module.exports = {
                 loaders: ['babel'],
                 include: [
                     path.join(__dirname, 'wagtaildraftail', 'client'),
-                    path.join(__dirname, 'node_modules'),
                 ],
             },
             {
@@ -36,17 +35,8 @@ module.exports = {
                 loaders: ['style', 'css', 'sass'],
                 include: [
                     path.join(__dirname, 'wagtaildraftail', 'client'),
-                    path.join(__dirname, 'node_modules'),
                 ]
             },
-            {
-                test: /\.css$/,
-                loaders: ['style', 'css'],
-                include: [
-                    path.join(__dirname, 'wagtaildraftail', 'client'),
-                    path.join(__dirname, 'node_modules'),
-                ]
-            }
         ],
     },
 };
