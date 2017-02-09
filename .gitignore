@@ -16,7 +16,7 @@ bin
 .idea/
 develop-eggs
 build/
-dist/
+# TODO Commented out for now to make static assets available.
 # dist
 downloads
 eggs

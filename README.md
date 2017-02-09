@@ -28,16 +28,18 @@ pip install draftjs-exporter==0.6.2
 ```
 
 ```js
-import { initDraftailEditor } from 'wagtaildraftail/client/drafteditor';
-global.initDraftailEditor = initDraftailEditor;
+// This is only relevant when using the non-compiled source.
+// import { initDraftailEditor } from 'wagtaildraftail/client/drafteditor';
+// global.initDraftailEditor = initDraftailEditor;
 ```
+
+To use the pre-compiled integration:
 
 ```python
 @hooks.register('insert_global_admin_js')
 def global_admin_js():
     js_files = [
-        'js/common.js',
-        'js/wagtailadmin.js',
+        'wagtaildraftail/dist/wagtaildraftail.js',
     ]
     js_includes = format_html_join(
         '\n',
@@ -45,6 +47,11 @@ def global_admin_js():
         ((settings.STATIC_URL, filename) for filename in js_files)
     )
     return js_includes
+```
+
+```python
+# TODO You will also need some CSS, available in:
+# 'wagtaildraftail/dist/wagtaildraftail.css'
 ```
 
 ## Usage
