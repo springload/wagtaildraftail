@@ -32,8 +32,8 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "start": "webpack --config wagtaildraftail/client/webpack.config.dev.js --watch",
-    "build": "webpack --config wagtaildraftail/client/webpack.config.dev.js",
-    "dist": "webpack --config wagtaildraftail/client/webpack.config.prod.js"
+    "start": "npm run build -s -- --watch",
+    "build": "webpack --config webpack.config.dev.js",
+    "dist": "webpack --config webpack.config.prod.js"
   }
 }
