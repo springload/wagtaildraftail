@@ -48,3 +48,4 @@ core/jinja2/svg.html
 
 *.sql
 example.html
+static
