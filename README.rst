@@ -1,5 +1,12 @@
-wagtaildraftail
-===============
+.. image:: https://travis-ci.org/springload/wagtaildraftail.svg?branch=master
+   :target: https://travis-ci.org/springload/wagtaildraftail
+.. image:: https://img.shields.io/pypi/v/wagtaildraftail.svg
+   :target: https://pypi.python.org/pypi/wagtaildraftail
+.. image:: https://coveralls.io/repos/github/springload/wagtaildraftail/badge.svg?branch=master
+   :target: https://coveralls.io/github/springload/wagtaildraftail?branch=master
+
+wagtaildraftail 🐦📝🍸
+=======================
 
     Draft.js editor for Wagtail, built upon `Draftail`_ and `draftjs\_exporter`_.
 
@@ -67,8 +74,8 @@ Here is a sample configuration file. This should live in your Django settings.
 
 .. code:: python
 
-    from draftjs_exporter.constants import BLOCK_TYPES, ENTITY_TYPES, INLINE_STYLES
-    from draftjs_exporter.defaults import BLOCK_MAP
+    from wagtaildraftail.constants import BLOCK_TYPES, ENTITY_TYPES, INLINE_STYLES
+    from wagtaildraftail.defaults import BLOCK_MAP
 
     TERMS_BLOCK_ID = 'TERMS_AND_CONDITIONS_TEXT'
 
@@ -183,7 +190,7 @@ Here is a sample configuration file. This should live in your Django settings.
 
     DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
         # This causes the element to disappear (fragment tags are stripped)
-        # TODO Use specific API provided by draftjs_exporter for this as soon as available.
+        # TODO Use specific API provided by wagtaildraftail for this as soon as available.
         BLOCK_TYPES.ATOMIC: {'element': 'fragment'},
         BLOCK_TYPES.UNORDERED_LIST_ITEM: {
             'element': 'li',
@@ -213,7 +220,58 @@ Creating entities
 
 TODO
 
+Development
+-----------
+
+Installation
+~~~~~~~~~~~~
+
+    Requirements: ``virtualenv``, ``pyenv``, ``twine``
+
+.. code:: sh
+
+    git clone git@github.com:springload/wagtaildraftail.git
+    cd wagtaildraftail/
+    virtualenv .venv
+    source ./.venv/bin/activate
+    make init
+    # Install the git hooks
+    ./.githooks/deploy
+    # Install all tested python versions
+    pyenv install 2.7.11 && pyenv install 3.3.6 && pyenv install 3.4.4 && pyenv install 3.5.1
+    pyenv global system 2.7.11 3.3.6 3.4.4 3.5.1
+
+Commands
+~~~~~~~~
+
+.. code:: sh
+
+    make help            # See what commands are available.
+    make init            # Install dependencies and initialise for development.
+    make publish         # Publishes a new version to pypi.
+
+Debugging
+~~~~~~~~~
+
+TODO
+
+Releases
+~~~~~~~~
+
+*  Update the `changelog`_.
+*  Update the version number in ``wagtaildraftail/__init__.py``, following semver.
+*  ``git release vx.y.z``
+*  ``make publish`` (confirm, and enter your password)
+*  Go to https://pypi.python.org/pypi/wagtaildraftail and check that all is well
+
+Documentation
+-------------
+
+    See the `docs`_ folder
+
 .. _Draftail: https://github.com/springload/draftail
-.. _draftjs\_exporter: https://github.com/springload/draftjs_exporter
+.. _draftjs\_exporter: https://github.com/springload/wagtaildraftail
 .. _Draftail configuration options: https://github.com/springload/draftail#usage
 .. _exporter config: #exporter-configuration
+.. _changelog: https://github.com/springload/wagtaildraftail/CHANGELOG.md
+.. _docs: https://github.com/springload/wagtaildraftail/docs/
