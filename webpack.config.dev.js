@@ -1,21 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const outputPath = path.join('wagtaildraftail', 'static', 'wagtaildraftail');
 
 module.exports = {
     entry: {
         wagtaildraftail: './wagtaildraftail/client/wagtaildraftail.js',
     },
     output: {
-        path: path.join(__dirname, 'wagtaildraftail', 'static', 'wagtaildraftail'),
+        path: outputPath,
         filename: '[name].js',
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('development'),
-            },
-        }),
+        new ExtractTextPlugin('wagtaildraftail.css'),
     ],
     module: {
         rules: [
@@ -26,7 +25,10 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader'],
+                }),
             },
         ],
     },

@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = require('./webpack.config.dev');
 
 module.exports = Object.assign({}, config, {
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
+    plugins: config.plugins.concat([
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
@@ -24,5 +24,5 @@ module.exports = Object.assign({}, config, {
                 screw_ie8: true
             }
         }),
-    ],
+    ]),
 });
