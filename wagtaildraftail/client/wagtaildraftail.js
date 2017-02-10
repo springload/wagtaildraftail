@@ -6,26 +6,22 @@ import DraftailEditor, { ENTITY_TYPE } from 'draftail';
 import WagtailLinkSource from './sources/WagtailLinkSource';
 import WagtailImageSource from './sources/WagtailImageSource';
 import WagtailDocumentSource from './sources/WagtailDocumentSource';
-// import GenericModelSource from './sources/GenericModelSource';
 import WagtailEmbedSource from './sources/WagtailEmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
-import Location, { findLocationEntities } from './entities/Location';
 
-import './wagtaildraftail.scss'
+import './wagtaildraftail.scss';
 
 const controls = {};
 controls[ENTITY_TYPE.IMAGE] = WagtailImageSource;
 controls[ENTITY_TYPE.EMBED] = WagtailEmbedSource;
 controls[ENTITY_TYPE.LINK] = WagtailLinkSource;
 controls[ENTITY_TYPE.DOCUMENT] = WagtailDocumentSource;
-// controls.LOCATION = GenericModelSource;
 
 const strategies = {};
 strategies[ENTITY_TYPE.LINK] = findLinkEntities;
 strategies[ENTITY_TYPE.DOCUMENT] = findDocumentEntities;
-// strategies.LOCATION = findLocationEntities;
 
 const decorators = {};
 decorators[ENTITY_TYPE.LINK] = Link;

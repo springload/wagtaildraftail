@@ -122,7 +122,10 @@ class Document:
 
         try:
             doc = document_model.objects.get(id=props['data']['id'])
-            doc_meta = get_document_meta(doc)
+            # TODO Stub until we have access to this function
+            # doc_meta = get_document_meta(doc)
+            doc_meta = {'extension': 'todo', 'size': 'todo'}
+
 
         except (document_model.DoesNotExist, AttributeError):
             return DOM.create_element(
