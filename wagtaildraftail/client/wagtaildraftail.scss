@@ -39,24 +39,6 @@
     padding-top: 1rem;
 }
 
-/**
- * Styles of content within the Draftail rich text editor.
- */
-
-.intro-text {
-    font-size: 1.175em;
-    margin: 1rem 0;
-}
-
-.small-text {
-    font-size: .875em;
-}
-
-.legals {
-    opacity: .75;
-    font-size: .875em;
-}
-
 /* Give each block element eg. paragraph some spacing so we don't end up
 with empty paragraphs in code when user double enters because they think
 there are no paragraphs */
