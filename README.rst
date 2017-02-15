@@ -189,9 +189,6 @@ Here is a sample configuration file. This should live in your Django settings.
     }
 
     DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
-        # This causes the element to disappear (fragment tags are stripped)
-        # TODO Use specific API provided by wagtaildraftail for this as soon as available.
-        BLOCK_TYPES.ATOMIC: {'element': 'fragment'},
         BLOCK_TYPES.UNORDERED_LIST_ITEM: {
             'element': 'li',
             'wrapper': ['ul', {'className': 'list-styled'}],
