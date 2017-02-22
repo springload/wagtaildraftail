@@ -245,6 +245,11 @@ Commands
 
     make help            # See what commands are available.
     make init            # Install dependencies and initialise for development.
+    make lint            # Lint the project.
+    make test            # Test the project.
+    make test-coverage   # Run the tests while generating test coverage data.
+    make test-ci         # Continuous integration test suite.
+    make clean-pyc       # Remove Python file artifacts.
     make publish         # Publishes a new version to pypi.
 
 Debugging

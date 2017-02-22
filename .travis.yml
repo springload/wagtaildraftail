@@ -1,4 +1,24 @@
-language: node_js
+language: python
+cache:
+  pip: true
+  directories:
+  - node_modules
+matrix:
+  include:
+   - env: TOXENV=py27
+     python: 2.7
+  #  - env: TOXENV=py34
+  #    python: 3.4
+  #  - env: TOXENV=py35
+  #    python: 3.5
+install:
+- nvm install
+- npm install
+- pip install tox coveralls
+script:
+- make test-ci
+# after_success:
+# - coveralls
 notifications:
   email: false
   slack:

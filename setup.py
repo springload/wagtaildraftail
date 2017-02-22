@@ -16,6 +16,17 @@ install_requires = [
     'draftjs-exporter==0.6.2',
 ]
 
+# Testing dependencies
+testing_extras = [
+    'flake8>=3.2.0',
+    'isort>=4.2.5',
+]
+
+# Documentation dependencies
+documentation_extras = [
+
+]
+
 with open('README.rst', 'r', 'utf-8') as f:
     readme = f.read()
 
@@ -39,7 +50,6 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP',
@@ -50,5 +60,9 @@ setup(
         'Topic :: Text Editors :: Word Processors',
     ],
     install_requires=install_requires,
+    extras_require={
+        'testing': testing_extras,
+        'docs': documentation_extras,
+    },
     zip_safe=False,
 )

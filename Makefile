@@ -7,5 +7,23 @@ help: ## See what commands are available.
 init: clean-pyc ## Install dependencies and initialise for development.
 	pip install -e .[testing,docs] -U
 
+lint: ## Lint the project.
+	flake8 wagtaildraftail tests setup.py
+	isort --check-only --diff --recursive wagtaildraftail tests setup.py
+
+test: ## Test the project.
+	npm run test
+
+test-coverage: ## Run the tests while generating test coverage data.
+	coverage run -m unittest discover && coverage report
+
+test-ci: ## Continuous integration test suite.
+	tox
+
+clean-pyc: ## Remove Python file artifacts.
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+
 publish: ## Publishes a new version to pypi.
 	rm dist/* && python setup.py sdist && twine upload dist/*
