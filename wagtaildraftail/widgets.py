@@ -1,12 +1,14 @@
+from __future__ import absolute_import, unicode_literals
+
 import json
 import logging
 
+from draftjs_exporter.constants import ENTITY_TYPES
+
 from django import forms
 
-from wagtail.wagtailimages.formats import get_image_formats
 from wagtail.utils.widgets import WidgetWithScript
-
-from draftjs_exporter.constants import ENTITY_TYPES
+from wagtail.wagtailimages.formats import get_image_formats
 
 
 def get_all_image_formats():

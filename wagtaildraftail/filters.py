@@ -1,6 +1,9 @@
+from __future__ import absolute_import, unicode_literals
+
 import json
 
 from draftjs_exporter.html import HTML
+
 from jinja2 import Markup
 
 from .settings import get_exporter_config

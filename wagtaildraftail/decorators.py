@@ -1,9 +1,11 @@
-from django.apps import apps
-from django.core.exceptions import ObjectDoesNotExist
+from __future__ import absolute_import, unicode_literals
+
 
 from draftjs_exporter.dom import DOM
 from draftjs_exporter.style_state import camel_to_dash
 
+from django.apps import apps
+from django.core.exceptions import ObjectDoesNotExist
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtaildocs.models import get_document_model
 from wagtail.wagtailembeds.format import embed_to_frontend_html

@@ -1,6 +1,7 @@
-from django import forms
+from __future__ import absolute_import, unicode_literals
 
 import validators
+from django import forms
 
 
 class SerializedJSONField(forms.CharField):

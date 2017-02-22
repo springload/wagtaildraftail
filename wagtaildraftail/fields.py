@@ -1,6 +1,7 @@
-from django.db import models
+from __future__ import absolute_import, unicode_literals
 
 import validators
+from django.db import models
 
 
 class DraftailTextField(models.TextField):
