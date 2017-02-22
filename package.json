@@ -35,6 +35,7 @@
   "scripts": {
     "start": "npm run build -s -- --watch",
     "build": "webpack --config webpack.config.dev.js",
-    "dist": "webpack --config webpack.config.prod.js"
+    "dist": "webpack --config webpack.config.prod.js",
+    "test": "npm run dist"
   }
 }
