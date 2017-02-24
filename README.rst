@@ -8,7 +8,7 @@
 wagtaildraftail 🐦📝🍸
 =======================
 
-    Draft.js editor for Wagtail, built upon `Draftail`_ and `draftjs\_exporter`_.
+    Draft.js editor for Wagtail, built upon `Draftail <https://github.com/springload/draftail>`_ and `draftjs_exporter <https://github.com/springload/draftjs_exporter>`_.
 
 **This is alpha software, use at your own risk.**
 
@@ -63,12 +63,12 @@ Each editor defined in ``WAGTAILADMIN_RICH_TEXT_EDITORS`` is a dictionary with 2
 
 -  ``WIDGET`` is a mandatory string set to the widget to use
    -  should always be set to ``wagtaildraftail.widgets.JsonTextArea`` (or a subclass of it) to work with Draft.js content
--  ``OPTIONS`` is a dictionary which follows the format of `Draftail configuration options`_.
+-  ``OPTIONS`` is a dictionary which follows the format of `Draftail configuration options <https://github.com/springload/draftail#usage>`_.
    -  Draftail options which are JavaScript values are hydrated at runtime in ``client/wagtaildraftail.js``
 
 **WARNING:** The ``type`` key for ``blockTypes``, ``inlineStyles`` and ``entityTypes`` shouldn’t be changed. It is what defines how content is rendered, and is saved as a JSON blob in the database which would make migrations really painful.
 
-**WARNING:** All the blocks/styles/entities defined in the editor config should have been configured to render properly in the `exporter config`_.
+**WARNING:** All the blocks/styles/entities defined in the editor config should have been configured to render properly in the `exporter config <#exporter-configuration>`_.
 
 Here is a sample configuration file. This should live in your Django settings.
 
@@ -260,7 +260,7 @@ TODO
 Releases
 ~~~~~~~~
 
-*  Update the `changelog`_.
+*  Update the `changelog <https://github.com/springload/wagtaildraftail/CHANGELOG.md>`_.
 *  Update the version number in ``wagtaildraftail/__init__.py``, following semver.
 *  ``git release vx.y.z``
 *  ``make publish`` (confirm, and enter your password)
@@ -269,11 +269,4 @@ Releases
 Documentation
 -------------
 
-    See the `docs`_ folder
-
-.. _Draftail: https://github.com/springload/draftail
-.. _draftjs\_exporter: https://github.com/springload/wagtaildraftail
-.. _Draftail configuration options: https://github.com/springload/draftail#usage
-.. _exporter config: #exporter-configuration
-.. _changelog: https://github.com/springload/wagtaildraftail/CHANGELOG.md
-.. _docs: https://github.com/springload/wagtaildraftail/docs/
+    See the `docs <https://github.com/springload/wagtaildraftail/docs/>`_ folder
