@@ -19,8 +19,7 @@ def get_exporter_config():
 
         # Load classes.
         for entity_id, decorator in entity_decorators.items():
-            if isinstance(decorator, str):
-                entity_decorators[entity_id] = import_string(decorator)
+            entity_decorators[entity_id] = import_string(decorator)
 
         # Save
         _exporter_config = {
