@@ -188,6 +188,10 @@ Here is a sample configuration file. This should live in your Django settings.
         ENTITY_TYPES.HORIZONTAL_RULE: 'wagtaildraftail.decorators.HR',
     }
 
+    DRAFT_EXPORTER_COMPOSITE_DECORATORS = [
+        'wagtaildraftail.decorators.BR',
+    ]
+
     DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
         BLOCK_TYPES.UNORDERED_LIST_ITEM: {
             'element': 'li',

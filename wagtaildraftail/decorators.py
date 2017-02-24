@@ -1,9 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-
+import re
 
 from django.apps import apps
 from django.core.exceptions import ObjectDoesNotExist
+from draftjs_exporter.constants import BLOCK_TYPES
 from draftjs_exporter.dom import DOM
 from draftjs_exporter.style_state import camel_to_dash
 from wagtail.wagtailcore.models import Page
@@ -19,9 +20,8 @@ MISSING_RESOURCE_CLASS = 'link--missing-resource'
 MISSING_RESOURCE_URL = '#'
 
 
-class HR:
-    def render(self, props):
-        return DOM.create_element('hr')
+def HR(props):
+    return DOM.create_element('hr')
 
 
 class Link:
@@ -108,14 +108,13 @@ class Embed:
         return DOM.parse_html(embed_to_frontend_html(props['data']['url']))
 
 
-class Icon:
-    def render(self, props):
-        href = '#icon-%s' % props['name']
-        return DOM.create_element(
-            'svg',
-            {'class': 'icon'},
-            DOM.create_element('use', {'xlink:href': href}),
-        )
+def Icon(props):
+    href = '#icon-%s' % props['name']
+    return DOM.create_element(
+        'svg',
+        {'class': 'icon'},
+        DOM.create_element('use', {'xlink:href': href}),
+    )
 
 
 class Document:
@@ -154,3 +153,17 @@ class Document:
         link_item = DOM.create_element('a', {'href': doc.url, 'class': 'icon-text'}, icon_element, metadata_element)
 
         return DOM.create_element('span', {'class': 'file'}, link_item, size_element)
+
+
+class BR:
+    """
+    Replace line breaks (\n) with br tags.
+    """
+    SEARCH_RE = re.compile(r'\n')
+
+    def render(self, props):
+        # Do not process matches inside code blocks.
+        if props['block_type'] == BLOCK_TYPES.CODE:
+            return props['children']
+
+        return DOM.create_element('br')

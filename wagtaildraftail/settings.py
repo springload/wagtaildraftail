@@ -14,16 +14,18 @@ def get_exporter_config():
     if not _exporter_config:
         # Get from settings.
         entity_decorators = getattr(settings, 'DRAFT_EXPORTER_ENTITY_DECORATORS', {})
+        composite_decorators = getattr(settings, 'DRAFT_EXPORTER_COMPOSITE_DECORATORS', [])
         block_map = getattr(settings, 'DRAFT_EXPORTER_BLOCK_MAP', BLOCK_MAP)
 
         # Load classes.
-        for block_id, block_class in entity_decorators.items():
-            if isinstance(block_class, str):
-                entity_decorators[block_id] = import_string(block_class)()
+        for entity_id, decorator in entity_decorators.items():
+            if isinstance(decorator, str):
+                entity_decorators[entity_id] = import_string(decorator)
 
         # Save
         _exporter_config = {
             'entity_decorators': entity_decorators,
+            'composite_decorators': [import_string(decorator) for decorator in composite_decorators],
             'block_map': block_map
         }
 
