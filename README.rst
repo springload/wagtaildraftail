@@ -30,7 +30,7 @@ Add the field to your page object:
     from wagtaildraftail.fields import DraftailTextField
 
     class MyPage(Page):
-        body = DraftailTextField()
+        body = DraftailTextField(blank=True)
 
         panels = [
             FieldPanel('body')
@@ -74,8 +74,8 @@ Here is a sample configuration file. This should live in your Django settings.
 
 .. code:: python
 
-    from wagtaildraftail.constants import BLOCK_TYPES, ENTITY_TYPES, INLINE_STYLES
-    from wagtaildraftail.defaults import BLOCK_MAP
+    from draftjs_exporter.constants import BLOCK_TYPES, ENTITY_TYPES, INLINE_STYLES
+    from draftjs_exporter.defaults import BLOCK_MAP
 
     TERMS_BLOCK_ID = 'TERMS_AND_CONDITIONS_TEXT'
 
@@ -98,7 +98,7 @@ Here is a sample configuration file. This should live in your Django settings.
     DRAFT_ENTITY_TYPE_DOCUMENT = {'label': 'Document', 'type': ENTITY_TYPES.DOCUMENT, 'icon': 'icon-doc-full'}
 
     WAGTAILADMIN_RICH_TEXT_EDITORS = {
-        'simple': {
+        'default_draftjs': {
             'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
             'OPTIONS': {
                 'enableHorizontalRule': True,
