@@ -2,10 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 
-from draftjs_exporter.html import HTML
-
 from django import template
 from django.utils.safestring import mark_safe
+from draftjs_exporter.html import HTML
+
 from wagtaildraftail.settings import get_exporter_config
 
 

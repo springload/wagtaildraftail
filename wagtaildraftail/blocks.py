@@ -2,11 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 
-import forms
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
-from filters import draft_text
 from wagtail.wagtailcore.blocks import FieldBlock
+
+import forms
+from filters import draft_text
 
 
 class DraftailTextBlock(FieldBlock):

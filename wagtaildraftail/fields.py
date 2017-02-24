@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from .validators import EMPTY_SERIALIZED_JSON_VALUES
 from django.db import models
+
+from .validators import EMPTY_SERIALIZED_JSON_VALUES
 
 
 class DraftailTextField(models.TextField):

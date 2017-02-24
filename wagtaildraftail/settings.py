@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from draftjs_exporter.defaults import BLOCK_MAP
-
 from django.conf import settings
 from django.utils. module_loading import import_string
+from draftjs_exporter.defaults import BLOCK_MAP
+
 
 _exporter_config = None
 
