@@ -1,8 +1,8 @@
-import WagtailModalSource from './WagtailModalSource';
+import ModalSource from './ModalSource';
 
 const $ = global.jQuery;
 
-class WagtailEmbedSource extends WagtailModalSource {
+class EmbedSource extends ModalSource {
     constructor(props) {
         super(props);
         this.parseData = this.parseData.bind(this);
@@ -33,4 +33,4 @@ class WagtailEmbedSource extends WagtailModalSource {
     }
 }
 
-export default WagtailEmbedSource;
+export default EmbedSource;

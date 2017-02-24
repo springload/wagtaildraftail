@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 
 import DraftailEditor, { ENTITY_TYPE } from 'draftail';
 
-import WagtailLinkSource from './sources/WagtailLinkSource';
-import WagtailImageSource from './sources/WagtailImageSource';
-import WagtailDocumentSource from './sources/WagtailDocumentSource';
-import WagtailEmbedSource from './sources/WagtailEmbedSource';
+import LinkSource from './sources/LinkSource';
+import ImageSource from './sources/ImageSource';
+import DocumentSource from './sources/DocumentSource';
+import EmbedSource from './sources/EmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
@@ -14,10 +14,10 @@ import Document, { findDocumentEntities } from './entities/Document';
 import './wagtaildraftail.scss';
 
 const controls = {};
-controls[ENTITY_TYPE.IMAGE] = WagtailImageSource;
-controls[ENTITY_TYPE.EMBED] = WagtailEmbedSource;
-controls[ENTITY_TYPE.LINK] = WagtailLinkSource;
-controls[ENTITY_TYPE.DOCUMENT] = WagtailDocumentSource;
+controls[ENTITY_TYPE.IMAGE] = ImageSource;
+controls[ENTITY_TYPE.EMBED] = EmbedSource;
+controls[ENTITY_TYPE.LINK] = LinkSource;
+controls[ENTITY_TYPE.DOCUMENT] = DocumentSource;
 
 const strategies = {};
 strategies[ENTITY_TYPE.LINK] = findLinkEntities;

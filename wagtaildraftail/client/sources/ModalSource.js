@@ -3,7 +3,7 @@ import { Entity, AtomicBlockUtils, RichUtils } from 'draft-js';
 
 const $ = global.jQuery;
 
-class WagtailModalSource extends React.Component {
+class ModalSource extends React.Component {
     constructor(props) {
         super(props);
         this.onClose = this.onClose.bind(this);
@@ -43,7 +43,7 @@ class WagtailModalSource extends React.Component {
     }
 }
 
-WagtailModalSource.propTypes = {
+ModalSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
     options: React.PropTypes.object.isRequired,
     entity: React.PropTypes.object,
@@ -51,8 +51,8 @@ WagtailModalSource.propTypes = {
     onClose: React.PropTypes.func.isRequired,
 };
 
-WagtailModalSource.defaultProps = {
+ModalSource.defaultProps = {
     entity: null,
 };
 
-export default WagtailModalSource;
+export default ModalSource;
