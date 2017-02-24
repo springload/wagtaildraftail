@@ -1,11 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-import validators
+from .validators import EMPTY_SERIALIZED_JSON_VALUES
 from django.db import models
 
 
 class DraftailTextField(models.TextField):
-    empty_values = list(validators.EMPTY_SERIALIZED_JSON_VALUES)
+    empty_values = list(EMPTY_SERIALIZED_JSON_VALUES)
 
     def __init__(self, *args, **kwargs):
         self.editor = kwargs.pop('editor', 'default_draftjs')
