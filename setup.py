@@ -20,6 +20,7 @@ install_requires = [
 testing_extras = [
     'flake8>=3.2.0',
     'isort>=4.2.5',
+    'wagtail==1.9',
 ]
 
 # Documentation dependencies

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load draftail_tags wagtailcore_tags %}
+
+{% block content %}
+    <h1>wagtaildraftail test site</h1>
+    <h2>Draft.js content</h2>
+    {{ page.body_draftail|draft_text }}
+    <hr>
+    <h2>Hallo content</h2>
+    {{ page.body_hallo|richtext }}
+{% endblock %}
