@@ -20,6 +20,14 @@
       "react"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/wagtaildraftail/client/tests/styleMock.js"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "dependencies": {
     "draft-js": "^0.10.0",
     "draftail": "0.5.0",
@@ -28,17 +36,24 @@
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
     "extract-text-webpack-plugin": "^2.0.0",
+    "jest": "^19.0.2",
+    "react-addons-test-utils": "^15.4.2",
     "webpack": "^2.2.1"
   },
   "scripts": {
     "start": "npm run build -s -- --watch",
     "build": "webpack --config webpack.config.dev.js",
     "dist": "webpack --config webpack.config.prod.js",
-    "test": "npm run dist"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   }
 }
