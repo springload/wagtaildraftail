@@ -26,12 +26,12 @@ else
         make lint
         make test-ci
     fi
-    exit 0
 
     if [ -n "$JS_FILES" ];
     then
         echo 'TODO lint JS'
         # npm run lint
     fi
+
     exit 0
 fi
