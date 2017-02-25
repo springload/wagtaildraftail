@@ -11,7 +11,8 @@ import EmbedSource from './sources/EmbedSource';
 import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
 
-import './wagtaildraftail.scss';
+import 'draftail/dist/draftail.css';
+import './wagtaildraftail.css';
 
 const controls = {};
 controls[ENTITY_TYPE.IMAGE] = ImageSource;

@@ -15,10 +15,10 @@
     "url": "git+https://github.com/springload/wagtaildraftail.git"
   },
   "babel": {
-      "presets": [
-          "latest",
-          "react"
-      ]
+    "presets": [
+      "latest",
+      "react"
+    ]
   },
   "dependencies": {
     "draft-js": "^0.10.0",
@@ -32,10 +32,7 @@
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.3",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^5.0.1",
-    "style-loader": "^0.13.1",
+    "extract-text-webpack-plugin": "^2.0.0",
     "webpack": "^2.2.1"
   },
   "scripts": {
