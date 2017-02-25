@@ -28,6 +28,9 @@
       "enzyme-to-json/serializer"
     ]
   },
+  "eslintConfig": {
+    "extends": "airbnb"
+  },
   "dependencies": {
     "draft-js": "^0.10.0",
     "draftail": "0.5.0",
@@ -43,15 +46,20 @@
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.5.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "^2.0.0",
     "jest": "^19.0.2",
     "react-addons-test-utils": "^15.4.2",
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "start": "webpack --config webpack.config.dev.js --watch",
-    "dist": "webpack --config webpack.config.prod.js",
-    "lint": "echo 'JS linting'",
+    "start": "webpack --config wagtaildraftail/client/webpack.config.dev.js --watch",
+    "dist": "webpack --config wagtaildraftail/client/webpack.config.prod.js",
+    "lint": "eslint wagtaildraftail/client",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
