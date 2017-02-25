@@ -17,8 +17,8 @@ install:
 - pip install tox coveralls
 script:
 - make test-ci
-# after_success:
-# - coveralls
+after_success:
+- coveralls
 notifications:
   email: false
   slack:

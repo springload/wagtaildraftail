@@ -13,13 +13,20 @@ except ImportError:
 
 
 install_requires = [
-    'draftjs-exporter==0.7.0',
+    'draftjs_exporter==0.7.0',
 ]
 
 # Testing dependencies
 testing_extras = [
+    # Required for running the tests
+    'tox>=2.3.1',
+
+    # For coverage and PEP8 linting
+    'coverage>=4.1.0',
     'flake8>=3.2.0',
     'isort>=4.2.5',
+
+    # For test site
     'wagtail==1.9',
 ]
 

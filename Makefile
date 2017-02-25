@@ -12,10 +12,12 @@ lint: ## Lint the project.
 	isort --check-only --diff --recursive wagtaildraftail tests setup.py
 
 test: ## Test the project.
+	./tests/manage.py test
 	npm run test
 
 test-coverage: ## Run the tests while generating test coverage data.
-	coverage run -m unittest discover && coverage report
+	coverage run ./tests/manage.py test && coverage report
+	npm run test:coverage
 
 test-ci: ## Continuous integration test suite.
 	tox
