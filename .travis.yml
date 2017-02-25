@@ -13,7 +13,7 @@ matrix:
    - env: TOXENV=py35
      python: 3.5
    - env: TOXENV=node
-     python: 2.7
+     python: 3.5
 install:
 - nvm install
 - npm install
@@ -22,6 +22,7 @@ install:
 script:
 - make test-ci
 after_success:
+# This is ran on all build, but the coverage is only calculated in one.
 # Convert JS LCOV report to Coveralls JSON, merge and send.
 - coveralls-lcov -v -n coverage/lcov.info > js_coverage.json
 - coveralls --merge=js_coverage.json

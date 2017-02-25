@@ -16,6 +16,7 @@ test: ## Test the project.
 
 test-coverage: ## Run the tests while generating test coverage data.
 	coverage run ./tests/manage.py test && coverage report
+	npm run test:coverage
 
 test-ci: ## Continuous integration test suite.
 	tox
