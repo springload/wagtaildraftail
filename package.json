@@ -52,6 +52,7 @@
     "start": "npm run build -s -- --watch",
     "build": "webpack --config webpack.config.dev.js",
     "dist": "webpack --config webpack.config.prod.js",
+    "lint": "echo 'JS linting'",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
