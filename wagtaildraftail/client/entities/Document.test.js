@@ -1,7 +1,7 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import { Entity } from 'draft-js';
 import Document from './Document';
-import { shallow } from 'enzyme';
 
 describe('Document', () => {
   it('exists', () => {
@@ -15,5 +15,5 @@ describe('Document', () => {
         <span>Test children</span>
       </Document>
     ))).toMatchSnapshot();
-  })
+  });
 });

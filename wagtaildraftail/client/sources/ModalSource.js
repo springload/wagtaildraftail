@@ -1,58 +1,60 @@
 import React from 'react';
-import { Entity, AtomicBlockUtils, RichUtils } from 'draft-js';
+import { EditorState, Entity, AtomicBlockUtils, RichUtils } from 'draft-js';
 
 const $ = global.jQuery;
 
 class ModalSource extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onClose = this.onClose.bind(this);
-        this.onConfirm = this.onConfirm.bind(this);
-        this.onConfirmAtomicBlock = this.onConfirmAtomicBlock.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+    this.onConfirmAtomicBlock = this.onConfirmAtomicBlock.bind(this);
+  }
 
-    onConfirm(data) {
-        const { editorState, options, onUpdate } = this.props;
-        const entityKey = Entity.create(options.type, 'MUTABLE', data);
-        const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
+  componentWillUnmount() {
+    $(document.body).off('hidden.bs.modal', this.onClose);
+  }
 
-        onUpdate(nextState);
-    }
+  onConfirm(data) {
+    const { editorState, options, onUpdate } = this.props;
+    const entityKey = Entity.create(options.type, 'MUTABLE', data);
+    const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
 
-    onConfirmAtomicBlock(data) {
-        const { editorState, options, onUpdate } = this.props;
-        const entityKey = Entity.create(options.type, 'IMMUTABLE', data);
-        const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
+    onUpdate(nextState);
+  }
 
-        onUpdate(nextState);
-    }
+  onConfirmAtomicBlock(data) {
+    const { editorState, options, onUpdate } = this.props;
+    const entityKey = Entity.create(options.type, 'IMMUTABLE', data);
+    const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
 
-    onClose(e) {
-        const { onClose } = this.props;
-        e.preventDefault();
+    onUpdate(nextState);
+  }
 
-        onClose();
-    }
+  onClose(e) {
+    const { onClose } = this.props;
+    e.preventDefault();
 
-    componentWillUnmount() {
-        $(document.body).off('hidden.bs.modal', this.onClose);
-    }
+    onClose();
+  }
 
-    render() {
-        return <div />;
-    }
+  render() {
+    return <div />;
+  }
 }
 
 ModalSource.propTypes = {
-    editorState: React.PropTypes.object.isRequired,
-    options: React.PropTypes.object.isRequired,
-    entity: React.PropTypes.object,
-    onUpdate: React.PropTypes.func.isRequired,
-    onClose: React.PropTypes.func.isRequired,
+  editorState: React.PropTypes.instanceOf(EditorState).isRequired,
+  // eslint-disable-next-line
+  options: React.PropTypes.object.isRequired,
+  // eslint-disable-next-line
+  entity: React.PropTypes.object,
+  onUpdate: React.PropTypes.func.isRequired,
+  onClose: React.PropTypes.func.isRequired,
 };
 
 ModalSource.defaultProps = {
-    entity: null,
+  entity: null,
 };
 
 export default ModalSource;

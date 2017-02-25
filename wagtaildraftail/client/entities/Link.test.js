@@ -1,7 +1,7 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import { Entity } from 'draft-js';
 import Link from './Link';
-import { shallow } from 'enzyme';
 
 describe('Link', () => {
   it('exists', () => {

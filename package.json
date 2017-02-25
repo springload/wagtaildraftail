@@ -29,7 +29,14 @@
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [2, { "extensions": [".js"] }]
+    },
+    "env": {
+      "jest": true,
+      "browser": true
+    }
   },
   "dependencies": {
     "draft-js": "^0.10.0",
