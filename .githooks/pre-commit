@@ -24,14 +24,13 @@ else
     if [ -n "$PY_FILES" ];
     then
         make lint
-        make test
+        TOXENV=py27,py34,py35 make test-ci
     fi
 
     if [ -n "$JS_FILES" ];
     then
         npm run lint
-        npm run test
-        npm run dist
+        TOXENV=node make test-ci
     fi
 
     exit 0

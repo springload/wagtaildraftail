@@ -49,8 +49,7 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "start": "npm run build -s -- --watch",
-    "build": "webpack --config webpack.config.dev.js",
+    "start": "webpack --config webpack.config.dev.js --watch",
     "dist": "webpack --config webpack.config.prod.js",
     "lint": "echo 'JS linting'",
     "test": "jest",
