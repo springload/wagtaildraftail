@@ -1,6 +1,7 @@
 language: python
 cache:
   pip: true
+  bundler: true
   directories:
   - node_modules
 matrix:
@@ -15,10 +16,13 @@ install:
 - nvm install
 - npm install
 - pip install tox coveralls
+- gem install coveralls-lcov
 script:
 - make test-ci
 after_success:
-- coveralls
+# Convert JS LCOV report to Coveralls JSON, merge and send.
+- coveralls-lcov -v -n coverage/lcov.info > js_coverage.json
+- coveralls --merge=js_coverage.json
 notifications:
   email: false
   slack:
