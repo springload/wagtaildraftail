@@ -13,7 +13,6 @@ lint: ## Lint the project.
 
 test: ## Test the project.
 	./tests/manage.py test
-	npm run test
 
 test-coverage: ## Run the tests while generating test coverage data.
 	coverage run ./tests/manage.py test && coverage report

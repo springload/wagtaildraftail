@@ -18,19 +18,20 @@ else
     set -e
 
     NEW_FILES=$(git --no-pager diff --name-only --cached)
-    JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
     PY_FILES=$(echo "$NEW_FILES" | { grep .py$ || true; })
+    JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
 
     if [ -n "$PY_FILES" ];
     then
         make lint
-        make test-ci
+        make test
     fi
 
     if [ -n "$JS_FILES" ];
     then
-        echo 'TODO lint JS'
-        # npm run lint
+        npm run lint
+        npm run test
+        npm run dist
     fi
 
     exit 0
