@@ -232,6 +232,7 @@ Debugging
 To get up and running,
 
 .. code:: sh
+
     # Set up the development environment.
     make init
     # Start the development server.
@@ -247,6 +248,7 @@ Updating test data
 Here are useful commands:
 
 .. code:: sh
+
     # Create new migrations from changes to the project.
     python tests/manage.py makemigrations
     # "Reset" the database.
