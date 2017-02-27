@@ -1,9 +1,8 @@
 import night from './night';
 
-describe.skip('Homepage', () => {
-  it('works', async () => {
-    await night.goto(`http://${night.TEST_DOMAIN}/`);
-    expect(await night.path()).toEqual('/');
+describe('Homepage', () => {
+  beforeAll(() => {
+    return night.goto(`http://${night.TEST_DOMAIN}/`);
   });
 
   it('title', async () => {

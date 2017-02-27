@@ -1,11 +1,10 @@
 import night from './night';
 import * as wagtail from './wagtail-night';
 
-describe.skip('CMS', () => {
+describe('CMS', () => {
   describe('Login', () => {
-    it('works', async () => {
-      await night.use(wagtail.login(night.TEST_DOMAIN, 'admin', 'admin')).wait(1000);
-      expect(await night.path()).toBe('/admin/');
+    beforeAll(() => {
+      return night.use(wagtail.login(night.TEST_DOMAIN, 'admin', 'admin')).wait(1000);
     });
 
     it('arrives on dashboard', async () => {
@@ -14,9 +13,8 @@ describe.skip('CMS', () => {
   });
 
   describe('Edit', () => {
-    it('works', async () => {
-      await night.use(wagtail.edit(night.TEST_DOMAIN, 3)).wait(1000);
-      expect(await night.path()).toContain('/edit/');
+    beforeAll(() => {
+      return night.use(wagtail.edit(night.TEST_DOMAIN, 3)).wait(1000);
     });
 
     it('has Draftail', async () => {
@@ -25,9 +23,8 @@ describe.skip('CMS', () => {
   });
 
   describe('Logout', () => {
-    it('works', async () => {
-      await night.click('[href="/admin/logout/"]').wait();
-      expect(await night.path()).toBe('/admin/login/');
+    beforeAll(() => {
+      return night.click('[href="/admin/logout/"]').wait();
     });
 
     it('arrives with success message', async () => {
@@ -36,7 +33,7 @@ describe.skip('CMS', () => {
   });
 
   // TODO Should be an afterAll, but can't get it to work.
-  it('teardown nightmare instance', async () => {
-    await night.end();
+  afterAll(() => {
+    return night.end();
   });
 });
