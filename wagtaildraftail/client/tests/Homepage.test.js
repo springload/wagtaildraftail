@@ -1,6 +1,6 @@
 import night from './night';
 
-describe('Homepage', () => {
+describe.skip('Homepage', () => {
   beforeAll(() => {
     return night.goto(`http://${night.TEST_DOMAIN}/`);
   });
