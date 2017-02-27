@@ -236,8 +236,6 @@ Installation
     virtualenv .venv
     source ./.venv/bin/activate
     make init
-    # Install the git hooks
-    ./.githooks/deploy
     # Install all tested python versions
     pyenv install 2.7.11 && pyenv install 3.3.6 && pyenv install 3.4.4 && pyenv install 3.5.1
     pyenv global system 2.7.11 3.3.6 3.4.4 3.5.1
@@ -249,17 +247,43 @@ Commands
 
     make help            # See what commands are available.
     make init            # Install dependencies and initialise for development.
+    make start           # Starts the development server and compilation tools.
     make lint            # Lint the project.
+    make load-data       # Prepares the database for usage.
     make test            # Test the project.
     make test-coverage   # Run the tests while generating test coverage data.
     make test-ci         # Continuous integration test suite.
     make clean-pyc       # Remove Python file artifacts.
+    make dist            # Compile the JS and CSS for release.
     make publish         # Publishes a new version to pypi.
 
 Debugging
 ~~~~~~~~~
 
-TODO
+To get up and running,
+
+.. code:: sh
+    # Set up the development environment.
+    make init
+    # Start the development server.
+    make start
+    # If necessary, start the JS compilation watch
+    npm run start
+
+There are testing and linting tasks available both in the Makefile (Python) and package.json (JS).
+
+Updating test data
+~~~~~~~~~~~~~~~~~~
+
+Here are useful commands:
+
+.. code:: sh
+    # Create new migrations from changes to the project.
+    python tests/manage.py makemigrations
+    # "Reset" the database.
+    rm db.sqlite3
+    # Generate fixtures from DB data. Remember to clean them up so they do not overlap with data from migrations.
+    python tests/manage.py dumpdata > tests/fixtures/test_data.json
 
 Releases
 ~~~~~~~~

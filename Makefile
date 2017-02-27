@@ -1,4 +1,4 @@
-.PHONY: clean-pyc init help test-ci
+.PHONY: help init start lint load-data test test-coverage test-ci clean-pyc dist publish
 .DEFAULT_GOAL := help
 
 help: ## See what commands are available.
@@ -6,16 +6,25 @@ help: ## See what commands are available.
 
 init: clean-pyc ## Install dependencies and initialise for development.
 	pip install -e .[testing,docs] -U
+	make load-data
+	make dist
+
+start: ## Starts the development server.
+	python tests/manage.py runserver
 
 lint: ## Lint the project.
 	flake8 wagtaildraftail tests setup.py
 	isort --check-only --diff --recursive wagtaildraftail tests setup.py
 
+load-data: ## Prepares the database for usage.
+	python tests/manage.py migrate
+	python tests/manage.py loaddata tests/fixtures/test_data.json
+
 test: ## Test the project.
-	./tests/manage.py test
+	python tests/manage.py test --parallel
 
 test-coverage: ## Run the tests while generating test coverage data.
-	coverage run ./tests/manage.py test && coverage report
+	coverage run ./tests/manage.py test --parallel && coverage report
 	npm run test:coverage
 
 test-ci: ## Continuous integration test suite.
@@ -26,5 +35,8 @@ clean-pyc: ## Remove Python file artifacts.
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 
-publish: ## Publishes a new version to pypi.
+dist: ## Compile the JS and CSS for release.
+	npm run dist
+
+publish: dist ## Publishes a new version to pypi.
 	rm dist/* && python setup.py sdist && twine upload dist/*
