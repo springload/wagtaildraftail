@@ -26,6 +26,9 @@
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/wagtaildraftail/client/tests"
     ]
   },
   "eslintConfig": {
