@@ -1,0 +1,45 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$QSNkSUhSt57r$8be4fpmWSmIxwUbaDPb+I0SkixvHa0uEJb2dsDiiZhk=",
+      "last_login": "2017-02-26T00:57:05.654Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2017-02-26T00:56:47.617Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "wagtailembeds.embed",
+    "pk": 1,
+    "fields": {
+      "url": "https://www.youtube.com/watch?v=FR7wOGyAzpw",
+      "max_width": null,
+      "type": "video",
+      "html": "<iframe width=\"459\" height=\"344\" src=\"https://www.youtube.com/embed/FR7wOGyAzpw?feature=oembed\" frameborder=\"0\" allowfullscreen></iframe>",
+      "title": "Fabulous Secret Powers",
+      "author_name": "slackcircus",
+      "provider_name": "YouTube",
+      "thumbnail_url": "https://i.ytimg.com/vi/FR7wOGyAzpw/hqdefault.jpg",
+      "width": 459,
+      "height": 344,
+      "last_updated": "2017-02-26T00:57:25.925Z"
+    }
+  },
+  {
+    "model": "home.homepage",
+    "pk": 3,
+    "fields": {
+      "body_draftail": "{\"entityMap\": {\"0\": {\"data\": {\"providerName\": \"YouTube\", \"title\": \"Fabulous Secret Powers\", \"url\": \"https://www.youtube.com/watch?v=FR7wOGyAzpw\", \"embedType\": \"media\", \"authorName\": \"slackcircus\", \"thumbnail\": \"https://i.ytimg.com/vi/FR7wOGyAzpw/hqdefault.jpg\"}, \"type\": \"EMBED\", \"mutability\": \"IMMUTABLE\"}}, \"blocks\": [{\"text\": \"Hello, Draftail!\", \"entityRanges\": [], \"depth\": 0, \"data\": {}, \"key\": \"3b9ec\", \"inlineStyleRanges\": [], \"type\": \"header-three\"}, {\"text\": \" \", \"entityRanges\": [{\"length\": 1, \"key\": 0, \"offset\": 0}], \"depth\": 0, \"data\": {}, \"key\": \"2leo1\", \"inlineStyleRanges\": [], \"type\": \"atomic\"}, {\"text\": \"This is a list.\", \"entityRanges\": [], \"depth\": 0, \"data\": {}, \"key\": \"20qsh\", \"inlineStyleRanges\": [], \"type\": \"unordered-list-item\"}, {\"text\": \"A nested list.\", \"entityRanges\": [], \"depth\": 1, \"data\": {}, \"key\": \"cn371\", \"inlineStyleRanges\": [], \"type\": \"unordered-list-item\"}, {\"text\": \"A bit nested.\", \"entityRanges\": [], \"depth\": 0, \"data\": {}, \"key\": \"ekvfb\", \"inlineStyleRanges\": [], \"type\": \"unordered-list-item\"}]}",
+      "body_hallo": "<h3>Hello, Hallo!</h3><p></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=FR7wOGyAzpw\"/>\n<ul><li>This is a list</li><li>It is not nested.</li></ul><p></p>"
+    }
+  }
+]

@@ -4,10 +4,14 @@
 {% block content %}
     <h1>wagtaildraftail test site</h1>
     <h2>Draft.js content</h2>
-    {{ page.body_draftail|draft_text }}
+    <div data-editor-draftail>
+        {{ page.body_draftail|draft_text }}
+    </div>
     <pre><code>{{ page.body_draftail }}</code></pre>
     <hr>
     <h2>Hallo content</h2>
-    {{ page.body_hallo|richtext }}
+    <div data-editor-hallo>
+        {{ page.body_hallo|richtext }}
+    </div>
     <pre><code>{{ page.body_hallo }}</code></pre>
 {% endblock %}

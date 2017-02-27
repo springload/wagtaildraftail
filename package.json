@@ -31,7 +31,17 @@
   "eslintConfig": {
     "extends": "airbnb",
     "rules": {
-      "react/jsx-filename-extension": [2, { "extensions": [".js"] }]
+      "arrow-body-style": [
+        "off"
+      ],
+      "react/jsx-filename-extension": [
+        "error",
+        {
+          "extensions": [
+            ".js"
+          ]
+        }
+      ]
     },
     "env": {
       "jest": true,
@@ -48,6 +58,7 @@
     "babel-core": "^6.22.1",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
@@ -60,6 +71,7 @@
     "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "^2.0.0",
     "jest": "^19.0.2",
+    "nightmare": "^2.10.0",
     "react-addons-test-utils": "^15.4.2",
     "webpack": "^2.2.1"
   },
