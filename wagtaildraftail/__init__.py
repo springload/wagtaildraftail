@@ -1,5 +1,5 @@
 __title__ = 'wagtaildraftail'
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __author__ = 'Springload'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2017 Springload'
