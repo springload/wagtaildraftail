@@ -10,20 +10,22 @@ wagtaildraftail 🐦📝🍸
 
     Draft.js editor for Wagtail, built upon `Draftail <https://github.com/springload/draftail>`_ and `draftjs_exporter <https://github.com/springload/draftjs_exporter>`_.
 
-**This is alpha software, use at your own risk.**
+**This is alpha software, use at your own risk. Do not use in production (yet).**
 
 Installation
 ------------
 
-Grab the package from pip with, ``pip install wagtaildraftail``, then add ``wagtaildraftail`` as an app in your Django settings.
+Grab the package from pip with ``pip install wagtaildraftail``, then add ``wagtaildraftail`` as an app in your Django settings.
 
 Usage
 -----
 
+    There is a basic test site set up in the ``tests`` folder for reference.
+
 With Pages
 ~~~~~~~~~~
 
-Add the field to your page object:
+First, add a Draftail field to some of your pages. Here is an example:
 
 .. code:: python
 
@@ -36,14 +38,20 @@ Add the field to your page object:
             FieldPanel('body')
         ]
 
-Apply the ``draft_text`` filter into your template (make sure it’s available to your template engine):
+Then, when displaying those fields, use the ``draft_text`` filter in the templates.
 
 .. code:: html
 
-    {{ page.body|draft_text }}
+    {% load draftail_tags %}
+
+    {% block content %}
+        {{ page.body|draft_text }}
+    {% endblock %}
 
 With StreamField
 ~~~~~~~~~~~~~~~~
+
+Here is an example using the ready-made block:
 
 .. code:: python
 
@@ -53,7 +61,7 @@ With StreamField
         body = DraftailTextBlock()
 
 Configuration
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 Both ``DraftailTextField`` and ``DraftailTextBlock`` accept a string as keyword argument ``editor`` for a per field customisation.
 
@@ -110,43 +118,7 @@ Here is a sample configuration file. This should live in your Django settings.
                 'blockTypes': [
                     DRAFT_BLOCK_TYPE_H3,
                     DRAFT_BLOCK_TYPE_UL,
-                    DRAFT_BLOCK_TYPE_TERMS,
                 ],
-                'inlineStyles': [
-                    DRAFT_INLINE_STYLE_BOLD,
-                    DRAFT_INLINE_STYLE_ITALIC,
-                ],
-            }
-        },
-
-        'extended': {
-            'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
-            'OPTIONS': {
-                'enableHorizontalRule': True,
-                'enableLineBreak': False,
-                'entityTypes': [
-                    DRAFT_ENTITY_TYPE_IMAGE,
-                    DRAFT_ENTITY_TYPE_EMBED,
-                    DRAFT_ENTITY_TYPE_LINK,
-                    DRAFT_ENTITY_TYPE_DOCUMENT,
-                ],
-                'blockTypes': [
-                    DRAFT_BLOCK_TYPE_H3,
-                    DRAFT_BLOCK_TYPE_H4,
-                    DRAFT_BLOCK_TYPE_UL,
-                    DRAFT_BLOCK_TYPE_OL,
-                    DRAFT_BLOCK_TYPE_TERMS,
-                ],
-                'inlineStyles': [
-                    DRAFT_INLINE_STYLE_BOLD,
-                    DRAFT_INLINE_STYLE_ITALIC,
-                ],
-            }
-        },
-
-        'format_only': {
-            'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
-            'OPTIONS': {
                 'inlineStyles': [
                     DRAFT_INLINE_STYLE_BOLD,
                     DRAFT_INLINE_STYLE_ITALIC,
@@ -159,9 +131,6 @@ Here is a sample configuration file. This should live in your Django settings.
             'OPTIONS': {
                 'entityTypes': [
                     DRAFT_ENTITY_TYPE_LINK,
-                ],
-                'blockTypes': [
-                    DRAFT_BLOCK_TYPE_TERMS
                 ],
                 'inlineStyles': [
                     DRAFT_INLINE_STYLE_BOLD,
