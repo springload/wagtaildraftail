@@ -6,8 +6,8 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from wagtail.wagtailcore.blocks import FieldBlock
 
-import forms
-from filters import draft_text
+from wagtaildraftail.forms import SerializedJSONField
+from wagtaildraftail.filters import draft_text
 
 
 class DraftailTextBlock(FieldBlock):
@@ -31,7 +31,7 @@ class DraftailTextBlock(FieldBlock):
     @cached_property
     def field(self):
         from wagtail.wagtailadmin.rich_text import get_rich_text_editor_widget
-        return forms.SerializedJSONField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
+        return SerializedJSONField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
 
     def value_for_form(self, value):
         try:
