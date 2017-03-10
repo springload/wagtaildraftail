@@ -6,6 +6,8 @@ help: ## See what commands are available.
 
 init: clean-pyc ## Install dependencies and initialise for development.
 	pip install -e .[testing,docs] -U
+	nvm install || echo "nvm is not available"
+	npm install
 	make load-data
 	make dist
 
@@ -36,8 +38,6 @@ clean-pyc: ## Remove Python file artifacts.
 	find . -name '*~' -exec rm -f {} +
 
 dist: ## Compile the JS and CSS for release.
-	nvm install || echo "nvm is not available"
-	npm install
 	npm run dist
 
 publish: dist ## Publishes a new version to pypi.
