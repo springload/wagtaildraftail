@@ -6,8 +6,8 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from wagtail.wagtailcore.blocks import FieldBlock
 
-from wagtaildraftail.forms import SerializedJSONField
 from wagtaildraftail.filters import draft_text
+from wagtaildraftail.forms import SerializedJSONField
 
 
 class DraftailTextBlock(FieldBlock):
