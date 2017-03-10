@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% load draftail_tags wagtailcore_tags %}
+{% load wagtailcore_tags %}
 
 {% block content %}
     <h1>wagtaildraftail test site</h1>
     <h2>Draft.js content</h2>
     <div data-editor-draftail>
-        {{ page.body_draftail|draft_text }}
+        {{ page.body_draftail|richtext }}
     </div>
     <pre><code>{{ page.body_draftail }}</code></pre>
     <hr>

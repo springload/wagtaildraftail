@@ -13,8 +13,7 @@ except ImportError:
 
 
 install_requires = [
-    'draftjs_exporter==0.7.0',
-    'jinja2>=2.9.5,<3'  # TODO: remove when it's not necessary (https://github.com/springload/wagtaildraftail/issues/13)
+    'draftjs_exporter==0.7.0'
 ]
 
 # Testing dependencies
