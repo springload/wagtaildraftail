@@ -14,7 +14,7 @@ from wagtail.wagtailimages.formats import get_image_format
 from wagtail.wagtailimages.models import get_image_model
 from wagtail.wagtailimages.shortcuts import get_rendition_or_not_found
 
-# from core.utilities import get_document_meta
+from .utilities import get_document_meta
 
 MISSING_RESOURCE_CLASS = 'link--missing-resource'
 MISSING_RESOURCE_URL = '#'
@@ -123,9 +123,7 @@ class Document:
 
         try:
             doc = document_model.objects.get(id=props['data']['id'])
-            # TODO Stub until we have access to this function
-            # doc_meta = get_document_meta(doc)
-            doc_meta = {'extension': 'todo', 'size': 'todo'}
+            doc_meta = get_document_meta(doc)
 
 
         except (document_model.DoesNotExist, AttributeError):
