@@ -3,6 +3,12 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.2.2]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.2)
+
+### Fixed
+
+- Add missing `get_document_meta` utility function – up until now documents rendered a (todo todo) placeholder instead of their metadata. #21
+
 ## [[v0.2.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.1)
 
 ### Fixed
