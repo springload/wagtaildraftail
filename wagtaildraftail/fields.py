@@ -23,3 +23,24 @@ class DraftailTextField(models.TextField):
         if not isinstance(value, DraftText):
             value = DraftText(value)
         return value
+
+    def get_prep_value(self, value):
+        if isinstance(value, DraftText):
+            value = value.get_json()
+        return super(DraftailTextField, self).get_prep_value(value)
+
+    def from_db_value(self, value, *args, **kwargs):
+        if not isinstance(value, DraftText):
+            value = DraftText(value)
+        return value
+
+    def value_to_string(self, obj):
+        if obj is not None:
+            value = self.value_from_object(obj)
+        else:
+            value = self.get_default()
+
+        if isinstance(value, DraftText):
+            value = value.get_json()
+
+        return value
