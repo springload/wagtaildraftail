@@ -27,7 +27,14 @@ class DraftailTextField(models.TextField):
     def get_prep_value(self, value):
         if isinstance(value, DraftText):
             value = value.get_json()
-        return super(DraftailTextField, self).get_prep_value(value)
+
+        value = super(DraftailTextField, self).get_prep_value(value)
+
+        # Django>1.8 does `to_python` in get_prep_value
+        if isinstance(value, DraftText):
+            value = value.get_json()
+
+        return value
 
     def from_db_value(self, value, *args, **kwargs):
         if not isinstance(value, DraftText):
