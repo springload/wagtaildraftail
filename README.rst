@@ -38,14 +38,14 @@ First, add a Draftail field to some of your pages. Here is an example:
             FieldPanel('body')
         ]
 
-Then, when displaying those fields, use the ``draft_text`` filter in the templates.
+Then, when displaying those fields, use the ``richtext`` filter in the templates.
 
 .. code:: html
 
-    {% load draftail_tags %}
+    {% load wagtailcore_tags %}
 
     {% block content %}
-        {{ page.body|draft_text }}
+        {{ page.body|richtext }}
     {% endblock %}
 
 With StreamField

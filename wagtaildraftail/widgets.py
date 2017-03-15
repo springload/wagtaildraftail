@@ -9,6 +9,8 @@ from draftjs_exporter.constants import ENTITY_TYPES
 from wagtail.utils.widgets import WidgetWithScript
 from wagtail.wagtailimages.formats import get_image_formats
 
+from .draft_text import DraftText
+
 
 def get_all_image_formats():
     return [{'label': str(f.label), 'value': f.name} for f in get_image_formats()]
@@ -44,6 +46,8 @@ class JsonTextArea(WidgetWithScript, forms.HiddenInput):
         if json_value is None or json_value is '':
             value = {}
         else:
+            if isinstance(json_value, DraftText):
+                json_value = json_value.get_json()
             try:
                 value = json.loads(json_value)
             except (ValueError, TypeError):
@@ -68,6 +72,8 @@ class JsonTextArea(WidgetWithScript, forms.HiddenInput):
         elif json_value is '':
             value = {}
         else:
+            if isinstance(json_value, DraftText):
+                json_value = json_value.get_json()
             try:
                 value = json.loads(json_value)
             except ValueError:
