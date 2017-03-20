@@ -41,4 +41,4 @@ dist: ## Compile the JS and CSS for release.
 	npm run dist
 
 publish: dist ## Publishes a new version to pypi.
-	rm dist/* && python setup.py sdist && twine upload dist/*
+	rm dist/* && python setup.py sdist && twine upload dist/* && echo 'Success! Go to https://pypi.python.org/pypi/wagtaildraftail and check that all is well.'

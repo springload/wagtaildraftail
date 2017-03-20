@@ -263,7 +263,7 @@ Releases
 *  Update the version number in ``wagtaildraftail/__init__.py``, following semver.
 *  ``git release vx.y.z``
 *  ``make publish`` (confirm, and enter your password)
-*  Go to https://pypi.python.org/pypi/wagtaildraftail and check that all is well
+*  Done!
 
 Documentation
 -------------
