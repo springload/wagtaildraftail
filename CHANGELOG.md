@@ -3,6 +3,24 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)
+
+### Added
+
+- DraftText(RichText) implementation
+- New DraftailTextBlock using new DraftText implementation
+- Support for Python 3.6
+
+### Removed
+
+- Remove custom filters
+- Remove custom template tags
+
+### Fixed
+
+- Fix blocks.py import paths
+- Fix DraftailTextField prep_value generation for Django>1.8
+
 ## [[v0.2.2]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.2)
 
 ### Fixed
