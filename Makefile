@@ -12,15 +12,15 @@ init: clean-pyc ## Install dependencies and initialise for development.
 	make dist
 
 start: ## Starts the development server.
-	python tests/manage.py runserver
+	python ./tests/testapp/manage.py runserver
 
 lint: ## Lint the project.
 	flake8 wagtaildraftail tests setup.py
 	isort --check-only --diff --recursive wagtaildraftail tests setup.py
 
 load-data: ## Prepares the database for usage.
-	python tests/manage.py migrate
-	python tests/manage.py loaddata tests/fixtures/test_data.json
+	python ./tests/testapp/manage.py migrate
+	python ./tests/testapp/manage.py loaddata tests/testapp/fixtures/test_data.json
 
 test: ## Test the project.
 	python tests/manage.py test
