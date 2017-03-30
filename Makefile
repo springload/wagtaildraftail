@@ -4,7 +4,8 @@
 help: ## See what commands are available.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36mmake %-15s\033[0m # %s\n", $$1, $$2}'
 
-init: clean-pyc ## Install dependencies and initialise for development.
+init: ## Install dependencies and initialise for development.
+	clean-pyc
 	pip install -e .[testing,docs] -U
 	nvm install || echo "nvm is not available"
 	npm install
@@ -40,5 +41,6 @@ clean-pyc: ## Remove Python file artifacts.
 dist: ## Compile the JS and CSS for release.
 	npm run dist
 
-publish: dist ## Publishes a new version to pypi.
+publish: ## Publishes a new version to pypi.
+	dist
 	rm dist/* && python setup.py sdist && twine upload dist/* && echo 'Success! Go to https://pypi.python.org/pypi/wagtaildraftail and check that all is well.'
