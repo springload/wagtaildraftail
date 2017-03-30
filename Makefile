@@ -24,10 +24,10 @@ load-data: ## Prepares the database for usage.
 	python ./tests/testapp/manage.py loaddata tests/testapp/fixtures/test_data.json
 
 test: ## Test the project.
-	python tests/manage.py test
+	python ./runtests.py
 
 test-coverage: ## Run the tests while generating test coverage data.
-	coverage run ./tests/manage.py test && coverage report
+	coverage run ./runtests.py && coverage report
 	npm run test:coverage
 
 test-ci: ## Continuous integration test suite.
