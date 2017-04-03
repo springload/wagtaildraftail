@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.db import models
+from django.utils.encoding import force_text
 
 from .draft_text import DraftText
 from .validators import EMPTY_SERIALIZED_JSON_VALUES
@@ -51,3 +52,8 @@ class DraftailTextField(models.TextField):
             value = value.get_json()
 
         return value
+
+    def get_searchable_content(self, value):
+        if not isinstance(value, DraftText):
+            value = DraftText(value)
+        return [force_text(value.__html__())]

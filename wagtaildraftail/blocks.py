@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 
 from wagtail.wagtailcore.blocks import RichTextBlock
@@ -31,6 +32,11 @@ class DraftailTextBlock(RichTextBlock):
 
     def value_from_form(self, value):
         return DraftText(value)
+
+    def get_searchable_content(self, value):
+        if not isinstance(value, DraftText):
+            value = DraftText(value)
+        return [force_text(value.__html__())]
 
     class Meta:
         icon = "doc-full"
