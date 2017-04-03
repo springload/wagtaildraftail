@@ -3,6 +3,13 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.3.0...HEAD)
+
+### Changed
+
+- Rename the `utilities` module to `utils` to follow Django convention.
+
+
 ## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)
 
 ### Added
