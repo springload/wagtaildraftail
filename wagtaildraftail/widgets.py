@@ -65,7 +65,6 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
     def value_from_datadict(self, data, files, name):
         json_value = super(DraftailTextArea, self).value_from_datadict(data, files, name)
 
-        # TODO Do we need that many cases?
         if json_value is None:
             return None
         elif json_value is '':
@@ -75,8 +74,8 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
                 json_value = json_value.get_json()
             try:
                 value = json.loads(json_value)
-            except ValueError:
+            except (ValueError, TypeError):
                 value = {}
-                logging.getLogger(__name__).warn('Cannot handle {} as JSON'.format(json_value))
+                logging.getLogger(__name__).warning('Cannot handle {} as JSON'.format(json_value))
 
         return json.dumps(value)
