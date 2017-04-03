@@ -27,4 +27,4 @@ class DraftText(RichText):
         return self._html
 
     def __eq__(self, other):
-        return self.__html__() == other.__html__()
+        return hasattr(other, '__html__') and self.__html__() == other.__html__()
