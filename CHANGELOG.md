@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Changed
 
+- Rename the default editor to `default_draftail`.
 - Rename the `utilities` module to `utils` to follow Django convention.
 - Rename `JsonTextArea` widget to `DraftailTextArea`.
 - Move the `get_exporter_config` from the `settings` module to the `utils` module.

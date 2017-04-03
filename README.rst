@@ -108,7 +108,7 @@ Here is a sample configuration file. This should live in your Django settings.
     DRAFT_ENTITY_TYPE_DOCUMENT = {'label': 'Document', 'type': ENTITY_TYPES.DOCUMENT, 'icon': 'icon-doc-full'}
 
     WAGTAILADMIN_RICH_TEXT_EDITORS = {
-        'default_draftjs': {
+        'default_draftail': {
             'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
             'OPTIONS': {
                 'enableHorizontalRule': True,

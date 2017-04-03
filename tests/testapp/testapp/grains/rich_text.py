@@ -50,7 +50,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
         }
     },
 
-    'default_draftjs': {
+    'default_draftail': {
         'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
         'OPTIONS': {
             'enableHorizontalRule': True,

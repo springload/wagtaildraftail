@@ -12,7 +12,7 @@ class DraftailTextBlock(RichTextBlock):
     """
     StreamField block to render a rich text editor powered by Draftail.
     """
-    def __init__(self, required=True, help_text=None, editor='default_draftjs', **kwargs):
+    def __init__(self, required=True, help_text=None, editor='default_draftail', **kwargs):
         super(DraftailTextBlock, self).__init__(required, help_text, editor, **kwargs)
 
     def get_default(self):
