@@ -42,7 +42,7 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
         from wagtail.wagtailadmin.edit_handlers import JSONFieldPanel
         return JSONFieldPanel
 
-    def render(self, name, json_value, attrs={}):
+    def render(self, name, json_value, attrs=None):
         if json_value is None or json_value is '':
             value = {}
         else:
