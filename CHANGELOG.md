@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.3.0...HEAD)
 
+### Add
+
+- Equality check for DraftText nodes
+
 ### Changed
 
 - Rename the `utilities` module to `utils` to follow Django convention.
