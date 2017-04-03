@@ -9,7 +9,9 @@ from wagtaildraftail.decorators import BR, HR, Icon
 
 class TestIcon(unittest.TestCase):
     def test_render(self):
-        self.assertEqual(DOM.render(DOM.create_element(Icon, {'name': 'rocket'})), '<svg class="icon"><use xlink:href="#icon-rocket"></use></svg>')
+        output = DOM.render(DOM.create_element(Icon, {'name': 'rocket'}))
+        expected_output = '<svg class="icon"><use xlink:href="#icon-rocket"></use></svg>'
+        self.assertEqual(output, expected_output)
 
 
 class TestHR(unittest.TestCase):

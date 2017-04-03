@@ -18,7 +18,12 @@ DRAFT_INLINE_STYLE_ITALIC = {'label': 'Italic', 'type': INLINE_STYLES.ITALIC, 'i
 # or a special `__all__` value which will be intercepted and will load all image formats known to Wagtail.
 DRAFT_IMAGE_FORMATS = '__all__'
 
-DRAFT_ENTITY_TYPE_IMAGE = {'label': 'Image', 'type': ENTITY_TYPES.IMAGE, 'icon': 'icon-image', 'imageFormats': DRAFT_IMAGE_FORMATS}
+DRAFT_ENTITY_TYPE_IMAGE = {
+    'label': 'Image',
+    'type': ENTITY_TYPES.IMAGE,
+    'icon': 'icon-image',
+    'imageFormats': DRAFT_IMAGE_FORMATS
+}
 DRAFT_ENTITY_TYPE_EMBED = {'label': 'Embed', 'type': ENTITY_TYPES.EMBED, 'icon': 'icon-media'}
 DRAFT_ENTITY_TYPE_LINK = {'label': 'Link', 'type': ENTITY_TYPES.LINK, 'icon': 'icon-link'}
 DRAFT_ENTITY_TYPE_DOCUMENT = {'label': 'Document', 'type': ENTITY_TYPES.DOCUMENT, 'icon': 'icon-doc-full'}
