@@ -7,7 +7,8 @@ from django.utils.functional import cached_property
 from draftjs_exporter.html import HTML
 
 from wagtail.wagtailcore.rich_text import RichText
-from wagtaildraftail.settings import get_exporter_config
+
+from wagtaildraftail.utils import get_exporter_config
 
 
 class DraftText(RichText):

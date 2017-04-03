@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Changed
 
 - Rename the `utilities` module to `utils` to follow Django convention.
+- Move the `get_exporter_config` from the `settings` module to the `utils` module.
 
 
 ## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)
