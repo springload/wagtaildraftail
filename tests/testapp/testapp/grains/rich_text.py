@@ -30,7 +30,7 @@ DRAFT_ENTITY_TYPE_DOCUMENT = {'label': 'Document', 'type': ENTITY_TYPES.DOCUMENT
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'simple': {
-        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
         'OPTIONS': {
             'enableHorizontalRule': True,
             'enableLineBreak': False,
@@ -51,7 +51,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     },
 
     'default_draftjs': {
-        'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
+        'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
         'OPTIONS': {
             'enableHorizontalRule': True,
             'enableLineBreak': False,

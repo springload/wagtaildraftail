@@ -16,14 +16,14 @@ def get_all_image_formats():
     return [{'label': str(f.label), 'value': f.name} for f in get_image_formats()]
 
 
-class JsonTextArea(WidgetWithScript, forms.HiddenInput):
+class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
     """
     Field widget to render a rich text editor powered by Draftail.
     """
     def __init__(self, attrs=None, options=None):
         self.options = self.intercept_image_formats(options or {})
 
-        super(JsonTextArea, self).__init__(attrs)
+        super(DraftailTextArea, self).__init__(attrs)
 
     def intercept_image_formats(self, options):
         """
@@ -56,17 +56,16 @@ class JsonTextArea(WidgetWithScript, forms.HiddenInput):
 
         encoded_value = json.dumps(value)
 
-        return super(JsonTextArea, self).render(name, encoded_value, attrs)
+        return super(DraftailTextArea, self).render(name, encoded_value, attrs)
 
     def render_js_init(self, id_, name, value):
         return "window.initDraftailEditor('{name}', {opts})".format(
             name=name, opts=json.dumps(self.options))
 
     def value_from_datadict(self, data, files, name):
-        json_value = super(JsonTextArea, self).value_from_datadict(data, files, name)
+        json_value = super(DraftailTextArea, self).value_from_datadict(data, files, name)
 
         # TODO Do we need that many cases?
-        # TODO Nearly a copy of the render code above, to refactor?
         if json_value is None:
             return None
         elif json_value is '':

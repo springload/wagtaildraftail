@@ -72,7 +72,7 @@ Wagtail will look for a ``WAGTAILADMIN_RICH_TEXT_EDITORS`` constants in the sett
 Each editor defined in ``WAGTAILADMIN_RICH_TEXT_EDITORS`` is a dictionary with 2 keys:, ``WIDGET`` (mandatory) and ``OPTIONS`` (optional).
 
 -  ``WIDGET`` is a mandatory string set to the widget to use
-   -  should always be set to ``wagtaildraftail.widgets.JsonTextArea`` (or a subclass of it) to work with Draft.js content
+   -  should always be set to ``wagtaildraftail.widgets.DraftailTextArea`` (or a subclass of it) to work with Draft.js content
 -  ``OPTIONS`` is a dictionary which follows the format of `Draftail configuration options <https://github.com/springload/draftail#usage>`_.
    -  Draftail options which are JavaScript values are hydrated at runtime in ``client/wagtaildraftail.js``
 
@@ -109,7 +109,7 @@ Here is a sample configuration file. This should live in your Django settings.
 
     WAGTAILADMIN_RICH_TEXT_EDITORS = {
         'default_draftjs': {
-            'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
+            'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
             'OPTIONS': {
                 'enableHorizontalRule': True,
                 'enableLineBreak': False,
@@ -129,7 +129,7 @@ Here is a sample configuration file. This should live in your Django settings.
         },
 
         'format_and_link': {
-            'WIDGET': 'wagtaildraftail.widgets.JsonTextArea',
+            'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
             'OPTIONS': {
                 'entityTypes': [
                     DRAFT_ENTITY_TYPE_LINK,
