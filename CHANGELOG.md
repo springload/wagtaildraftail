@@ -3,6 +3,20 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.3.0...HEAD)
+
+### Add
+
+- Equality check for DraftText nodes
+
+### Changed
+
+- Rename the default editor to `default_draftail`.
+- Rename the `utilities` module to `utils` to follow Django convention.
+- Rename `JsonTextArea` widget to `DraftailTextArea`.
+- Move the `get_exporter_config` from the `settings` module to the `utils` module.
+
+
 ## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)
 
 ### Added

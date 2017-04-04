@@ -42,12 +42,9 @@ node_modules/
 bower_components/
 
 $virtualenv.tar.gz
-core/static/css/
-core/static/js/
-core/static/images/
-core/jinja2/svg.html
 
 *.sql
 example.html
 static
+tests/testapp/var/media/
 db.sqlite3

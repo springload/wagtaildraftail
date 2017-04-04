@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const outputPath = path.join('wagtaildraftail', 'static', 'wagtaildraftail');
+const outputPath = path.join(__dirname, '..', 'static', 'wagtaildraftail');
 
 module.exports = {
   entry: {

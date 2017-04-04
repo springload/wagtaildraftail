@@ -14,7 +14,7 @@ from wagtail.wagtailimages.formats import get_image_format
 from wagtail.wagtailimages.models import get_image_model
 from wagtail.wagtailimages.shortcuts import get_rendition_or_not_found
 
-from .utilities import get_document_meta
+from .utils import get_document_meta
 
 MISSING_RESOURCE_CLASS = 'link--missing-resource'
 MISSING_RESOURCE_URL = '#'
