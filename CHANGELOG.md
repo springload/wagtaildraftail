@@ -7,7 +7,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Add
 
-- Equality check for DraftText nodes
+- Equality check for DraftText nodes.
+- Default entity strategy.
 
 ### Changed
 

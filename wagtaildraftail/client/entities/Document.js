@@ -1,13 +1,6 @@
 import React from 'react';
 import { Entity } from 'draft-js';
-import { ENTITY_TYPE, Icon } from 'draftail';
-
-export function findDocumentEntities(contentBlock, callback) {
-  contentBlock.findEntityRanges((character) => {
-    const entityKey = character.getEntity();
-    return entityKey !== null && Entity.get(entityKey).getType() === ENTITY_TYPE.DOCUMENT;
-  }, callback);
-}
+import { Icon } from 'draftail';
 
 const Document = ({ entityKey, children }) => {
   const { title } = Entity.get(entityKey).getData();

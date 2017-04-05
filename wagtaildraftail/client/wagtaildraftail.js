@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Entity } from 'draft-js';
 import DraftailEditor, { ENTITY_TYPE } from 'draftail';
 
 import 'draftail/dist/draftail.css';
@@ -11,8 +11,8 @@ import ImageSource from './sources/ImageSource';
 import DocumentSource from './sources/DocumentSource';
 import EmbedSource from './sources/EmbedSource';
 
-import Link, { findLinkEntities } from './entities/Link';
-import Document, { findDocumentEntities } from './entities/Document';
+import Link from './entities/Link';
+import Document from './entities/Document';
 
 const controls = {};
 controls[ENTITY_TYPE.IMAGE] = ImageSource;
@@ -20,13 +20,22 @@ controls[ENTITY_TYPE.EMBED] = EmbedSource;
 controls[ENTITY_TYPE.LINK] = LinkSource;
 controls[ENTITY_TYPE.DOCUMENT] = DocumentSource;
 
-const strategies = {};
-strategies[ENTITY_TYPE.LINK] = findLinkEntities;
-strategies[ENTITY_TYPE.DOCUMENT] = findDocumentEntities;
-
 const decorators = {};
 decorators[ENTITY_TYPE.LINK] = Link;
 decorators[ENTITY_TYPE.DOCUMENT] = Document;
+
+// TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
+const getEntityStrategy = (entityType) => {
+    return (contentBlock, callback) => {
+        contentBlock.findEntityRanges((character) => {
+            const entityKey = character.getEntity();
+            return (
+                entityKey !== null &&
+                Entity.get(entityKey).getType() === entityType
+            );
+        }, callback);
+    };
+};
 
 const initDraftailEditor = (fieldName, options = {}) => {
   const field = document.querySelector(`[name="${fieldName}"]`);
@@ -41,7 +50,7 @@ const initDraftailEditor = (fieldName, options = {}) => {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
       control: controls[entity.type],
-      strategy: strategies[entity.type],
+      strategy: getEntityStrategy(entity.type),
       component: decorators[entity.type],
     }));
   }
