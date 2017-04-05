@@ -11,15 +11,15 @@ import decorators from './decorators';
 
 // TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
 const getEntityStrategy = (entityType) => {
-    return (contentBlock, callback) => {
-        contentBlock.findEntityRanges((character) => {
-            const entityKey = character.getEntity();
-            return (
-                entityKey !== null &&
-                Entity.get(entityKey).getType() === entityType
-            );
-        }, callback);
-    };
+  return (contentBlock, callback) => {
+    contentBlock.findEntityRanges((character) => {
+      const entityKey = character.getEntity();
+      return (
+        entityKey !== null &&
+        Entity.get(entityKey).getType() === entityType
+      );
+    }, callback);
+  };
 };
 
 const initDraftailEditor = (fieldName, options = {}) => {

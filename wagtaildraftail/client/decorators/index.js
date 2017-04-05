@@ -7,4 +7,4 @@ import Document from './Document';
 export default {
   Link,
   Document,
-}
+};
