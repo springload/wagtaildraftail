@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags pretty_tags %}
 
 {% block content %}
     <h1>wagtaildraftail test site</h1>
@@ -7,11 +7,11 @@
     <div data-editor-draftail>
         {{ page.body_draftail|richtext }}
     </div>
-    <pre><code>{{ page.body_draftail }}</code></pre>
+    <pre><code>{{ page.body_draftail.source|pretty_json }}</code></pre>
     <hr>
     <h2>Hallo content</h2>
     <div data-editor-hallo>
         {{ page.body_hallo|richtext }}
     </div>
-    <pre><code>{{ page.body_hallo }}</code></pre>
+    <pre><code>{{ page.body_hallo|pretty_html }}</code></pre>
 {% endblock %}
