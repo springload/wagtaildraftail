@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Rename `JsonTextArea` widget to `DraftailTextArea`.
 - Move the `get_exporter_config` from the `settings` module to the `utils` module.
 - Move entity `decorator` and `source` definition to Python.
+- Bumped `draftjs_exporter` dependency to `0.8.0`. See the updated example configuration below or the module's [changelog](https://github.com/springload/draftjs_exporter/blob/v0.8.0/CHANGELOG.md#v080) for a full list of changes.
 
 
 ## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)

@@ -6,7 +6,6 @@ from django.apps import apps
 from django.core.exceptions import ObjectDoesNotExist
 from draftjs_exporter.constants import BLOCK_TYPES
 from draftjs_exporter.dom import DOM
-from draftjs_exporter.style_state import camel_to_dash
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtaildocs.models import get_document_model
 from wagtail.wagtailembeds.format import embed_to_frontend_html
@@ -58,7 +57,7 @@ class Model:
             model_class = apps.get_model(data['contentType'])
             model = model_class.objects.get(pk=data['id'])
             href = model.url()
-            class_name = 'link--{model}'.format(model=camel_to_dash(model_class.__name__))
+            class_name = 'link--{model}'.format(model=DOM.camel_to_dash(model_class.__name__))
 
         # Component is missing `contentType` or `id` key(s); or model is missing `url` attribute.
         # Those are developer errors and shouldn't be silenced.
@@ -82,11 +81,11 @@ class Image:
     """
     def render(self, props):
         image_model = get_image_model()
-        alignment = props['data'].get('alignment', 'left')
-        alt_text = props['data'].get('altText', '')
+        alignment = props.get('alignment', 'left')
+        alt_text = props.get('altText', '')
 
         try:
-            image = image_model.objects.get(id=props['data']['id'])
+            image = image_model.objects.get(id=props['id'])
         except image_model.DoesNotExist:
             return DOM.create_element('img', {'alt': alt_text})
 
@@ -105,7 +104,7 @@ class Embed:
     Inspired by: https://github.com/torchbox/wagtail/blob/master/wagtail/wagtailembeds/rich_text.py
     """
     def render(self, props):
-        return DOM.parse_html(embed_to_frontend_html(props['data']['url']))
+        return DOM.parse_html(embed_to_frontend_html(props['url']))
 
 
 def Icon(props):
@@ -122,7 +121,7 @@ class Document:
         document_model = get_document_model()
 
         try:
-            doc = document_model.objects.get(id=props['data']['id'])
+            doc = document_model.objects.get(id=props['id'])
             doc_meta = get_document_meta(doc)
 
 

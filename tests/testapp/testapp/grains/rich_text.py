@@ -120,13 +120,16 @@ DRAFT_EXPORTER_COMPOSITE_DECORATORS = [
 DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
     BLOCK_TYPES.UNORDERED_LIST_ITEM: {
         'element': 'li',
-        'wrapper': ['ul', {'className': 'list-styled'}],
+        'wrapper': 'ul',
+        'wrapper_props': {'className': 'list-styled'},
     },
     BLOCK_TYPES.ORDERED_LIST_ITEM: {
         'element': 'li',
-        'wrapper': ['ol', {'className': 'list-numbered'}],
+        'wrapper': 'ol',
+        'wrapper_props': {'className': 'list-numbered'},
     },
     TERMS_BLOCK_ID: {
-        'element': ['p', {'className': 'legals'}],
+        'element': 'p',
+        'props': {'className': 'legals'},
     },
 })
