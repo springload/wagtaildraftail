@@ -290,7 +290,7 @@ Releases
 ~~~~~~~~
 
 *  Update the `changelog <https://github.com/springload/wagtaildraftail/CHANGELOG.md>`_.
-*  Update the version number in ``wagtaildraftail/__init__.py``, following semver.
+*  Update the version number in ``wagtaildraftail/__init__.py`` and ``package.json``, following semver.
 *  ``git release vx.y.z``
 *  ``make publish`` (confirm, and enter your password)
 *  Done!
