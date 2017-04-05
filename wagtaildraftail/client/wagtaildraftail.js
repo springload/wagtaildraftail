@@ -49,9 +49,9 @@ const initDraftailEditor = (fieldName, options = {}) => {
   if (options.entityTypes) {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
-      control: controls[entity.type],
+      control: controls[entity.source],
       strategy: getEntityStrategy(entity.type),
-      component: decorators[entity.type],
+      component: decorators[entity.decorator],
     }));
   }
 

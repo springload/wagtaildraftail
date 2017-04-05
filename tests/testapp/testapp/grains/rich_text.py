@@ -22,11 +22,31 @@ DRAFT_ENTITY_TYPE_IMAGE = {
     'label': 'Image',
     'type': ENTITY_TYPES.IMAGE,
     'icon': 'icon-image',
-    'imageFormats': DRAFT_IMAGE_FORMATS
+    'imageFormats': DRAFT_IMAGE_FORMATS,
+    'source': 'ImageSource',
+    'decorator': 'Image',
 }
-DRAFT_ENTITY_TYPE_EMBED = {'label': 'Embed', 'type': ENTITY_TYPES.EMBED, 'icon': 'icon-media'}
-DRAFT_ENTITY_TYPE_LINK = {'label': 'Link', 'type': ENTITY_TYPES.LINK, 'icon': 'icon-link'}
-DRAFT_ENTITY_TYPE_DOCUMENT = {'label': 'Document', 'type': ENTITY_TYPES.DOCUMENT, 'icon': 'icon-doc-full'}
+DRAFT_ENTITY_TYPE_EMBED = {
+    'label': 'Embed',
+    'type': ENTITY_TYPES.EMBED,
+    'icon': 'icon-media',
+    'source': 'EmbedSource',
+    'decorator': 'Embed',
+}
+DRAFT_ENTITY_TYPE_LINK = {
+    'label': 'Link',
+    'type': ENTITY_TYPES.LINK,
+    'icon': 'icon-link',
+    'source': 'LinkSource',
+    'decorator': 'Link',
+}
+DRAFT_ENTITY_TYPE_DOCUMENT = {
+    'label': 'Document',
+    'type': ENTITY_TYPES.DOCUMENT,
+    'icon': 'icon-doc-full',
+    'source': 'DocumentSource',
+    'decorator': 'Document',
+}
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'simple': {
