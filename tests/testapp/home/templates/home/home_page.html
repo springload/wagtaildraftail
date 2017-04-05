@@ -2,16 +2,19 @@
 {% load wagtailcore_tags pretty_tags %}
 
 {% block content %}
-    <h1>wagtaildraftail test site</h1>
-    <h2>Draft.js content</h2>
-    <div data-editor-draftail>
-        {{ page.body_draftail|richtext }}
+    <h1>Wagtaildraftail Test Site</h1>
+    <div class="section">
+        <h2 class="section__title">Draft.js</h2>
+        <div data-editor-draftail class="section__output">
+            {{ page.body_draftail|richtext }}
+        </div>
+        <pre class="section__code"><code>{{ page.body_draftail.source|pretty_json }}</code></pre>
     </div>
-    <pre><code>{{ page.body_draftail.source|pretty_json }}</code></pre>
-    <hr>
-    <h2>Hallo content</h2>
-    <div data-editor-hallo>
-        {{ page.body_hallo|richtext }}
+    <div class="section">
+        <h2 class="section__title">Hallo</h2>
+        <div data-editor-hallo class="section__output">
+            {{ page.body_hallo|richtext }}
+        </div>
+        <pre class="section__code"><code>{{ page.body_hallo|pretty_html }}</code></pre>
     </div>
-    <pre><code>{{ page.body_hallo|pretty_html }}</code></pre>
 {% endblock %}
