@@ -21,13 +21,9 @@ class TestHR(unittest.TestCase):
 
 class TestBR(unittest.TestCase):
     def test_render(self):
-        self.assertEqual(DOM.render(DOM.create_element(BR, {
-            'block_type': BLOCK_TYPES.UNSTYLED,
-            'children': '\n',
-        })), '<br/>')
+        element = DOM.create_element(BR, {'block_type': BLOCK_TYPES.UNSTYLED}, '\n')
+        self.assertEqual(DOM.render(element), '<br/>')
 
     def test_render_code_block(self):
-        self.assertEqual(DOM.create_element(BR, {
-            'block_type': BLOCK_TYPES.CODE,
-            'children': '\n',
-        }), '\n')
+        element = DOM.create_element(BR, {'block_type': BLOCK_TYPES.CODE}, '\n')
+        self.assertEqual(element, '\n')
