@@ -3,9 +3,15 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.4.0...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.4.1...HEAD)
 
 ...
+
+## [[v0.4.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.1)
+
+### Fixed
+
+- Fixed error for block/field with default value.
 
 ## [[v0.4.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.0)
 
