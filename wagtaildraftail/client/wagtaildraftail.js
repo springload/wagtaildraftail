@@ -8,7 +8,7 @@ import './wagtaildraftail.css';
 
 import decorators from './decorators';
 import sources from './sources';
-import {registerDecorator, getDecorator, registerSource, getSource, getStrategy} from './registry';
+import {registerDecorator, getDecorator, registerSource, getSource, registerStrategy, getStrategy} from './registry';
 
 // Register Decorators, Sources and Strategies
 Object.keys(decorators).forEach(function(key) {
@@ -63,5 +63,19 @@ const initDraftailEditor = (fieldName, options = {}) => {
 };
 
 window.initDraftailEditor = initDraftailEditor;
+
+window.wagtaildraftail = {
+  // Expose registry methods
+  registerDecorator: registerDecorator,
+  getDecorator: getDecorator,
+  registerSource: registerSource,
+  getSource: getSource,
+  registerStrategy: registerStrategy,
+  getStrategy: getStrategy,
+
+  // Expose basic React methods for basic needs
+  createClass: React.createClass,
+  createElement: React.createElement,
+};
 
 export default initDraftailEditor;
