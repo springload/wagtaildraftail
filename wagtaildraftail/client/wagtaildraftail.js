@@ -6,11 +6,20 @@ import DraftailEditor from 'draftail';
 import 'draftail/dist/draftail.css';
 import './wagtaildraftail.css';
 
-import sources from './sources';
 import decorators from './decorators';
+import sources from './sources';
+import {registerDecorator, getDecorator, registerSource, getSource, getStrategy} from './registry';
+
+// Register Decorators, Sources and Strategies
+Object.keys(decorators).forEach(function(key) {
+  registerDecorator(key, decorators[key]);
+});
+Object.keys(sources).forEach(function(key) {
+  registerSource(key, sources[key]);
+});
 
 // TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
-const getEntityStrategy = (entityType) => {
+const getDefaultStrategy = (entityType) => {
   return (contentBlock, callback) => {
     contentBlock.findEntityRanges((character) => {
       const entityKey = character.getEntity();
@@ -23,6 +32,7 @@ const getEntityStrategy = (entityType) => {
 };
 
 const initDraftailEditor = (fieldName, options = {}) => {
+  console.log('initDraftailEditor');
   const field = document.querySelector(`[name="${fieldName}"]`);
   const editorWrapper = document.createElement('div');
   field.parentNode.appendChild(editorWrapper);
@@ -35,9 +45,9 @@ const initDraftailEditor = (fieldName, options = {}) => {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
       // TODO: Rename keys accordingly once changed in draftail https://github.com/springload/draftail/issues/49
-      control: sources[entity.source],
-      strategy: getEntityStrategy(entity.type),
-      component: decorators[entity.decorator],
+      control: getSource(entity.source),
+      strategy: getStrategy(entity.type) || getDefaultStrategy(entity.type),
+      component: getDecorator(entity.decorator),
     }));
   }
 
