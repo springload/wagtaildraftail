@@ -24,13 +24,14 @@ else
     if [ -n "$PY_FILES" ];
     then
         make lint
-        TOXENV=py27,py34,py35 make test-ci
+        TOXENV=py27-dj18-wt17,py35-dj110-wt19 make test-ci
     fi
 
     if [ -n "$JS_FILES" ];
     then
         npm run lint
-        TOXENV=node make test-ci
+        npm run test:coverage
+        npm run dist
     fi
 
     exit 0
