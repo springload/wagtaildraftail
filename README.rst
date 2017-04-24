@@ -289,10 +289,12 @@ Here are useful commands:
 Releases
 ~~~~~~~~
 
-*  Update the `changelog <https://github.com/springload/wagtaildraftail/CHANGELOG.md>`_.
+*  Make a new branch for the release of the new version.
+*  Update the `CHANGELOG <https://github.com/springload/wagtaildraftail/CHANGELOG.md>`_.
 *  Update the version number in ``wagtaildraftail/__init__.py`` and ``package.json``, following semver.
-*  ``git release vx.y.z``
-*  ``make publish`` (confirm, and enter your password)
+*  Make a PR and squash merge it.
+*  Back on master with the PR merged, use ``make publish`` (confirm, and enter your password).
+*  Finally, go to GitHub and create a release and a tag for the new version.
 *  Done!
 
 Documentation
