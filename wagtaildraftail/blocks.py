@@ -22,13 +22,13 @@ class DraftailTextBlock(RichTextBlock):
         else:
             return DraftText(self.meta.default)
 
-    def to_python(self, value):
-        return DraftText(value)
-
     @cached_property
     def field(self):
         from wagtail.wagtailadmin.rich_text import get_rich_text_editor_widget
         return SerializedJSONField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
+
+    def to_python(self, value):
+        return DraftText(value)
 
     def value_from_form(self, value):
         return DraftText(value)
