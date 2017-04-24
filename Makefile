@@ -26,8 +26,7 @@ test: ## Test the project.
 	python ./runtests.py
 
 test-coverage: ## Run the tests while generating test coverage data.
-	coverage run ./runtests.py && coverage report
-	npm run test:coverage
+	coverage run ./runtests.py && coverage report && coverage html
 
 test-ci: ## Continuous integration test suite.
 	tox
