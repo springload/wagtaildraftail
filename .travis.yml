@@ -36,8 +36,6 @@ matrix:
      python: 3.6
    - env: TOXENV=py36-dj110-wt19
      python: 3.6
-   - env: TOXENV=node
-     python: 3.5
 install:
 - nvm install
 - npm install
