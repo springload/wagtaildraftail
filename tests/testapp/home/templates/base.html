@@ -3,8 +3,39 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>wagtaildraftail test site – {% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}</title>
+    <title>Wagtaildraftail Test Site</title>
     <style>
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        body {
+            margin: 2% auto;
+            max-width: 90%;
+        }
+        .section__output, .section__code {
+            margin-left: 1em;
+            padding: 2.5em 1em 1em 1em;
+            border: 1px solid lightgrey;
+            position: relative;
+            font-size: 1em;
+            overflow-y: scroll;
+        }
+        .section__output::before, .section__code::before {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px;
+            background-color: lightgrey;
+        }
+        .section__output::before {
+            content: 'rendered'
+        }
+        .section__code::before {
+            content: 'source'
+        }
         .responsive-object {
             padding-bottom: 0 !important;
         }
