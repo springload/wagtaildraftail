@@ -39,6 +39,5 @@ clean-pyc: ## Remove Python file artifacts.
 dist: ## Compile the JS and CSS for release.
 	npm run dist
 
-publish: ## Publishes a new version to pypi.
-	dist
+publish: dist ## Publishes a new version to pypi.
 	rm dist/* && python setup.py sdist && twine upload dist/* && echo 'Success! Go to https://pypi.python.org/pypi/wagtaildraftail and check that all is well.'
