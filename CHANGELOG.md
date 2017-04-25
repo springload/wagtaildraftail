@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.4.1...HEAD)
 
-...
+- Update to latest version of `draftjs_exporter`.
 
 ## [[v0.4.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.1)
 

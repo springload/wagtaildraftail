@@ -13,7 +13,7 @@ except ImportError:
 
 
 install_requires = [
-    'draftjs_exporter==0.8.1'
+    'draftjs_exporter>=1.0.0,<2'
 ]
 
 # Testing dependencies

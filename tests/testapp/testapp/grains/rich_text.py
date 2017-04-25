@@ -9,7 +9,7 @@ DRAFT_BLOCK_TYPE_H3 = {'label': 'H3', 'type': BLOCK_TYPES.HEADER_THREE}
 DRAFT_BLOCK_TYPE_H4 = {'label': 'H4', 'type': BLOCK_TYPES.HEADER_FOUR}
 DRAFT_BLOCK_TYPE_UL = {'label': 'UL', 'type': BLOCK_TYPES.UNORDERED_LIST_ITEM, 'icon': 'icon-list-ul'}
 DRAFT_BLOCK_TYPE_OL = {'label': 'OL', 'type': BLOCK_TYPES.ORDERED_LIST_ITEM, 'icon': 'icon-list-ol'}
-DRAFT_BLOCK_TYPE_TERMS = {'label': 'T&Cs', 'type': TERMS_BLOCK_ID, 'element': 'div', 'className': 'legals'}
+DRAFT_BLOCK_TYPE_TERMS = {'label': 'T&Cs', 'type': TERMS_BLOCK_ID, 'element': 'div', 'class': 'legals'}
 
 DRAFT_INLINE_STYLE_BOLD = {'label': 'Bold', 'type': INLINE_STYLES.BOLD, 'icon': 'icon-bold'}
 DRAFT_INLINE_STYLE_ITALIC = {'label': 'Italic', 'type': INLINE_STYLES.ITALIC, 'icon': 'icon-italic'}
@@ -121,15 +121,15 @@ DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
     BLOCK_TYPES.UNORDERED_LIST_ITEM: {
         'element': 'li',
         'wrapper': 'ul',
-        'wrapper_props': {'className': 'list-styled'},
+        'wrapper_props': {'class': 'list-styled'},
     },
     BLOCK_TYPES.ORDERED_LIST_ITEM: {
         'element': 'li',
         'wrapper': 'ol',
-        'wrapper_props': {'className': 'list-numbered'},
+        'wrapper_props': {'class': 'list-numbered'},
     },
     TERMS_BLOCK_ID: {
         'element': 'p',
-        'props': {'className': 'legals'},
+        'props': {'class': 'legals'},
     },
 })

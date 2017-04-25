@@ -23,94 +23,89 @@ def HR(props):
     return DOM.create_element('hr')
 
 
-class Link:
-    def render(self, props):
-        link_type = props.get('linkType', '')
-        title = props.get('title')
+def Link(props):
+    link_type = props.get('linkType', '')
+    title = props.get('title')
 
-        if link_type == 'page':
-            try:
-                page_id = props.get('id')
-                page = Page.objects.get(id=page_id)
-                href = page.url
-            except Page.DoesNotExist:
-                href = props.get('url', MISSING_RESOURCE_URL)
-        else:
+    if link_type == 'page':
+        try:
+            page_id = props.get('id')
+            page = Page.objects.get(id=page_id)
+            href = page.url
+        except Page.DoesNotExist:
             href = props.get('url', MISSING_RESOURCE_URL)
+    else:
+        href = props.get('url', MISSING_RESOURCE_URL)
 
-        anchor_properties = {
-            'href': href
-        }
+    anchor_properties = {
+        'href': href
+    }
 
-        if title is not None:
-            anchor_properties['title'] = title
+    if title is not None:
+        anchor_properties['title'] = title
 
-        return DOM.create_element('a', anchor_properties, props['children'])
+    return DOM.create_element('a', anchor_properties, props['children'])
 
 
-class Model:
+def Model(props):
     """
     Link to a resource.
 
     The resource model is expected to implement an `url` method,
     which accepts no parameters and return the relative url to the resource.
     """
+    data = props.get('data', {})
 
-    def render(self, props):
-        data = props.get('data', {})
+    try:
+        model_class = apps.get_model(data['contentType'])
+        model = model_class.objects.get(pk=data['id'])
+        href = model.url()
+        class_name = 'link--{model}'.format(model=DOM.camel_to_dash(model_class.__name__))
 
-        try:
-            model_class = apps.get_model(data['contentType'])
-            model = model_class.objects.get(pk=data['id'])
-            href = model.url()
-            class_name = 'link--{model}'.format(model=DOM.camel_to_dash(model_class.__name__))
+    # Component is missing `contentType` or `id` key(s); or model is missing `url` attribute.
+    # Those are developer errors and shouldn't be silenced.
+    except (KeyError, AttributeError):
+        raise
 
-        # Component is missing `contentType` or `id` key(s); or model is missing `url` attribute.
-        # Those are developer errors and shouldn't be silenced.
-        except (KeyError, AttributeError):
-            raise
+    # Content-type or object do not exist.
+    except (LookupError, ObjectDoesNotExist):
+        href = MISSING_RESOURCE_URL
+        class_name = MISSING_RESOURCE_CLASS
 
-        # Content-type or object do not exist.
-        except (LookupError, ObjectDoesNotExist):
-            href = MISSING_RESOURCE_URL
-            class_name = MISSING_RESOURCE_CLASS
-
-        return DOM.create_element('a', {'className': class_name, 'href': href}, props['children'])
+    return DOM.create_element('a', {'class': class_name, 'href': href}, props['children'])
 
 
-class Image:
+def Image(props):
     """
     Inspired by:
     - https://github.com/torchbox/wagtail/blob/master/wagtail/wagtailimages/rich_text.py
     - https://github.com/torchbox/wagtail/blob/master/wagtail/wagtailimages/shortcuts.py
     - https://github.com/torchbox/wagtail/blob/master/wagtail/wagtailimages/formats.py
     """
-    def render(self, props):
-        image_model = get_image_model()
-        alignment = props.get('alignment', 'left')
-        alt_text = props.get('altText', '')
+    image_model = get_image_model()
+    alignment = props.get('alignment', 'left')
+    alt_text = props.get('altText', '')
 
-        try:
-            image = image_model.objects.get(id=props['id'])
-        except image_model.DoesNotExist:
-            return DOM.create_element('img', {'alt': alt_text})
+    try:
+        image = image_model.objects.get(id=props['id'])
+    except image_model.DoesNotExist:
+        return DOM.create_element('img', {'alt': alt_text})
 
-        image_format = get_image_format(alignment)
-        rendition = get_rendition_or_not_found(image, image_format.filter_spec)
+    image_format = get_image_format(alignment)
+    rendition = get_rendition_or_not_found(image, image_format.filter_spec)
 
-        return DOM.create_element('img', dict(rendition.attrs_dict, **{
-            'class': image_format.classnames,
-            'src': rendition.url,
-            'alt': alt_text,
-        }))
+    return DOM.create_element('img', dict(rendition.attrs_dict, **{
+        'class': image_format.classnames,
+        'src': rendition.url,
+        'alt': alt_text,
+    }))
 
 
-class Embed:
+def Embed(props):
     """
-    Inspired by: https://github.com/torchbox/wagtail/blob/master/wagtail/wagtailembeds/rich_text.py
+    Inspired by: https://github.com/wagtail/wagtail/blob/master/wagtail/wagtailembeds/rich_text.py
     """
-    def render(self, props):
-        return DOM.parse_html(embed_to_frontend_html(props['url']))
+    return DOM.parse_html(embed_to_frontend_html(props['url']))
 
 
 def Icon(props):
@@ -122,40 +117,39 @@ def Icon(props):
     )
 
 
-class Document:
-    def render(self, props):
-        document_model = get_document_model()
+def Document(props):
+    document_model = get_document_model()
 
-        try:
-            doc = document_model.objects.get(id=props['id'])
-            doc_meta = get_document_meta(doc)
+    try:
+        doc = document_model.objects.get(id=props['id'])
+        doc_meta = get_document_meta(doc)
 
 
-        except (document_model.DoesNotExist, AttributeError):
-            return DOM.create_element(
-                'a',
-                {'href': MISSING_RESOURCE_URL, 'className': MISSING_RESOURCE_CLASS + ' file'},
-                props['children']
-            )
-
-        icon_element = DOM.create_element(Icon, {'name': doc_meta['extension']})
-
-        metadata_element = DOM.create_element(
-            'span',
-            {'class': 'icon-text__text'},
-            props['children'],
-            ' '
+    except (document_model.DoesNotExist, AttributeError):
+        return DOM.create_element(
+            'a',
+            {'href': MISSING_RESOURCE_URL, 'class': MISSING_RESOURCE_CLASS + ' file'},
+            props['children']
         )
 
-        size_element = DOM.create_element(
-            'span',
-            {'class': 'file-size'},
-            '({ext} {size})'.format(size=doc_meta['size'], ext=doc_meta['extension'].upper())
-        )
+    icon_element = DOM.create_element(Icon, {'name': doc_meta['extension']})
 
-        link_item = DOM.create_element('a', {'href': doc.url, 'class': 'icon-text'}, icon_element, metadata_element)
+    metadata_element = DOM.create_element(
+        'span',
+        {'class': 'icon-text__text'},
+        props['children'],
+        ' '
+    )
 
-        return DOM.create_element('span', {'class': 'file'}, link_item, size_element)
+    size_element = DOM.create_element(
+        'span',
+        {'class': 'file-size'},
+        '({ext} {size})'.format(size=doc_meta['size'], ext=doc_meta['extension'].upper())
+    )
+
+    link_item = DOM.create_element('a', {'href': doc.url, 'class': 'icon-text'}, icon_element, metadata_element)
+
+    return DOM.create_element('span', {'class': 'file'}, link_item, size_element)
 
 
 class BR:
@@ -166,7 +160,7 @@ class BR:
 
     def render(self, props):
         # Do not process matches inside code blocks.
-        if props['block_type'] == BLOCK_TYPES.CODE:
+        if props['block']['type'] == BLOCK_TYPES.CODE:
             return props['children']
 
         return DOM.create_element('br')
