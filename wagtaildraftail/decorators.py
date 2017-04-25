@@ -75,7 +75,7 @@ class Model:
             href = MISSING_RESOURCE_URL
             class_name = MISSING_RESOURCE_CLASS
 
-        return DOM.create_element('a', {'className': class_name, 'href': href}, props['children'])
+        return DOM.create_element('a', {'class': class_name, 'href': href}, props['children'])
 
 
 class Image:
@@ -134,7 +134,7 @@ class Document:
         except (document_model.DoesNotExist, AttributeError):
             return DOM.create_element(
                 'a',
-                {'href': MISSING_RESOURCE_URL, 'className': MISSING_RESOURCE_CLASS + ' file'},
+                {'href': MISSING_RESOURCE_URL, 'class': MISSING_RESOURCE_CLASS + ' file'},
                 props['children']
             )
 
