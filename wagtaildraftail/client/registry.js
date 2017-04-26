@@ -1,35 +1,26 @@
-const _registry = {
+const registry = {
   decorators: {},
   sources: {},
   strategies: {},
 };
 
 const registerDecorator = (name, decorator) => {
-  _registry.decorators[name] = decorator;
-  console.log('decorator: ' + name);
+  registry.decorators[name] = decorator;
 };
 
-const getDecorator = (name) => {
-  return _registry.decorators[name];
-};
+const getDecorator = name => registry.decorators[name];
 
 const registerSource = (name, source) => {
-  _registry.sources[name] = source;
-  console.log('source: ' + name);
+  registry.sources[name] = source;
 };
 
-const getSource = (name) => {
-  return _registry.sources[name];
-};
+const getSource = name => registry.sources[name];
 
 const registerStrategy = (name, strategy) => {
-  _registry.strategies[name] = strategy;
-  console.log('strategy: ' + name);
+  registry.strategies[name] = strategy;
 };
 
-const getStrategy = (name) => {
-  return _registry.strategies[name];
-};
+const getStrategy = name => registry.strategies[name];
 
 export {
   registerDecorator,

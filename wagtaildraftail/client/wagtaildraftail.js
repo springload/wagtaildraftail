@@ -32,7 +32,6 @@ const getDefaultStrategy = (entityType) => {
 };
 
 const initDraftailEditor = (fieldName, options = {}) => {
-  console.log('initDraftailEditor');
   const field = document.querySelector(`[name="${fieldName}"]`);
   const editorWrapper = document.createElement('div');
   field.parentNode.appendChild(editorWrapper);
