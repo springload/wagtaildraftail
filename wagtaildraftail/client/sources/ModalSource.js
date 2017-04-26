@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { EditorState, Entity, AtomicBlockUtils, RichUtils } from 'draft-js';
+import { EditorState, AtomicBlockUtils, RichUtils } from 'draft-js';
 
 const $ = global.jQuery;
 
@@ -18,7 +18,9 @@ class ModalSource extends React.Component {
 
   onConfirm(data) {
     const { editorState, options, onUpdate } = this.props;
-    const entityKey = Entity.create(options.type, 'MUTABLE', data);
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(options.type, 'MUTABLE', data);
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
 
     onUpdate(nextState);
@@ -26,7 +28,9 @@ class ModalSource extends React.Component {
 
   onConfirmAtomicBlock(data) {
     const { editorState, options, onUpdate } = this.props;
-    const entityKey = Entity.create(options.type, 'IMMUTABLE', data);
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(options.type, 'IMMUTABLE', data);
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
 
     onUpdate(nextState);
@@ -40,15 +44,13 @@ class ModalSource extends React.Component {
   }
 
   render() {
-    return <div />;
+    return null;
   }
 }
 
 ModalSource.propTypes = {
   editorState: PropTypes.instanceOf(EditorState).isRequired,
-  // eslint-disable-next-line
   options: PropTypes.object.isRequired,
-  // eslint-disable-next-line
   entity: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
