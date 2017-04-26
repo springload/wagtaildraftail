@@ -66,8 +66,8 @@
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
-    "enzyme": "^2.7.1",
-    "enzyme-to-json": "^1.5.0",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^3.19.0",
     "eslint-config-springload": "1.0.2",
     "eslint-plugin-import": "2.2.0",
@@ -76,7 +76,7 @@
     "extract-text-webpack-plugin": "^2.0.0",
     "jest": "^19.0.2",
     "nightmare": "^2.10.0",
-    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.5.4",
     "webpack": "^2.2.1"
   },
   "scripts": {
