@@ -1,3 +1,5 @@
+from __future__ import absolute_import, unicode_literals
+
 from draftjs_exporter.dom import DOM
 from wagtail.wagtailcore.models import Page
 
