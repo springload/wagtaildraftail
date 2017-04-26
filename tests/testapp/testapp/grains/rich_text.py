@@ -47,9 +47,10 @@ DRAFT_ENTITY_TYPE_DOCUMENT = {
     'source': 'DocumentSource',
     'decorator': 'Document',
 }
+BUTTON_ENTITY_ID = 'BUTTON'
 DRAFT_ENTITY_TYPE_BUTTON = {
     'label': 'Button',
-    'type': 'BUTTON',
+    'type': BUTTON_ENTITY_ID,
     'icon': 'icon-link',
     'source': 'LinkSource',
     'decorator': 'ButtonDecorator',
@@ -119,7 +120,7 @@ DRAFT_EXPORTER_ENTITY_DECORATORS = {
     ENTITY_TYPES.IMAGE: 'wagtaildraftail.decorators.Image',
     ENTITY_TYPES.EMBED: 'wagtaildraftail.decorators.Embed',
     ENTITY_TYPES.HORIZONTAL_RULE: 'wagtaildraftail.decorators.HR',
-    'BUTTON': 'home.decorators.Button',
+    BUTTON_ENTITY_ID: 'home.decorators.Button',
 }
 
 DRAFT_EXPORTER_COMPOSITE_DECORATORS = [

@@ -23,7 +23,7 @@ class Button:
 
         anchor_properties = {
             'className': 'button',
-            'onclick': "window.location.href='{}'".format(href),
+            'href': href,
         }
 
-        return DOM.create_element('button', anchor_properties, props['children'])
+        return DOM.create_element('a', anchor_properties, props['children'])
