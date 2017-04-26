@@ -57,9 +57,8 @@ const initDraftailEditor = (fieldName, options = {}) => {
   ReactDOM.render(editor, editorWrapper);
 };
 
-window.initDraftailEditor = initDraftailEditor;
-
 window.wagtailDraftail = {};
+window.wagtailDraftail.initEditor = initDraftailEditor;
 Object.assign(window.wagtailDraftail, registry);
 
 // Expose basic React methods for basic needs
