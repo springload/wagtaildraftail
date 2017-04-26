@@ -3,4 +3,4 @@ const ButtonDecorator = ({ entityKey, children }) => {
   return window.wagtailDraftail.createElement('span', attrs, children);
 };
 
-window.wagtailDraftail.registerDecorator('ButtonDecorator', ButtonDecorator);
+window.wagtailDraftail.registerDecorators({ ButtonDecorator });

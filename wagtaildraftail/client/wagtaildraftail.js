@@ -8,15 +8,11 @@ import './wagtaildraftail.css';
 
 import decorators from './decorators';
 import sources from './sources';
-import {registerDecorator, getDecorator, registerSource, getSource, registerStrategy, getStrategy} from './registry';
+import {registerDecorators, getDecorator, registerSources, getSource, registerStrategies, getStrategy} from './registry';
 
 // Register Decorators, Sources and Strategies
-Object.keys(decorators).forEach(function(key) {
-  registerDecorator(key, decorators[key]);
-});
-Object.keys(sources).forEach(function(key) {
-  registerSource(key, sources[key]);
-});
+registerDecorators(decorators);
+registerSources(sources);
 
 // TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
 const getDefaultStrategy = (entityType) => {
@@ -65,11 +61,11 @@ window.initDraftailEditor = initDraftailEditor;
 
 window.wagtailDraftail = {
   // Expose registry methods
-  registerDecorator: registerDecorator,
+  registerDecorators: registerDecorators,
   getDecorator: getDecorator,
-  registerSource: registerSource,
+  registerSources: registerSources,
   getSource: getSource,
-  registerStrategy: registerStrategy,
+  registerStrategies: registerStrategies,
   getStrategy: getStrategy,
 
   // Expose basic React methods for basic needs

@@ -4,29 +4,29 @@ const registry = {
   strategies: {},
 };
 
-const registerDecorator = (name, decorator) => {
-  registry.decorators[name] = decorator;
+const registerDecorators = (decorators) => {
+  Object.assign(registry.decorators, decorators);
 };
 
 const getDecorator = name => registry.decorators[name];
 
-const registerSource = (name, source) => {
-  registry.sources[name] = source;
+const registerSources = (sources) => {
+  Object.assign(registry.sources, sources);
 };
 
 const getSource = name => registry.sources[name];
 
-const registerStrategy = (name, strategy) => {
-  registry.strategies[name] = strategy;
+const registerStrategies = (strategies) => {
+  Object.assign(registry.strategies, strategies);
 };
 
 const getStrategy = name => registry.strategies[name];
 
 export {
-  registerDecorator,
+  registerDecorators,
   getDecorator,
-  registerSource,
+  registerSources,
   getSource,
-  registerStrategy,
+  registerStrategies,
   getStrategy,
 }
