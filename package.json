@@ -32,23 +32,11 @@
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": "springload",
     "rules": {
-      "arrow-body-style": [
-        "off"
-      ],
-      "react/jsx-filename-extension": [
-        "error",
-        {
-          "extensions": [
-            ".js"
-          ]
-        }
-      ]
-    },
-    "env": {
-      "jest": true,
-      "browser": true
+      "indent": ["error", 2],
+      "react/jsx-indent": ["error", 2],
+      "react/jsx-indent-props": ["error", 2]
     }
   },
   "dependencies": {

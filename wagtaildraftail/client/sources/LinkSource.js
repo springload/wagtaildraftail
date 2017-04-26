@@ -32,19 +32,19 @@ const buildInitialUrl = (entity, openAtParentId, canChooseRoot, pageTypes) => {
     urlParams.link_text = data.title;
 
     switch (data.linkType) {
-      case 'page':
-        url = ` ${pageChooser}${data.parentId}/`;
-        break;
+    case 'page':
+      url = ` ${pageChooser}${data.parentId}/`;
+      break;
 
-      case 'email':
-        url = emailLinkChooser;
-        urlParams.link_url = data.url.replace('mailto:', '');
-        break;
+    case 'email':
+      url = emailLinkChooser;
+      urlParams.link_url = data.url.replace('mailto:', '');
+      break;
 
-      default:
-        url = externalLinkChooser;
-        urlParams.link_url = data.url;
-        break;
+    default:
+      url = externalLinkChooser;
+      urlParams.link_url = data.url;
+      break;
     }
   }
 
