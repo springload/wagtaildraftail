@@ -59,7 +59,7 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
         return super(DraftailTextArea, self).render(name, encoded_value, attrs)
 
     def render_js_init(self, id_, name, value):
-        return "window.initDraftailEditor('{name}', {opts})".format(
+        return "window.wagtailDraftail.initEditor('{name}', {opts})".format(
             name=name, opts=json.dumps(self.options))
 
     def value_from_datadict(self, data, files, name):

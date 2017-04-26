@@ -46,5 +46,6 @@ $virtualenv.tar.gz
 *.sql
 example.html
 static
+!tests/testapp/home/static/
 tests/testapp/var/media/
 db.sqlite3

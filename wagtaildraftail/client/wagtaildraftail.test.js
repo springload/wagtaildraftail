@@ -6,7 +6,7 @@ describe('wagtaildraftail', () => {
   });
 
   it('is exposed as global', () => {
-    expect(window.initDraftailEditor).toBe(initDraftailEditor);
+    expect(window.wagtailDraftail.initEditor).toBe(initDraftailEditor);
   });
 
   it('initialises the editor', () => {

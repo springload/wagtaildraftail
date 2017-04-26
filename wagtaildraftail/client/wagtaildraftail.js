@@ -6,11 +6,16 @@ import DraftailEditor from 'draftail';
 import 'draftail/dist/draftail.css';
 import './wagtaildraftail.css';
 
-import sources from './sources';
 import decorators from './decorators';
+import sources from './sources';
+import registry from './registry';
+
+// Register default Decorators and Sources
+registry.registerDecorators(decorators);
+registry.registerSources(sources);
 
 // TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
-const getEntityStrategy = (entityType) => {
+const getDefaultStrategy = (entityType) => {
   return (contentBlock, callback) => {
     contentBlock.findEntityRanges((character) => {
       const entityKey = character.getEntity();
@@ -35,9 +40,9 @@ const initDraftailEditor = (fieldName, options = {}) => {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
       // TODO: Rename keys accordingly once changed in draftail https://github.com/springload/draftail/issues/49
-      control: sources[entity.source],
-      strategy: getEntityStrategy(entity.type),
-      component: decorators[entity.decorator],
+      control: registry.getSource(entity.source),
+      strategy: registry.getStrategy(entity.type) || getDefaultStrategy(entity.type),
+      component: registry.getDecorator(entity.decorator),
     }));
   }
 
@@ -52,6 +57,12 @@ const initDraftailEditor = (fieldName, options = {}) => {
   ReactDOM.render(editor, editorWrapper);
 };
 
-window.initDraftailEditor = initDraftailEditor;
+window.wagtailDraftail = {};
+window.wagtailDraftail.initEditor = initDraftailEditor;
+Object.assign(window.wagtailDraftail, registry);
+
+// Expose basic React methods for basic needs
+window.wagtailDraftail.createClass = React.createClass;
+window.wagtailDraftail.createElement = React.createElement;
 
 export default initDraftailEditor;

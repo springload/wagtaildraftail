@@ -218,7 +218,32 @@ TODO
 Creating entities
 ~~~~~~~~~~~~~~~~~
 
-TODO
+An entity basically needs 4 elements:
+-  a page ``decorator``.
+-  an editor ``decorator``.
+-  an editor ``source``.
+-  an editor ``strategy``.
+
+Decorators define how the content needs to be displayed on the site's pages, as well as within the editor.
+- For the pages, they are defined in Python with ``draftjs_exporter``. Refer to the dedicated documentation on [the draftjs_exporter README](https://github.com/springload/draftjs_exporter#custom-components).
+- For the editor, they are defined in JS/React with ``draftail``. Refer to the dedicated documentation on [the Draftail README](https://github.com/springload/draftail).
+
+Sources define the interface (usually a modal) through which the user will select an entity to insert into the editor.
+
+Strategies allow the editor to identify entities when it is loaded. Strategies are optional as the default one works fine in most cases.
+
+Both sources and strategies are defined in JS/React with ``draftail``. Refer to the dedicated documentation on [the Draftail README](https://github.com/springload/draftail).
+
+To register decorators, sources or strategies to ``wagtaildraftail``, use the corresponding register function:
+
+.. code:: javascript
+
+    window.wagtailDraftail.registerDecorators({ LinkDecorator, ButtonDecorator });
+    window.wagtailDraftail.registerSources({ LinkSource });
+    window.wagtailDraftail.registerStrategies({ LinkStrategy });
+
+Note: In order for ``wagtailDraftail`` and its register functions to be available in the global ``window`` namespace, make sure that ``wagtaildraftail`` appears before any other app which will try to register an entity in ``INSTALED_APPS``.
+
 
 Development
 -----------

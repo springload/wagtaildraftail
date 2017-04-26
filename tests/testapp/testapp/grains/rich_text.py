@@ -47,6 +47,14 @@ DRAFT_ENTITY_TYPE_DOCUMENT = {
     'source': 'DocumentSource',
     'decorator': 'Document',
 }
+BUTTON_ENTITY_ID = 'BUTTON'
+DRAFT_ENTITY_TYPE_BUTTON = {
+    'label': 'Button',
+    'type': BUTTON_ENTITY_ID,
+    'icon': 'icon-link',
+    'source': 'LinkSource',
+    'decorator': 'ButtonDecorator',
+}
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'simple': {
@@ -80,6 +88,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
                 DRAFT_ENTITY_TYPE_EMBED,
                 DRAFT_ENTITY_TYPE_LINK,
                 DRAFT_ENTITY_TYPE_DOCUMENT,
+                DRAFT_ENTITY_TYPE_BUTTON,
             ],
             'blockTypes': [
                 DRAFT_BLOCK_TYPE_H3,
@@ -111,6 +120,7 @@ DRAFT_EXPORTER_ENTITY_DECORATORS = {
     ENTITY_TYPES.IMAGE: 'wagtaildraftail.decorators.Image',
     ENTITY_TYPES.EMBED: 'wagtaildraftail.decorators.Embed',
     ENTITY_TYPES.HORIZONTAL_RULE: 'wagtaildraftail.decorators.HR',
+    BUTTON_ENTITY_ID: 'home.decorators.Button',
 }
 
 DRAFT_EXPORTER_COMPOSITE_DECORATORS = [
