@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { Entity } from 'draft-js';
 import { Icon } from 'draftail';
 
-const Document = ({ entityKey, children }) => {
-  const { title } = Entity.get(entityKey).getData();
+const Document = ({ entityKey, contentState, children }) => {
+  const { title } = contentState.getEntity(entityKey).getData();
   return (
     <span data-tooltip={entityKey} className="RichEditor-link" title={title}>
       <Icon name="icon-doc-full" />
@@ -13,8 +13,9 @@ const Document = ({ entityKey, children }) => {
 };
 
 Document.propTypes = {
-  entityKey: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired,
+  entityKey: PropTypes.string.isRequired,
+  contentState: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Document;
