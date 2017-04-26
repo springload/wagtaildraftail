@@ -8,11 +8,11 @@ import './wagtaildraftail.css';
 
 import decorators from './decorators';
 import sources from './sources';
-import {registerDecorators, getDecorator, registerSources, getSource, registerStrategies, getStrategy} from './registry';
+import registry from './registry';
 
-// Register Decorators, Sources and Strategies
-registerDecorators(decorators);
-registerSources(sources);
+// Register default Decorators and Sources
+registry.registerDecorators(decorators);
+registry.registerSources(sources);
 
 // TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
 const getDefaultStrategy = (entityType) => {
@@ -40,9 +40,9 @@ const initDraftailEditor = (fieldName, options = {}) => {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
       // TODO: Rename keys accordingly once changed in draftail https://github.com/springload/draftail/issues/49
-      control: getSource(entity.source),
-      strategy: getStrategy(entity.type) || getDefaultStrategy(entity.type),
-      component: getDecorator(entity.decorator),
+      control: registry.getSource(entity.source),
+      strategy: registry.getStrategy(entity.type) || getDefaultStrategy(entity.type),
+      component: registry.getDecorator(entity.decorator),
     }));
   }
 
@@ -59,18 +59,11 @@ const initDraftailEditor = (fieldName, options = {}) => {
 
 window.initDraftailEditor = initDraftailEditor;
 
-window.wagtailDraftail = {
-  // Expose registry methods
-  registerDecorators: registerDecorators,
-  getDecorator: getDecorator,
-  registerSources: registerSources,
-  getSource: getSource,
-  registerStrategies: registerStrategies,
-  getStrategy: getStrategy,
+window.wagtailDraftail = {};
+Object.assign(window.wagtailDraftail, registry);
 
-  // Expose basic React methods for basic needs
-  createClass: React.createClass,
-  createElement: React.createElement,
-};
+// Expose basic React methods for basic needs
+window.wagtailDraftail.createClass = React.createClass;
+window.wagtailDraftail.createElement = React.createElement;
 
 export default initDraftailEditor;

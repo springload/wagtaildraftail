@@ -22,11 +22,11 @@ const registerStrategies = (strategies) => {
 
 const getStrategy = name => registry.strategies[name];
 
-export {
+export default {
   registerDecorators,
   getDecorator,
   registerSources,
   getSource,
   registerStrategies,
   getStrategy,
-}
+};
