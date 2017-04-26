@@ -64,7 +64,7 @@ const initDraftailEditor = (fieldName, options = {}) => {
 
 window.initDraftailEditor = initDraftailEditor;
 
-window.wagtaildraftail = {
+window.wagtailDraftail = {
   // Expose registry methods
   registerDecorator: registerDecorator,
   getDecorator: getDecorator,

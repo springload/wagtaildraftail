@@ -240,17 +240,17 @@ A ``page decorator`` is a simple Python class with a ``render`` method accepting
         def render(self, props):
             return DOM.parse_html(embed_to_frontend_html(props['url']))
 
-An ``editor decorator`` is a simple React component (usually stateless) to render the entity in the editor. The JS file will need to be loaded with the ``insert_editor_js`` `hook<http://docs.wagtail.io/en/v1.9.1/reference/hooks.html#insert-editor-js>`_ and the decorator registered with ``window.wagtaildraftail.registerDecorator``.
+An ``editor decorator`` is a simple React component (usually stateless) to render the entity in the editor. The JS file will need to be loaded with the ``insert_editor_js`` `hook<http://docs.wagtail.io/en/v1.9.1/reference/hooks.html#insert-editor-js>`_ and the decorator registered with ``window.wagtailDraftail.registerDecorator``.
 
 .. code:: javascript
 
     /* Without a build step */
     const ButtonDecorator = ({ entityKey, children }) => {
       const attrs = {'data-tooltip': entityKey, className: 'RichEditor-button'};
-      return window.wagtaildraftail.createElement('span', attrs, children);
+      return window.wagtailDraftail.createElement('span', attrs, children);
     };
 
-    window.wagtaildraftail.registerDecorator('ButtonDecorator', ButtonDecorator);
+    window.wagtailDraftail.registerDecorator('ButtonDecorator', ButtonDecorator);
 
     /* With a build step for more complex elements */
     import React from 'react';
@@ -274,7 +274,7 @@ An ``editor decorator`` is a simple React component (usually stateless) to rende
     };
 
     // Or `export default Link;` and register later.
-    window.wagtaildraftail.registerDecorator('Link', Link);
+    window.wagtailDraftail.registerDecorator('Link', Link);
 
     /* More examples at https://github.com/springload/wagtaildraftail/tree/master/wagtaildraftail/client/decorators */
 
@@ -287,7 +287,7 @@ An ``editor source`` is usually more complex and will usually show a modal for t
     class LinkSource extends React.Component { ... }
 
     // Or `export default LinkSource;` and register later.
-    window.wagtaildraftail.registerSource('LinkSource', LinkSource);
+    window.wagtailDraftail.registerSource('LinkSource', LinkSource);
 
     /* More examples at https://github.com/springload/wagtaildraftail/tree/master/wagtaildraftail/client/sources */
 
