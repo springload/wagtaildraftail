@@ -17,7 +17,7 @@ Check out `Awesome Wagtail <https://github.com/springload/awesome-wagtail>`_ for
 Installation
 ------------
 
-Grab the package from pip with ``pip install wagtaildraftail``, then add ``wagtaildraftail`` (before any other app which will try to register an entity) as an app in your Django settings.
+Grab the package from pip with ``pip install wagtaildraftail``, then add ``wagtaildraftail`` as an app in your Django settings.
 
 Usage
 -----
@@ -219,77 +219,30 @@ Creating entities
 ~~~~~~~~~~~~~~~~~
 
 An entity basically needs 4 elements:
--  a page ``decorator`` to render the entity on the page (implemented in Python).
--  an editor ``decorator`` to render the entity in the editor (implemented in JS).
--  an editor ``source`` to select an entity (implemented in JS), e.g. a modal to select a page for a link.
--  an editor ``strategy`` to find the entity when the editor is loaded (implemented in JS), which is optional, the default one works fine in most cases.
+-  a page ``decorator``.
+-  an editor ``decorator``.
+-  an editor ``source``.
+-  an editor ``strategy``.
 
-A ``page decorator`` is a simple Python class with a ``render`` method accepting a single argument, the ``props`` of the element. The ``render`` method can either use the ``DOM.create_element`` from ``draftjs_exporter`` (which mimic ``React.createElement``) or render some html directly. It is registered in ``DRAFT_EXPORTER_ENTITY_DECORATORS`` in the `config file <#configuration>`_.
+Decorators define how the content needs to be displayed on the site's pages, as well as within the editor.
+- For the pages, they are defined in Python with ``draftjs_exporter``. Refer to the dedicated documentation on [the draftjs_exporter README](https://github.com/springload/draftjs_exporter#custom-components).
+- For the editor, they are defined in JS/React with ``draftail``. Refer to the dedicated documentation on [the Draftail README](https://github.com/springload/draftail).
 
-.. code:: python
+Sources define the interface (usually a modal) through which the user will select an entity to insert into the editor.
 
-    def Icon(props):
-        href = '#icon-%s' % props['name']
-        return DOM.create_element(
-            'svg',
-            {'class': 'icon'},
-            DOM.create_element('use', {'xlink:href': href}),
-        )
+Strategies allow the editor to identify entities when it is loaded. Strategies are optional as the default one works fine in most cases.
 
-    class Embed:
-        def render(self, props):
-            return DOM.parse_html(embed_to_frontend_html(props['url']))
+Both sources and strategies are defined in JS/React with ``draftail``. Refer to the dedicated documentation on [the Draftail README](https://github.com/springload/draftail).
 
-An ``editor decorator`` is a simple React component (usually stateless) to render the entity in the editor. The JS file will need to be loaded with the ``insert_editor_js`` `hook<http://docs.wagtail.io/en/v1.9.1/reference/hooks.html#insert-editor-js>`_ and the decorator registered with ``window.wagtailDraftail.registerDecorator``.
+To register decorators, sources or strategies to ``wagtaildraftail``, use the corresponding register function:
 
 .. code:: javascript
 
-    /* Without a build step */
-    const ButtonDecorator = ({ entityKey, children }) => {
-      const attrs = {'data-tooltip': entityKey, className: 'RichEditor-button'};
-      return window.wagtailDraftail.createElement('span', attrs, children);
-    };
+    window.wagtailDraftail.registerDecorators({ LinkDecorator, ButtonDecorator });
+    window.wagtailDraftail.registerSources({ LinkSource });
+    window.wagtailDraftail.registerStrategies({ LinkStrategy });
 
-    window.wagtailDraftail.registerDecorator('ButtonDecorator', ButtonDecorator);
-
-    /* With a build step for more complex elements */
-    import React from 'react';
-    import { Entity } from 'draft-js';
-    import { Icon } from 'draftail';
-
-    const Link = ({ entityKey, children }) => {
-      const { url } = Entity.get(entityKey).getData();
-
-      return (
-        <span data-tooltip={entityKey} className="RichEditor-link">
-          <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
-          {children}
-        </span>
-      );
-    };
-
-    Link.propTypes = {
-      entityKey: React.PropTypes.string.isRequired,
-      children: React.PropTypes.node.isRequired,
-    };
-
-    // Or `export default Link;` and register later.
-    window.wagtailDraftail.registerDecorator('Link', Link);
-
-    /* More examples at https://github.com/springload/wagtaildraftail/tree/master/wagtaildraftail/client/decorators */
-
-An ``editor source`` is usually more complex and will usually show a modal for the user to select an object or some options.
-
-.. code:: javascript
-
-    import React from 'react';
-
-    class LinkSource extends React.Component { ... }
-
-    // Or `export default LinkSource;` and register later.
-    window.wagtailDraftail.registerSource('LinkSource', LinkSource);
-
-    /* More examples at https://github.com/springload/wagtaildraftail/tree/master/wagtaildraftail/client/sources */
+Note: In order for ``wagtailDraftail`` and its register functions to be available in the global ``window`` namespace, make sure that ``wagtaildraftail`` appears before any other app which will try to register an entity in ``INSTALED_APPS``.
 
 
 Development
