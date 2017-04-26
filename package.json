@@ -16,7 +16,17 @@
   },
   "babel": {
     "presets": [
-      "latest",
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "IE 11"
+            ]
+          }
+        }
+      ],
       "react"
     ]
   },
@@ -34,9 +44,18 @@
   "eslintConfig": {
     "extends": "springload",
     "rules": {
-      "indent": ["error", 2],
-      "react/jsx-indent": ["error", 2],
-      "react/jsx-indent-props": ["error", 2]
+      "indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        2
+      ]
     }
   },
   "dependencies": {
@@ -51,7 +70,7 @@
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.10",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.22.0",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
     "enzyme": "^2.8.2",
