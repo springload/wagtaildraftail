@@ -14,19 +14,6 @@ import registry from './registry';
 registry.registerDecorators(decorators);
 registry.registerSources(sources);
 
-// TODO: Use the one from draftail once implemented https://github.com/springload/draftail/issues/48
-const getDefaultStrategy = (entityType) => {
-  return (contentBlock, callback) => {
-    contentBlock.findEntityRanges((character) => {
-      const entityKey = character.getEntity();
-      return (
-        entityKey !== null &&
-        Entity.get(entityKey).getType() === entityType
-      );
-    }, callback);
-  };
-};
-
 const initDraftailEditor = (fieldName, options = {}) => {
   const field = document.querySelector(`[name="${fieldName}"]`);
   const editorWrapper = document.createElement('div');
@@ -39,10 +26,9 @@ const initDraftailEditor = (fieldName, options = {}) => {
   if (options.entityTypes) {
     // eslint-disable-next-line no-param-reassign
     options.entityTypes = options.entityTypes.map(entity => Object.assign(entity, {
-      // TODO: Rename keys accordingly once changed in draftail https://github.com/springload/draftail/issues/49
-      control: registry.getSource(entity.source),
-      strategy: registry.getStrategy(entity.type) || getDefaultStrategy(entity.type),
-      component: registry.getDecorator(entity.decorator),
+      source: registry.getSource(entity.source),
+      strategy: registry.getStrategy(entity.type) || null,
+      decorator: registry.getDecorator(entity.decorator),
     }));
   }
 

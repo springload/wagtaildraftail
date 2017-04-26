@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Entity } from 'draft-js';
 import { Icon } from 'draftail';
 
-const Link = ({ entityKey, children }) => {
-  const { url } = Entity.get(entityKey).getData();
+const Link = ({ entityKey, contentState, children }) => {
+  const { url } = contentState.getEntity(entityKey).getData();
 
   return (
     <span data-tooltip={entityKey} className="RichEditor-link">
@@ -16,6 +15,7 @@ const Link = ({ entityKey, children }) => {
 
 Link.propTypes = {
   entityKey: PropTypes.string.isRequired,
+  contentState: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
 };
 
