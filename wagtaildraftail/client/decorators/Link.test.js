@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Entity } from 'draft-js';
+import { convertFromHTML, ContentState } from 'draft-js';
 import Link from './Link';
 
 describe('Link', () => {
@@ -9,18 +9,30 @@ describe('Link', () => {
   });
 
   it('renders', () => {
-    const entityKey = Entity.create('LINK', 'MUTABLE', { url: 'http://example.com/' });
+    const contentBlocks = convertFromHTML('<h1>aaaaaaaaaa</h1>');
+    const contentState = ContentState.createFromBlockArray(contentBlocks);
+    const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', { url: 'http://example.com/' });
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     expect(shallow((
-      <Link entityKey={entityKey}>
+      <Link
+        entityKey={entityKey}
+        contentState={contentStateWithEntity}
+      >
         <span>Test children</span>
       </Link>
     ))).toMatchSnapshot();
   });
 
   it('renders email', () => {
-    const entityKey = Entity.create('LINK', 'MUTABLE', { url: 'mailto:test@example.com' });
+    const contentBlocks = convertFromHTML('<h1>aaaaaaaaaa</h1>');
+    const contentState = ContentState.createFromBlockArray(contentBlocks);
+    const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', { url: 'mailto:test@example.com' });
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     expect(shallow((
-      <Link entityKey={entityKey}>
+      <Link
+        entityKey={entityKey}
+        contentState={contentStateWithEntity}
+      >
         <span>Test children</span>
       </Link>
     ))).toMatchSnapshot();

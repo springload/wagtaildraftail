@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Entity } from 'draft-js';
 import DraftailEditor from 'draftail';
 
 import 'draftail/dist/draftail.css';

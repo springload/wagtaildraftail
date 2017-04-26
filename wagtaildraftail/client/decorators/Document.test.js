@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Entity } from 'draft-js';
+import { convertFromHTML, ContentState } from 'draft-js';
 import Document from './Document';
 
 describe('Document', () => {
@@ -9,9 +9,15 @@ describe('Document', () => {
   });
 
   it('renders', () => {
-    const entityKey = Entity.create('DOCUMENT', 'MUTABLE', { title: 'Test title' });
+    const contentBlocks = convertFromHTML('<h1>aaaaaaaaaa</h1>');
+    const contentState = ContentState.createFromBlockArray(contentBlocks);
+    const contentStateWithEntity = contentState.createEntity('DOCUMENT', 'MUTABLE', { title: 'Test title' });
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     expect(shallow((
-      <Document entityKey={entityKey}>
+      <Document
+        entityKey={entityKey}
+        contentState={contentStateWithEntity}
+      >
         <span>Test children</span>
       </Document>
     ))).toMatchSnapshot();

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { EditorState, AtomicBlockUtils, RichUtils } from 'draft-js';
+import { AtomicBlockUtils, RichUtils } from 'draft-js';
 
 const $ = global.jQuery;
 
@@ -49,8 +49,9 @@ class ModalSource extends React.Component {
 }
 
 ModalSource.propTypes = {
-  editorState: PropTypes.instanceOf(EditorState).isRequired,
+  editorState: PropTypes.object.isRequired,
   options: PropTypes.object.isRequired,
+  // eslint-disable-next-line
   entity: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
