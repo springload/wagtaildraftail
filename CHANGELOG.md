@@ -3,7 +3,11 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.4.1...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.5.0...HEAD)
+
+...
+
+## [[v0.5.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.5.0)
 
 ### Add
 
@@ -12,6 +16,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Changed
 
 - Update to latest version of `draftjs_exporter`.
+
+### Fixed
+
+- LinkDecorator now correctly output links for internal pages.
 
 
 ## [[v0.4.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.1)
