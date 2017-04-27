@@ -19,7 +19,8 @@ const initDraftailEditor = (fieldName, options = {}) => {
   field.parentNode.appendChild(editorWrapper);
 
   const serialiseInputValue = (rawContentState) => {
-    field.value = JSON.stringify(rawContentState);
+    // TODO Remove default {} when finishing https://github.com/springload/wagtaildraftail/issues/32.
+    field.value = JSON.stringify(rawContentState || {});
   };
 
   if (options.entityTypes) {
