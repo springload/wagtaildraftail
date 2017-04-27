@@ -3,9 +3,17 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.5.0...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.0...HEAD)
 
-- Remove `Model` decorator
+## [[v0.6.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.0)
+
+### Changed
+
+- Update to latest version of Draftail, React.
+
+### Removed
+
+- Remove `Model` decorator.
 
 ## [[v0.5.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.5.0)
 
