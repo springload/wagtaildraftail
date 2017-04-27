@@ -1,6 +1,6 @@
 {
   "name": "wagtaildraftail",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Draft.js editor for Wagtail, built upon Draftail",
   "main": "setup.py",
   "keywords": [],

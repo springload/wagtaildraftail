@@ -3,7 +3,13 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.1...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.2...HEAD)
+
+## [[v0.6.2]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.2)
+
+### Fixed
+
+- Fix editor init to convert empty objects to null for Draftail.
 
 ## [[v0.6.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.1)
 
