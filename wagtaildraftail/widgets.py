@@ -44,7 +44,7 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
 
     def render(self, name, json_value, attrs=None):
         if json_value is None or json_value is '':
-            value = {}
+            value = None
         else:
             if isinstance(json_value, DraftText):
                 json_value = json_value.get_json()
