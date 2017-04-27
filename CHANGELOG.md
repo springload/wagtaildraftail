@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.5.0...HEAD)
 
-...
+- Remove `Model` decorator
 
 ## [[v0.5.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.5.0)
 

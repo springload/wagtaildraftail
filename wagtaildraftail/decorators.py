@@ -2,8 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import re
 
-from django.apps import apps
-from django.core.exceptions import ObjectDoesNotExist
 from draftjs_exporter.constants import BLOCK_TYPES
 from draftjs_exporter.dom import DOM
 from wagtail.wagtailcore.models import Page
@@ -45,34 +43,6 @@ def Link(props):
         anchor_properties['title'] = title
 
     return DOM.create_element('a', anchor_properties, props['children'])
-
-
-def Model(props):
-    """
-    Link to a resource.
-
-    The resource model is expected to implement an `url` method,
-    which accepts no parameters and return the relative url to the resource.
-    """
-    data = props.get('data', {})
-
-    try:
-        model_class = apps.get_model(data['contentType'])
-        model = model_class.objects.get(pk=data['id'])
-        href = model.url()
-        class_name = 'link--{model}'.format(model=DOM.camel_to_dash(model_class.__name__))
-
-    # Component is missing `contentType` or `id` key(s); or model is missing `url` attribute.
-    # Those are developer errors and shouldn't be silenced.
-    except (KeyError, AttributeError):
-        raise
-
-    # Content-type or object do not exist.
-    except (LookupError, ObjectDoesNotExist):
-        href = MISSING_RESOURCE_URL
-        class_name = MISSING_RESOURCE_CLASS
-
-    return DOM.create_element('a', {'class': class_name, 'href': href}, props['children'])
 
 
 def Image(props):
