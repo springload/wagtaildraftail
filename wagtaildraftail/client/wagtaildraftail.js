@@ -32,9 +32,13 @@ const initDraftailEditor = (fieldName, options = {}) => {
     }));
   }
 
+  const fieldValue = JSON.parse(field.value);
+  // TODO Remove default null when finishing https://github.com/springload/wagtaildraftail/issues/32.
+  const rawContentState = fieldValue && Object.keys(fieldValue).length === 0 ? null : fieldValue;
+
   const editor = (
     <DraftailEditor
-      rawContentState={JSON.parse(field.value)}
+      rawContentState={rawContentState}
       onSave={serialiseInputValue}
       {...options}
     />
