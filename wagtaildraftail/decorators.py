@@ -8,7 +8,12 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtaildocs.models import get_document_model
 from wagtail.wagtailembeds.format import embed_to_frontend_html
 from wagtail.wagtailimages.formats import get_image_format
-from wagtail.wagtailimages.models import get_image_model
+
+try:
+    from wagtail.wagtailimages.models import get_image_model
+except ImportError:
+    from wagtail.wagtailimages import get_image_model
+
 from wagtail.wagtailimages.shortcuts import get_rendition_or_not_found
 
 from .utils import get_document_meta
