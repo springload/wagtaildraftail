@@ -3,21 +3,27 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.2...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.3...HEAD)
 
-## [[v0.6.2]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.2)
+## [[v0.6.3]](https://github.com/springload/wagtaildraftail/releases/tag/v0.6.3)
+
+### Added
+
+- Add support for Wagtail 1.10.
+
+## [[v0.6.2]](https://github.com/springload/wagtaildraftail/releases/tag/v0.6.2)
 
 ### Fixed
 
 - Fix editor init to convert empty objects to null for Draftail.
 
-## [[v0.6.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.1)
+## [[v0.6.1]](https://github.com/springload/wagtaildraftail/releases/tag/v0.6.1)
 
 ### Fixed
 
 - Fix DraftailTextArea to serialise empty value to null as Draftail expects.
 
-## [[v0.6.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.6.0)
+## [[v0.6.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.6.0)
 
 ### Changed
 
@@ -27,7 +33,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 - Remove `Model` decorator.
 
-## [[v0.5.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.5.0)
+## [[v0.5.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.5.0)
 
 ### Add
 
@@ -35,20 +41,20 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Changed
 
-- Update to latest version of `draftjs_exporter`.
+- Update to latest version of `wagtaildraftail`.
 
 ### Fixed
 
 - LinkDecorator now correctly output links for internal pages.
 
 
-## [[v0.4.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.1)
+## [[v0.4.1]](https://github.com/springload/wagtaildraftail/releases/tag/v0.4.1)
 
 ### Fixed
 
 - Fixed error for block/field with default value.
 
-## [[v0.4.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.4.0)
+## [[v0.4.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.4.0)
 
 ### Add
 
@@ -62,10 +68,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Rename `JsonTextArea` widget to `DraftailTextArea`.
 - Move the `get_exporter_config` from the `settings` module to the `utils` module.
 - Move entity `decorator` and `source` definition to Python.
-- Bumped `draftjs_exporter` dependency to `0.8.0`. See the updated example configuration below or the module's [changelog](https://github.com/springload/draftjs_exporter/blob/v0.8.0/CHANGELOG.md#v080) for a full list of changes.
+- Bumped `wagtaildraftail` dependency to `0.8.0`. See the updated example configuration below or the module's [changelog](https://github.com/springload/wagtaildraftail/blob/v0.8.0/CHANGELOG.md#v080) for a full list of changes.
 
 
-## [[v0.3.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.3.0)
+## [[v0.3.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.3.0)
 
 ### Added
 
@@ -83,19 +89,19 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Fix blocks.py import paths
 - Fix DraftailTextField prep_value generation for Django>1.8
 
-## [[v0.2.2]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.2)
+## [[v0.2.2]](https://github.com/springload/wagtaildraftail/releases/tag/v0.2.2)
 
 ### Fixed
 
 - Add missing `get_document_meta` utility function – up until now documents rendered a (todo todo) placeholder instead of their metadata. #21
 
-## [[v0.2.1]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.1)
+## [[v0.2.1]](https://github.com/springload/wagtaildraftail/releases/tag/v0.2.1)
 
 ### Fixed
 
 - Fix documentation formatting.
 
-## [[v0.2.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.2.0)
+## [[v0.2.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.2.0)
 
 ### Added
 
@@ -111,13 +117,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Fix imports not working.
 - Fix Python compat issue.
 
-## [[v0.1.0]](https://github.com/springload/draftjs_exporter/releases/tag/v0.1.0)
+## [[v0.1.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.1.0)
 
 First usable release!
 
 -------------
 
-## [[x.y.z]](https://github.com/springload/draftjs_exporter/releases/tag/x.y.z) (Template: http://keepachangelog.com/)
+## [[x.y.z]](https://github.com/springload/wagtaildraftail/releases/tag/x.y.z) (Template: http://keepachangelog.com/)
 
 ### Added
 
