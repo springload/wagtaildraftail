@@ -4,6 +4,7 @@ cache:
   bundler: true
   directories:
   - node_modules
+  - .tox
 matrix:
   include:
    - env: TOXENV=py27-dj18-wt17
