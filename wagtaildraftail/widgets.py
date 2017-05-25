@@ -39,11 +39,6 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
 
         return options
 
-    def get_panel(self):
-        # TODO Cannot figure out where this comes from.
-        from wagtail.wagtailadmin.edit_handlers import JSONFieldPanel
-        return JSONFieldPanel
-
     def render(self, name, value=None, attrs=None, renderer=None):
         json_value = value
 
