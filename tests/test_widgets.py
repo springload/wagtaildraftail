@@ -3,6 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import json
 import unittest
 
+from bs4 import BeautifulSoup
+
 from wagtaildraftail.widgets import DraftailTextArea
 
 
@@ -12,7 +14,22 @@ class DraftailTextAreaWidgetTestCase(unittest.TestCase):
 
         html = widget.render('default_editor', json.dumps({'key': 'val'}), {'id': 'id'})
 
-        self.assertEqual(html, (
-            r'''<input type="hidden" name="default_editor" '''
-            r'''value="{&quot;key&quot;: &quot;val&quot;}" '''
-            r'''id="id" /><script>window.wagtailDraftail.initEditor('default_editor', {})</script>'''))
+        # <input type="hidden"
+        #        name="default_editor"
+        #        value="{&quot;key&quot;: &quot;val&quot;}"
+        #        id="id" />
+        # <script>window.wagtailDraftail.initEditor('default_editor', {})</script>
+
+        soup = BeautifulSoup(html, 'html.parser')
+
+        self.assertIsNotNone(soup.input)
+        self.assertIsNotNone(soup.script)
+
+        self.assertDictContainsSubset({
+            'type': 'hidden',
+            'name': 'default_editor',
+            'value': '{"key": "val"}',
+            'id': 'id'
+        }, soup.input.attrs)
+
+        self.assertEquals(soup.script.text, r"window.wagtailDraftail.initEditor('default_editor', {})")
