@@ -14,7 +14,7 @@ div[data-block="true"] {
 .DraftEditor-editorContainer h3,
 .DraftEditor-editorContainer h4,
 .DraftEditor-editorContainer h5,
-.DraftEditor-editorContainer h6, {
+.DraftEditor-editorContainer h6 {
     font-weight: bold;
 }
 
