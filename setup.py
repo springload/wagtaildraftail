@@ -19,15 +19,18 @@ install_requires = [
 # Testing dependencies
 testing_extras = [
     # Required for running the tests
-    'tox>=2.3.1',
+    'tox>=2.3.1,<2.4',
 
     # For coverage and PEP8 linting
-    'coverage>=4.1.0',
-    'flake8>=3.2.0',
-    'isort>=4.2.5',
+    'coverage>=4.1.0,<4.2',
+    'flake8>=3.2.0,<3.3',
+    'isort>=4.2.5,<4.3',
 
     # For test site
     'wagtail==1.9',
+
+    # Tests use this to check some rendered html
+    'beautifulsoup4==4.6.0'
 ]
 
 # Documentation dependencies

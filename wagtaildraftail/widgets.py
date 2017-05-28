@@ -4,6 +4,8 @@ import json
 import logging
 
 from django import forms
+from django.utils.inspect import func_supports_parameter
+
 from draftjs_exporter.constants import ENTITY_TYPES
 
 from wagtail.utils.widgets import WidgetWithScript
@@ -37,12 +39,9 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
 
         return options
 
-    def get_panel(self):
-        # TODO Cannot figure out where this comes from.
-        from wagtail.wagtailadmin.edit_handlers import JSONFieldPanel
-        return JSONFieldPanel
+    def render(self, name, value=None, attrs=None, renderer=None):
+        json_value = value
 
-    def render(self, name, json_value, attrs=None):
         if json_value is None or json_value is '':
             value = None
         else:
@@ -56,7 +55,12 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
 
         encoded_value = json.dumps(value)
 
-        return super(DraftailTextArea, self).render(name, encoded_value, attrs)
+        parent = super(DraftailTextArea, self)
+
+        if func_supports_parameter(parent.render, 'renderer'):  # >= Django 1.11
+            return parent.render(name, encoded_value, attrs, renderer)
+        else:
+            return parent.render(name, encoded_value, attrs)
 
     def render_js_init(self, id_, name, value):
         return "window.wagtailDraftail.initEditor('{name}', {opts})".format(
