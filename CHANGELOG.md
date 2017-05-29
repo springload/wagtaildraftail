@@ -3,7 +3,16 @@
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.6.3...HEAD)
+## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.7.0...HEAD)
+
+### Fixed
+
+- Fix DraftailTextArea.render signature, conforming to Django 1.11 changes (#51, #52).
+- Remove comma that breaks heading styles (#53).
+
+### Removed
+
+- Remove the broken `get_panel` method from the widget.
 
 ## [[v0.6.3]](https://github.com/springload/wagtaildraftail/releases/tag/v0.6.3)
 
