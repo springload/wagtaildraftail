@@ -32,7 +32,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.css$": "<rootDir>/wagtaildraftail/client/tests/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/wagtaildraftail/client/tests/styleMock.js"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -60,14 +60,16 @@
   },
   "dependencies": {
     "draft-js": "^0.10.1",
-    "draftail": "^0.7.0",
+    "draftail": "^0.7.2",
+    "element-closest": "^2.0.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
     "babel-core": "^6.22.1",
-    "babel-jest": "^19.0.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^6.2.10",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.4.0",
@@ -81,17 +83,22 @@
     "eslint-plugin-jsx-a11y": "3.0.2",
     "eslint-plugin-react": "6.10.3",
     "extract-text-webpack-plugin": "^2.0.0",
-    "jest": "^19.0.2",
+    "jest": "^20.0.4",
     "nightmare": "^2.10.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
     "react-test-renderer": "^15.5.4",
+    "sass-loader": "^6.0.5",
     "webpack": "^2.2.1"
   },
   "scripts": {
     "start": "webpack --config wagtaildraftail/client/webpack.config.dev.js --watch",
-    "dist": "webpack --config wagtaildraftail/client/webpack.config.prod.js",
+    "dist": "NODE_ENV=production webpack --config wagtaildraftail/client/webpack.config.prod.js",
     "lint": "eslint wagtaildraftail/client",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:watch:coverage": "jest --watch --coverage",
+    "report:coverage": "open coverage/lcov-report/index.html"
   }
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import DraftailEditor from 'draftail';
 
 import 'draftail/dist/draftail.css';
-import './wagtaildraftail.css';
+import './wagtaildraftail.scss';
 
 import decorators from './decorators';
 import sources from './sources';
