@@ -39,6 +39,10 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/wagtaildraftail/client/tests"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.tox/"
     ]
   },
   "eslintConfig": {
