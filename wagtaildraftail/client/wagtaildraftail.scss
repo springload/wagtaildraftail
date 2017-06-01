@@ -23,3 +23,9 @@ div[data-block="true"] {
 .object.collapsible .DraftEditor-editorContainer h2 label:before {
     content: none !important;
 }
+
+.editor {
+    // Align with the rest of the Wagtail UI.
+    padding: 1rem;
+    padding-right: 0;
+}
