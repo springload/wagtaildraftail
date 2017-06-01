@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.7.0...HEAD)
 
+## [[v0.7.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.7.0)
+
 ### Added
 
 - Add placeholder text to editor
