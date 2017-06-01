@@ -40,6 +40,7 @@ const initDraftailEditor = (fieldName, options = {}) => {
     <DraftailEditor
       rawContentState={rawContentState}
       onSave={serialiseInputValue}
+      placeholder="Write here…"
       {...options}
     />
   );
