@@ -29,7 +29,7 @@ const outputPath = path.join(__dirname, '..', 'static', 'wagtaildraftail');
 module.exports = {
   entry: {
     wagtaildraftail: [
-      'element-closest',
+      './wagtaildraftail/client/utils/polyfills.js',
       './wagtaildraftail/client/wagtaildraftail.js',
     ],
   },
