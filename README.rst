@@ -19,6 +19,8 @@ Installation
 
 Grab the package from pip with ``pip install wagtaildraftail``, then add ``wagtaildraftail`` as an app in your Django settings.
 
+    Note: this package contains compiled (bundled, minified) JavaScript and CSS, it can only be installed directly from pip.
+
 Usage
 -----
 

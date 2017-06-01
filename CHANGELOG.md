@@ -5,10 +5,22 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.7.0...HEAD)
 
+### Added
+
+- Add placeholder text to editor
+
+### Changed
+
+- Update Draftail and Draft.js dependencies.
+
 ### Fixed
 
 - Fix DraftailTextArea.render signature, conforming to Django 1.11 changes (#51, #52).
 - Remove comma that breaks heading styles (#53).
+- Minify and autoprefix CSS (#41).
+- Include required element-closest polyfill.
+- Include required ES6/ES7 polyfills.
+- Add margins to the editor. Fix #5.
 
 ### Removed
 
