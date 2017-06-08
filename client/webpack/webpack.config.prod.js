@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-const config = require('./webpack.config.dev');
+const config = require('./webpack.config.base');
 
 module.exports = Object.assign({}, config, {
   plugins: config.plugins.concat([
