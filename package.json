@@ -33,13 +33,13 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|scss)$": "<rootDir>/wagtaildraftail/client/tests/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/client/tests/styleMock.js"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "coveragePathIgnorePatterns": [
-      "<rootDir>/wagtaildraftail/client/tests"
+      "<rootDir>/client/tests"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -97,9 +97,9 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "start": "webpack --config wagtaildraftail/client/webpack.config.dev.js --watch",
-    "dist": "NODE_ENV=production webpack --config wagtaildraftail/client/webpack.config.prod.js",
-    "lint": "eslint wagtaildraftail/client",
+    "start": "webpack --config client/webpack/webpack.config.dev.js --watch",
+    "dist": "NODE_ENV=production webpack --config client/webpack/webpack.config.prod.js",
+    "lint": "eslint client",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",

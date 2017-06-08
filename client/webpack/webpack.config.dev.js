@@ -26,13 +26,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const extractSass = new ExtractTextPlugin('wagtaildraftail.css');
 
-const outputPath = path.join(__dirname, '..', 'static', 'wagtaildraftail');
+const outputPath = path.join(__dirname, '..', '..', 'wagtaildraftail', 'static', 'wagtaildraftail');
 
 module.exports = {
   entry: {
     wagtaildraftail: [
-      './wagtaildraftail/client/utils/polyfills.js',
-      './wagtaildraftail/client/wagtaildraftail.js',
+      './client/utils/polyfills.js',
+      './client/wagtaildraftail.js',
     ],
   },
 
