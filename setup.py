@@ -24,7 +24,7 @@ testing_extras = [
     # For coverage and PEP8 linting
     'coverage>=4.1.0,<4.2',
     'flake8>=3.2.0,<3.3',
-    'isort>=4.2.5,<4.3',
+    'isort==4.2.5',
 
     # For test site
     'wagtail==1.9',
