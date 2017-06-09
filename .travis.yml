@@ -61,7 +61,6 @@ matrix:
      python: 3.6
 install:
 - nvm install
-- npm install -g npm@5
 - npm install
 - pip install tox coveralls
 - gem install coveralls-lcov
