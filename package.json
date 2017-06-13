@@ -66,11 +66,15 @@
   "dependencies": {
     "core-js": "^2.4.1",
     "draft-js": "^0.10.1",
-    "draftail": "^0.7.2",
+    "draftail": "^0.7.3",
     "element-closest": "^2.0.2",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",

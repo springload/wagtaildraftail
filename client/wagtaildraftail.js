@@ -9,6 +9,10 @@ import decorators from './decorators';
 import sources from './sources';
 import registry from './registry';
 
+import { createPageChooser } from './choosers/page/createPageChooser';
+
+window.createPageChooser = createPageChooser;
+
 // Register default Decorators and Sources
 registry.registerDecorators(decorators);
 registry.registerSources(sources);

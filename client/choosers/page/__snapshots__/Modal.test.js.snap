@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders 1`] = `
+<div>
+  <div
+    aria-hidden={true}
+    className="modal fade in"
+    role="dialog"
+    style={
+      Object {
+        "display": "block",
+      }
+    }
+    tabIndex={-1}
+  >
+    <div
+      className="modal-dialog"
+    >
+      <div
+        className="modal-content"
+      >
+        <button
+          aria-hidden={true}
+          className="button close icon text-replace icon-cross"
+          data-dismiss="modal"
+          onClick={[Function]}
+          type="button"
+        >
+          ×
+        </button>
+        <div
+          className="modal-body"
+        >
+          <div>
+            Empty
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="modal-backdrop fade in"
+  />
+</div>
+`;

@@ -1,6 +1,13 @@
-import ModalSource from './ModalSource';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
-const $ = global.jQuery;
+import { RichUtils } from 'draft-js';
+
+import PageChooser from '../choosers/page/PageChooser';
+import reducer from '../choosers/page/reducer';
 
 // Plaster over Wagtail internals.
 const buildInitialUrl = (entity, openAtParentId, canChooseRoot, pageTypes) => {
@@ -51,31 +58,41 @@ const buildInitialUrl = (entity, openAtParentId, canChooseRoot, pageTypes) => {
   return { url, urlParams };
 };
 
-class LinkSource extends ModalSource {
-  constructor(props) {
-    super(props);
-    this.parseData = this.parseData.bind(this);
+const parsePageData = (pageData) => {
+  const data = Object.assign({}, pageData);
+
+  if (data.id) {
+    data.linkType = 'page';
+  } else if (data.url.indexOf('mailto:') === 0) {
+    data.linkType = 'email';
+  } else {
+    data.linkType = 'external';
   }
 
-  // Plaster over more Wagtail internals.
-  parseData(pageData) {
-    const data = Object.assign({}, pageData);
+  // We do not want each link to have the page's title as an attr.
+  // nor links to have the link URL as a title.
+  if (data.linkType === 'page' || data.url.replace('mailto:', '') === data.title) {
+    delete data.title;
+  }
 
-    if (data.id) {
-      data.linkType = 'page';
-    } else if (data.url.indexOf('mailto:') === 0) {
-      data.linkType = 'email';
-    } else {
-      data.linkType = 'external';
-    }
+  return data;
+};
 
-    // We do not want each link to have the page's title as an attr.
-    // nor links to have the link URL as a title.
-    if (data.linkType === 'page' || data.url.replace('mailto:', '') === data.title) {
-      delete data.title;
-    }
+const middleware = [
+  thunkMiddleware,
+];
 
-    this.onConfirm(data);
+const store = createStore(reducer, {}, compose(
+  applyMiddleware(...middleware),
+  // Expose store to Redux DevTools extension.
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+));
+
+class LinkSource extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
   }
 
   componentDidMount() {
@@ -85,16 +102,72 @@ class LinkSource extends ModalSource {
     const pageTypes = ['wagtailcore.page'];
     const { url, urlParams } = buildInitialUrl(entity, openAtParentId, canChooseRoot, pageTypes);
 
-    $(document.body).on('hidden.bs.modal', this.onClose);
+    // $(document.body).on('hidden.bs.modal', this.onClose);
 
-    global.ModalWorkflow({
-      url,
-      urlParams,
-      responses: {
-        pageChosen: this.parseData,
-      },
-    });
+    // global.ModalWorkflow({
+    //   url,
+    //   urlParams,
+    //   responses: {
+    //     pageChosen: this.parseData,
+    //   },
+    // });
+    // const modalPlacement = document.createElement('div');
+    // modalPlacement.id = 'react-modal';
+    // document.body.appendChild(modalPlacement);
+
+    // const chooseButton = document.createElement('div');
+    // chooseButton.className = 'action-choose';
+    // document.body.appendChild(chooseButton);
+    // window.createPageChooser(this.onConfirm);
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  onConfirm(pageData) {
+    const { editorState, options, onUpdate } = this.props;
+    const data = parsePageData(pageData);
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(options.type, 'MUTABLE', data);
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
+
+    onUpdate(nextState);
+  }
+
+  onClose(e) {
+    const { onClose } = this.props;
+    e.preventDefault();
+
+    onClose();
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <PageChooser
+          onModalClose={this.onClose}
+          onPageChosen={this.onConfirm}
+          initialParentPageId={null}
+          restrictPageTypes={null}
+        />
+      </Provider>
+    );
   }
 }
+
+LinkSource.propTypes = {
+  editorState: PropTypes.object.isRequired,
+  options: PropTypes.object.isRequired,
+  // eslint-disable-next-line
+  entity: PropTypes.object,
+  onUpdate: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+LinkSource.defaultProps = {
+  entity: null,
+};
 
 export default LinkSource;
