@@ -39,7 +39,10 @@
             {
               "useBuiltIns": true,
               "targets": {
-                "browsers": ["> 1%", "IE 11"]
+                "browsers": [
+                  "> 1%",
+                  "IE 11"
+                ]
               }
             }
           ],
@@ -83,8 +86,9 @@
   "dependencies": {
     "core-js": "^2.4.1",
     "draft-js": "^0.10.1",
-    "draftail": "^0.7.2",
+    "draftail": "^0.8.0",
     "element-closest": "^2.0.2",
+    "immutable": "~3.7.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
