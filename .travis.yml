@@ -6,58 +6,47 @@ cache:
   - node_modules
   - .tox
 matrix:
+  # See `Which version combinations to include in Travis test matrix?` in `/docs/README.md`.
   include:
-   - env: TOXENV=py27-dj18-wt17
-     python: 2.7
-   - env: TOXENV=py27-dj18-wt18
-     python: 2.7
-   - env: TOXENV=py27-dj18-wt19
-     python: 2.7
    - env: TOXENV=py27-dj18-wt110
      python: 2.7
-   - env: TOXENV=py27-dj110-wt17
+   - env: TOXENV=py27-dj18-wt111
      python: 2.7
-   - env: TOXENV=py27-dj110-wt18
-     python: 2.7
-   - env: TOXENV=py27-dj110-wt19
+   - env: TOXENV=py27-dj18-wt112
      python: 2.7
    - env: TOXENV=py27-dj110-wt110
      python: 2.7
+   - env: TOXENV=py27-dj110-wt111
+     python: 2.7
+   - env: TOXENV=py27-dj110-wt112
+     python: 2.7
    - env: TOXENV=py27-dj111-wt110
      python: 2.7
-   - env: TOXENV=py34-dj110-wt17
+   - env: TOXENV=py27-dj111-wt111
+     python: 2.7
+   - env: TOXENV=py27-dj111-wt112
+     python: 2.7
+   - env: TOXENV=py34-dj111-wt112
      python: 3.4
-   - env: TOXENV=py34-dj110-wt18
-     python: 3.4
-   - env: TOXENV=py34-dj110-wt19
-     python: 3.4
-   - env: TOXENV=py34-dj110-wt110
-     python: 3.4
-   - env: TOXENV=py34-dj111-wt110
-     python: 3.4
-   - env: TOXENV=py35-dj18-wt110
-     python: 3.5
-   - env: TOXENV=py35-dj110-wt17
-     python: 3.5
-   - env: TOXENV=py35-dj110-wt18
-     python: 3.5
-   - env: TOXENV=py35-dj110-wt19
-     python: 3.5
-   - env: TOXENV=py35-dj110-wt110
-     python: 3.5
-   - env: TOXENV=py35-dj111-wt110
+   - env: TOXENV=py35-dj111-wt112
      python: 3.5
    - env: TOXENV=py36-dj18-wt110
      python: 3.6
-   - env: TOXENV=py36-dj110-wt17
+   - env: TOXENV=py36-dj18-wt111
      python: 3.6
-   - env: TOXENV=py36-dj110-wt18
-     python: 3.6
-   - env: TOXENV=py36-dj110-wt19
+   - env: TOXENV=py36-dj18-wt112
      python: 3.6
    - env: TOXENV=py36-dj110-wt110
      python: 3.6
+   - env: TOXENV=py36-dj110-wt111
+     python: 3.6
+   - env: TOXENV=py36-dj110-wt112
+     python: 3.6
    - env: TOXENV=py36-dj111-wt110
+     python: 3.6
+   - env: TOXENV=py36-dj111-wt111
+     python: 3.6
+   - env: TOXENV=py36-dj111-wt112
      python: 3.6
 install:
 - nvm install

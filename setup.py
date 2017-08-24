@@ -27,7 +27,7 @@ testing_extras = [
     'isort==4.2.5',
 
     # For test site
-    'wagtail==1.9',
+    'wagtail==1.12',
 
     # Tests use this to check some rendered html
     'beautifulsoup4==4.6.0'
