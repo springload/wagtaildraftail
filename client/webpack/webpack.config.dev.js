@@ -6,6 +6,8 @@ module.exports = Object.assign({}, config, {
   // See http://webpack.github.io/docs/configuration.html#devtool
   devtool: 'inline-source-map',
 
+  watch: true,
+
   plugins: config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': {

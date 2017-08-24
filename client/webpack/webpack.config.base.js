@@ -19,8 +19,6 @@ const stats = {
   reasons: false,
   // Add webpack version information
   version: false,
-  // Set the maximum number of modules to be shown
-  maxModules: 0,
 };
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -54,6 +52,7 @@ module.exports = {
       logLevel: isProduction ? 'info' : 'warn',
     }),
     extractSass,
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 
   module: {
