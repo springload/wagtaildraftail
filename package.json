@@ -94,7 +94,8 @@
     "postcss-loader": "^2.0.5",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.5",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "scripts": {
     "start": "webpack --config client/webpack/webpack.config.dev.js --watch",
@@ -104,6 +105,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
-    "report:coverage": "open coverage/lcov-report/index.html"
+    "report:coverage": "open coverage/lcov-report/index.html",
+    "report:build": "open client/webpack/webpack-stats.html"
   }
 }

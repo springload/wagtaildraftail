@@ -35,6 +35,7 @@ media/*
 coverage
 coverage_html_report/
 npm-debug.log*
+webpack-stats.html
 
 # node
 node_modules/
