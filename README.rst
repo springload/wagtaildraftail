@@ -10,8 +10,6 @@ wagtaildraftail 🐦📝🍸
 
     Draft.js editor for Wagtail, built upon `Draftail <https://github.com/springload/draftail>`_ and `draftjs_exporter <https://github.com/springload/draftjs_exporter>`_.
 
-**This is alpha software, use at your own risk. Do not use in production (yet).**
-
 Check out `Awesome Wagtail <https://github.com/springload/awesome-wagtail>`_ for more awesome packages and resources from the Wagtail community.
 
 Installation
