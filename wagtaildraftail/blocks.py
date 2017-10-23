@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.wagtailcore.blocks import RichTextBlock
 
 from wagtaildraftail.draft_text import DraftText
@@ -25,7 +26,14 @@ class DraftailTextBlock(RichTextBlock):
     @cached_property
     def field(self):
         from wagtail.wagtailadmin.rich_text import get_rich_text_editor_widget
-        return SerializedJSONField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
+        if WAGTAIL_VERSION >= (1, 12):
+            return SerializedJSONField(
+                widget=get_rich_text_editor_widget(self.editor, features=self.features), **self.field_options
+            )
+        else:
+            return SerializedJSONField(
+                widget=get_rich_text_editor_widget(self.editor), **self.field_options
+            )
 
     def to_python(self, value):
         return DraftText(value)

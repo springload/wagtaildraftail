@@ -9,6 +9,7 @@ from django.utils.inspect import func_supports_parameter
 from draftjs_exporter.constants import ENTITY_TYPES
 
 from wagtail.utils.widgets import WidgetWithScript
+from wagtail.wagtailadmin.rich_text import features as feature_registry
 from wagtail.wagtailimages.formats import get_image_formats
 
 from .draft_text import DraftText
@@ -22,10 +23,41 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
     """
     Field widget to render a rich text editor powered by Draftail.
     """
-    def __init__(self, attrs=None, options=None):
-        self.options = self.intercept_image_formats(options or {})
+    # this class's constructor accepts a 'features' kwarg
+    accepts_features = True
+
+    def __init__(self, attrs=None, options=None, features=None):
+        # Find or construct an 'options' dict for this editor to use, according to
+        # this order of precedence:
+        # 1) If we receive an explicit 'features' list, build options from that
+        # 2) If we receive an 'options' dict that looks like it's configuring things
+        #    longhand (i.e. contains any of 'entityTypes' / 'blockTypes' / 'inlineStyles'),
+        #    use that
+        # 3) Otherwise, build options from the default feature set
+
+        if features is not None:
+            self.options = self._build_options_from_features(features)
+        elif (
+            options is not None and (
+                'entityTypes' in options or 'blockTypes' in options or 'inlineStyles' in options
+            )
+        ):
+            self.options = options
+        else:
+            self.options = self._build_options_from_features(feature_registry.get_default_features())
+
+        # Whichever way we obtain the options dict, expand any references to imageFormats = '__all__'
+        self.options = self.intercept_image_formats(self.options)
 
         super(DraftailTextArea, self).__init__(attrs)
+
+    def _build_options_from_features(self, features):
+        options = {}
+        for feature in features:
+            plugin = feature_registry.get_editor_plugin('draftail', feature)
+            plugin.construct_options(options)
+
+        return options
 
     def intercept_image_formats(self, options):
         """
