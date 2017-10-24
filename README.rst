@@ -42,14 +42,12 @@ First, add a Draftail field to some of your pages. Here is an example:
             FieldPanel('body')
         ]
 
-Then, when displaying those fields, use the ``richtext`` filter in the templates.
+Outputting the field directly onto a template will give the HTML representation; there is no need to use the ``richtext`` filter.
 
 .. code:: html
 
-    {% load wagtailcore_tags %}
-
     {% block content %}
-        {{ page.body|richtext }}
+        {{ page.body }}
     {% endblock %}
 
 With StreamField
