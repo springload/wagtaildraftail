@@ -42,6 +42,14 @@ First, add a Draftail field to some of your pages. Here is an example:
             FieldPanel('body')
         ]
 
+When using Wagtail 1.12 and above, ``DraftailTextField`` accepts the keyword argument ``features`` to define the set of features available in the editor - see `Limiting features in a rich text field <http://docs.wagtail.io/en/v1.12.2/advanced_topics/customisation/page_editing_interface.html#limiting-features-in-a-rich-text-field>`_:
+
+.. code:: python
+
+    class MyPage(Page):
+        body = DraftailTextField(blank=True, features=['h2', 'h3', 'ul', 'ol', 'link', 'document-link'])
+
+
 Outputting the field directly onto a template will give the HTML representation; there is no need to use the ``richtext`` filter.
 
 .. code:: html
@@ -62,6 +70,13 @@ Here is an example using the ready-made block:
     class MyStructBlock(StructBlock):
         body = DraftailTextBlock()
 
+The ``features`` argument is supported when using Wagtail 1.12 and above:
+
+.. code:: python
+
+    class MyStructBlock(StructBlock):
+        body = DraftailTextBlock(features=['bold', 'italic', 'link', 'document-link'])
+
 Configuration
 ~~~~~~~~~~~~~
 
@@ -74,13 +89,69 @@ Each editor defined in ``WAGTAILADMIN_RICH_TEXT_EDITORS`` is a dictionary with 2
 -  ``WIDGET`` is a mandatory string set to the widget to use
    -  should always be set to ``wagtaildraftail.widgets.DraftailTextArea`` (or a subclass of it) to work with Draft.js content
 -  ``OPTIONS`` is a dictionary which follows the format of `Draftail configuration options <https://github.com/springload/draftail#usage>`_.
-   -  Draftail options which are JavaScript values are hydrated at runtime in ``client/wagtaildraftail.js``
+   -  Draftail options which are JavaScript values are hydrated at runtime in ``client/wagtaildraftail.js``. Alternatively, on Wagtail 1.12 and above, a ``features`` list can be passed within the ``OPTIONS`` dict in place of a full Draftail configuration.
 
 **WARNING:** The ``type`` key for ``blockTypes``, ``inlineStyles`` and ``entityTypes`` shouldn’t be changed. It is what defines how content is rendered, and is saved as a JSON blob in the database which would make migrations really painful.
 
 **WARNING:** All the blocks/styles/entities defined in the editor config should have been configured to render properly in the `exporter config <#exporter-configuration>`_.
 
 Here is a sample configuration file. This should live in your Django settings.
+
+For Wagtail 1.12.x and above:
+
+.. code:: python
+
+    from draftjs_exporter.constants import BLOCK_TYPES, ENTITY_TYPES
+    from draftjs_exporter.defaults import BLOCK_MAP
+
+    WAGTAILADMIN_RICH_TEXT_EDITORS = {
+        'default_draftail': {
+            'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
+        },
+
+        'format_and_link': {
+            'WIDGET': 'wagtaildraftail.widgets.DraftailTextArea',
+            'OPTIONS': {
+                'features': ['link', 'bold', 'italic'],
+            }
+        },
+
+        # Wagtail dependencies
+        'default': {
+            'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+        },
+
+        'custom': {
+            'WIDGET': 'wagtail.tests.testapp.rich_text.CustomRichTextArea'
+        },
+    }
+
+    DRAFT_EXPORTER_ENTITY_DECORATORS = {
+        ENTITY_TYPES.LINK: 'wagtaildraftail.decorators.Link',
+        ENTITY_TYPES.DOCUMENT: 'wagtaildraftail.decorators.Document',
+        ENTITY_TYPES.IMAGE: 'wagtaildraftail.decorators.Image',
+        ENTITY_TYPES.EMBED: 'wagtaildraftail.decorators.Embed',
+        ENTITY_TYPES.HORIZONTAL_RULE: 'wagtaildraftail.decorators.HR',
+    }
+
+    DRAFT_EXPORTER_COMPOSITE_DECORATORS = [
+        'wagtaildraftail.decorators.BR',
+    ]
+
+    DRAFT_EXPORTER_BLOCK_MAP = dict(BLOCK_MAP, **{
+        BLOCK_TYPES.UNORDERED_LIST_ITEM: {
+            'element': 'li',
+            'wrapper': 'ul',
+            'wrapper_props': {'class': 'list-styled'},
+        },
+        BLOCK_TYPES.ORDERED_LIST_ITEM: {
+            'element': 'li',
+            'wrapper': 'ol',
+            'wrapper_props': {'class': 'list-numbered'},
+        },
+    })
+
+For Wagtail 1.11.x and below:
 
 .. code:: python
 
