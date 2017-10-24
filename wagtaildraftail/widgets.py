@@ -83,3 +83,9 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
                 logging.getLogger(__name__).warning('Cannot handle {} as JSON'.format(json_value))
 
         return json.dumps(value)
+
+    class Media:
+        js = ['wagtaildraftail/wagtaildraftail.js']
+        css = {
+            'all': ['wagtaildraftail/wagtaildraftail.css']
+        }

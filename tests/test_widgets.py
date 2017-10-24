@@ -1,14 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
 import json
-import unittest
 
 from bs4 import BeautifulSoup
+from django.test import SimpleTestCase
 
 from wagtaildraftail.widgets import DraftailTextArea
 
 
-class DraftailTextAreaWidgetTestCase(unittest.TestCase):
+class DraftailTextAreaWidgetTestCase(SimpleTestCase):
     def test_rendering(self):
         widget = DraftailTextArea()
 
@@ -33,3 +33,16 @@ class DraftailTextAreaWidgetTestCase(unittest.TestCase):
         }, soup.input.attrs)
 
         self.assertEquals(soup.script.text, r"window.wagtailDraftail.initEditor('default_editor', {})")
+
+    def test_media(self):
+        widget = DraftailTextArea()
+        media_html = widget.media.__html__()
+
+        self.assertInHTML(
+            '<link href="/static/wagtaildraftail/wagtaildraftail.css" type="text/css" media="all" rel="stylesheet" />',
+            media_html
+        )
+        self.assertInHTML(
+            '<script type="text/javascript" src="/static/wagtaildraftail/wagtaildraftail.js"></script>',
+            media_html
+        )
