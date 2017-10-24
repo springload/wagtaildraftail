@@ -9,10 +9,17 @@ from django.utils.inspect import func_supports_parameter
 from draftjs_exporter.constants import ENTITY_TYPES
 
 from wagtail.utils.widgets import WidgetWithScript
-from wagtail.wagtailadmin.rich_text import features as feature_registry
 from wagtail.wagtailimages.formats import get_image_formats
 
 from .draft_text import DraftText
+
+try:
+    # Wagtail >= 1.12
+    from wagtail.wagtailadmin.rich_text import features as feature_registry
+    RICH_TEXT_FEATURES_AVAILABLE = True
+except ImportError:
+    # Wagtail < 1.12
+    RICH_TEXT_FEATURES_AVAILABLE = False
 
 
 def get_all_image_formats():
@@ -29,13 +36,16 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
     def __init__(self, attrs=None, options=None, features=None):
         # Find or construct an 'options' dict for this editor to use, according to
         # this order of precedence:
-        # 1) If we receive an explicit 'features' list, build options from that
+        # 1) If we receive an explicit 'features' list (and we're on a Wagtail version
+        #    that supports it), build options from that
         # 2) If we receive an 'options' dict that looks like it's configuring things
         #    longhand (i.e. contains any of 'entityTypes' / 'blockTypes' / 'inlineStyles'),
         #    use that
-        # 3) Otherwise, build options from the default feature set
+        # 3) If we're on a Wagtail version that supports rich text features,
+        #    build options from the default feature set
+        # 4) Otherwise, use whatever 'options' dict we have
 
-        if features is not None:
+        if RICH_TEXT_FEATURES_AVAILABLE and features is not None:
             self.options = self._build_options_from_features(features)
         elif (
             options is not None and (
@@ -43,8 +53,10 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
             )
         ):
             self.options = options
-        else:
+        elif RICH_TEXT_FEATURES_AVAILABLE:
             self.options = self._build_options_from_features(feature_registry.get_default_features())
+        else:
+            self.options = options or {}
 
         # Whichever way we obtain the options dict, expand any references to imageFormats = '__all__'
         self.options = self.intercept_image_formats(self.options)

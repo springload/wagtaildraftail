@@ -2,10 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 import re
+import unittest
 
 from bs4 import BeautifulSoup
 from django.test import SimpleTestCase
 from draftjs_exporter.constants import BLOCK_TYPES, ENTITY_TYPES
+from wagtail import VERSION as WAGTAIL_VERSION
 
 from wagtaildraftail.widgets import DraftailTextArea
 
@@ -68,6 +70,7 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
         options = self.extract_options_from_script(soup.script.text)
         self.assertDictEqual(options, CUSTOM_OPTIONS)
 
+    @unittest.skipIf(WAGTAIL_VERSION < (1, 12), "Rich text features are only supported on Wagtail 1.12 and above")
     def test_rendering_with_default_features(self):
         """
         When no options or features are specified for the widget,
@@ -98,6 +101,7 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
         self.assertTrue([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.LINK])
         self.assertTrue([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.IMAGE])
 
+    @unittest.skipIf(WAGTAIL_VERSION < (1, 12), "Rich text features are only supported on Wagtail 1.12 and above")
     def test_rendering_with_explicit_features(self):
         """
         A features list passed to the widget should generate an options dict for those
