@@ -67,7 +67,8 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
         options = {}
         for feature in features:
             plugin = feature_registry.get_editor_plugin('draftail', feature)
-            plugin.construct_options(options)
+            if plugin:
+                plugin.construct_options(options)
 
         return options
 

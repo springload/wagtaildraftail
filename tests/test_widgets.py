@@ -108,7 +108,7 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
         features (overriding any options dict that was passed)
         """
 
-        widget = DraftailTextArea(options=CUSTOM_OPTIONS, features=['h1', 'image'])
+        widget = DraftailTextArea(options=CUSTOM_OPTIONS, features=['h1', 'image', 'unknownfeature'])
 
         html = widget.render('default_editor', json.dumps({'key': 'val'}), {'id': 'id'})
         soup = BeautifulSoup(html, 'html.parser')
