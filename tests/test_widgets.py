@@ -39,6 +39,14 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
         self.assertTrue(match, "Call to initEditor not found in: %r" % script)
         return json.loads(match.group(1))
 
+    def assertInOptions(self, options, typ):
+        """Assert that an entry with type `typ` exists in the given options list"""
+        self.assertTrue([i for i in options if i['type'] == typ])
+
+    def assertNotInOptions(self, options, typ):
+        """Assert that an entry with type `typ` does not exist in the given options list"""
+        self.assertFalse([i for i in options if i['type'] == typ])
+
     def test_rendering_with_explicit_options(self):
         """
         If a widget is initialised with a (populated) options dict but no
@@ -95,11 +103,11 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
         options = self.extract_options_from_script(soup.script.text)
         self.assertTrue(options['enableHorizontalRule'])
         # default features include H3 but not H1
-        self.assertFalse([block for block in options['blockTypes'] if block['type'] == BLOCK_TYPES.HEADER_ONE])
-        self.assertTrue([block for block in options['blockTypes'] if block['type'] == BLOCK_TYPES.HEADER_THREE])
+        self.assertNotInOptions(options['blockTypes'], BLOCK_TYPES.HEADER_ONE)
+        self.assertInOptions(options['blockTypes'], BLOCK_TYPES.HEADER_THREE)
 
-        self.assertTrue([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.LINK])
-        self.assertTrue([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.IMAGE])
+        self.assertInOptions(options['entityTypes'], ENTITY_TYPES.LINK)
+        self.assertInOptions(options['entityTypes'], ENTITY_TYPES.IMAGE)
 
     @unittest.skipIf(WAGTAIL_VERSION < (1, 12), "Rich text features are only supported on Wagtail 1.12 and above")
     def test_rendering_with_explicit_features(self):
@@ -125,11 +133,11 @@ class DraftailTextAreaWidgetTestCase(SimpleTestCase):
 
         options = self.extract_options_from_script(soup.script.text)
         self.assertFalse('enableHorizontalRule' in options)
-        self.assertTrue([block for block in options['blockTypes'] if block['type'] == BLOCK_TYPES.HEADER_ONE])
-        self.assertFalse([block for block in options['blockTypes'] if block['type'] == BLOCK_TYPES.HEADER_THREE])
+        self.assertInOptions(options['blockTypes'], BLOCK_TYPES.HEADER_ONE)
+        self.assertNotInOptions(options['blockTypes'], BLOCK_TYPES.HEADER_THREE)
 
-        self.assertFalse([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.LINK])
-        self.assertTrue([entity for entity in options['entityTypes'] if entity['type'] == ENTITY_TYPES.IMAGE])
+        self.assertNotInOptions(options['entityTypes'], ENTITY_TYPES.LINK)
+        self.assertInOptions(options['entityTypes'], ENTITY_TYPES.IMAGE)
 
     def test_media(self):
         widget = DraftailTextArea()
