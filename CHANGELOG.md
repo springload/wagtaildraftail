@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## [Unreleased](https://github.com/springload/wagtaildraftail/compare/v0.7.0...HEAD)
 
+### Added
+
+- Support for RichText features introduced in Wagtail 1.12 (#63).
+
+### Changed
+
+- Do not encourage the use of the `richtext` filter as it isn't necessary.
+
 ## [[v0.7.0]](https://github.com/springload/wagtaildraftail/releases/tag/v0.7.0)
 
 ### Added
