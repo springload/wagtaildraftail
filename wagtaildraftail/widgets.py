@@ -13,6 +13,14 @@ from wagtail.wagtailimages.formats import get_image_formats
 
 from .draft_text import DraftText
 
+try:
+    # Wagtail >= 1.12
+    from wagtail.wagtailadmin.rich_text import features as feature_registry
+    RICH_TEXT_FEATURES_AVAILABLE = True
+except ImportError:
+    # Wagtail < 1.12
+    RICH_TEXT_FEATURES_AVAILABLE = False
+
 
 def get_all_image_formats():
     return [{'label': str(f.label), 'value': f.name} for f in get_image_formats()]
@@ -22,10 +30,47 @@ class DraftailTextArea(WidgetWithScript, forms.HiddenInput):
     """
     Field widget to render a rich text editor powered by Draftail.
     """
-    def __init__(self, attrs=None, options=None):
-        self.options = self.intercept_image_formats(options or {})
+    # this class's constructor accepts a 'features' kwarg
+    accepts_features = True
+
+    def __init__(self, attrs=None, options=None, features=None):
+        # Find or construct an 'options' dict for this editor to use, according to
+        # this order of precedence:
+        # 1) If we receive an explicit 'features' list (and we're on a Wagtail version
+        #    that supports it), build options from that
+        # 2) If we receive an 'options' dict that looks like it's configuring things
+        #    longhand (i.e. contains any of 'entityTypes' / 'blockTypes' / 'inlineStyles'),
+        #    use that
+        # 3) If we're on a Wagtail version that supports rich text features,
+        #    build options from the default feature set
+        # 4) Otherwise, use whatever 'options' dict we have
+
+        if RICH_TEXT_FEATURES_AVAILABLE and features is not None:
+            self.options = self._build_options_from_features(features)
+        elif (
+            options is not None and (
+                'entityTypes' in options or 'blockTypes' in options or 'inlineStyles' in options
+            )
+        ):
+            self.options = options
+        elif RICH_TEXT_FEATURES_AVAILABLE:
+            self.options = self._build_options_from_features(feature_registry.get_default_features())
+        else:
+            self.options = options or {}
+
+        # Whichever way we obtain the options dict, expand any references to imageFormats = '__all__'
+        self.options = self.intercept_image_formats(self.options)
 
         super(DraftailTextArea, self).__init__(attrs)
+
+    def _build_options_from_features(self, features):
+        options = {}
+        for feature in features:
+            plugin = feature_registry.get_editor_plugin('draftail', feature)
+            if plugin:
+                plugin.construct_options(options)
+
+        return options
 
     def intercept_image_formats(self, options):
         """
